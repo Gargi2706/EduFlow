@@ -1,0 +1,49 @@
+.auth-container{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#f4f7fb;
+}
+
+.auth-card{
+  width:850px;
+  background:white;
+  display:flex;
+  border-radius:10px;
+  padding:40px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.1);
+}
+
+.auth-left{
+  width:50%;
+}
+
+.auth-right{
+  width:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.auth-right img{
+  width:220px;
+}
+
+.tabs{
+  display:flex;
+  margin-bottom:20px;
+}
+
+.tabs button{
+  flex:1;
+  padding:10px;
+  border:none;
+  background:#eee;
+  cursor:pointer;
+}
+
+.tabs .active{
+  background:#2c63ff;
+  color:white;
+}
