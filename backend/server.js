@@ -25,9 +25,13 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("EduFlow API Running");
-});
+// app.get("/", (req, res) => {
+//   res.send("EduFlow API Running");
+// });
+
+const authRoutes = require('./routes/authRoutes');
+
+app.use('/api/auth', authRoutes);
 
 const PORT = process.env.PORT || 3000;
 
