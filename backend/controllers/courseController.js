@@ -1,13 +1,13 @@
 const express = require("express");
+const Course = require("../models/Course");
 
 exports.createCourse = async (req, res) => {
   try {
-    const { title, description, instructor, thumbnail } = req.body;
+    const { title, description, thumbnail } = req.body;
 
     const course = await Course.create({
       title,
       description,
-      instructor,
       thumbnail,
       instructor: req.user.id,
     });
@@ -25,13 +25,13 @@ exports.createCourse = async (req, res) => {
   }
 };
 
-exports.getAllCourse = async (req, res) => {
+exports.getAllCourses = async (req, res) => {
   try {
     const course = await Course.find().populate("instructor", "name email");
 
     res.json({
       success: true,
-      count: courses.length,
+      count: course.length,
       data: course,
     });
   } catch (error) {
@@ -59,6 +59,7 @@ exports.getCourseById = async (req, res) => {
     res.json({
       success: true,
       data: course,
+      message: "Course retrieved successfully",
     });
   } catch (error) {
     res.status(500).json({
@@ -116,42 +117,25 @@ exports.updateCourse = async (req, res) => {
 };
 
 
-exports.deleteCorse = async (res , req ) => {
-    try {
-        const course = await Course.findById(req.params.id);
+exports.deleteCourse = async (req, res) => {
+  try {
 
-        if (!course) {
-            return res.status(404).json({
-                success: false,
-                message: "Course not found",
-            });
-        }
+    const course = await Course.findByIdAndDelete(req.params.id);
 
-        if (!req.params.id) {
-            return res.status(400).json({
-                success: false,
-                message: "Course ID is required",
-            });
-        }
+    if (!course) {
+      return res.status(404).json({
+        message: "Course not found"
+      });
+    }
 
-        // Check if the user is the instructor of the course
-        if (course.instructor.toString() !== req.user.id) {
-            return res.status(403).json({
-                success: false,
-                message: "Unauthorized",
-            });
-        }
+    res.json({
+      success: true,
+      message: "Course deleted successfully"
+    });
 
-        await course.remove();
-
-        res.json({
-            success: true,
-            message: "Course deleted successfully",
-        }); 
-    }catch (error) {
-        res.status(500).json({
-            success: false,
-            message: error.message,
-        });
-    }   
-}
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    });
+  }
+};
