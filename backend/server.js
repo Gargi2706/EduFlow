@@ -30,7 +30,7 @@ app.use("/api/courses", courseRoutes);
 
 const lessonRoutes = require("./routes/lessonRoutes");
 
-app.use("/api/courses/:courseId/lessons", lessonRoutes);
+app.use("/api", lessonRoutes);
 
 
 const PORT = process.env.PORT || 3000;

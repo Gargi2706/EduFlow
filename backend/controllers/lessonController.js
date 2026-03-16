@@ -6,13 +6,11 @@ exports.createLesson = async (req, res) => {
     const { courseId } = req.params;
     const { title, description, videoUrl, content } = req.body;
 
-    // Check if course exists
     const course = await Course.findById(courseId);
     if (!course) {
       return res.status(404).json({ message: "Course not found" });
     }
 
-    // Create new lesson
     const lesson = await Lesson.create({
       course: courseId,
       title,
@@ -120,3 +118,30 @@ exports.updateLesson = async (req, res) => {
     });
   }
 };
+
+
+exports.deleteLesson = async (req, res) => {
+    try {
+        const { courseId , lessonId } = req.params;
+
+        const course = await Course.findByIdAndDelete(courseId);
+        if (!course) {
+            return res.status(404).json({ message: "Course not found" });
+        }
+
+        const lesson = await Lesson.findOneAndDelete({ _id: lessonId, course: courseId });
+        if (!lesson) {
+            return res.status(404).json({ message: "Lesson not found" });
+        }
+
+        res.json({
+            success: true,
+            message: "Lesson deleted successfully",
+        });     
+    }catch(error){
+        res.status(500).json({
+            success : false,
+            message: error.message
+        })
+    }
+} 
