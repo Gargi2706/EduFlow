@@ -1,14 +1,4 @@
-// const express = require('express');
-// const app = express();
-// const port = 3000;
 
-// app.get('/', (req, res) => {
-//   res.send('Api is running');
-// });
-
-// app.listen(port, () => {
-//   console.log(`Example app listening at http://localhost:${port}`);
-// });
 
 
 const express = require("express");
@@ -24,6 +14,9 @@ connectDB();
 
 app.use(cors());
 app.use(express.json());
+const authRoutes = require("./routes/authRoutes");
+
+app.use("/api/auth", authRoutes);
 
 // app.get("/", (req, res) => {
 //   res.send("EduFlow API Running");
