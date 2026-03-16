@@ -1,22 +1,23 @@
-
-
-
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/db");
+const authRoutes = require("./routes/authRoutes");
+const enrollmentRoutes = require("./routes/enrollmentRoutes");
+
+
 
 dotenv.config();
 
 const app = express();
 
+
 connectDB();
 
 app.use(cors());
 app.use(express.json());
-const authRoutes = require("./routes/authRoutes");
-
 app.use("/api/auth", authRoutes);
+app.use("/api/enrollments", enrollmentRoutes);
 
 app.get("/", (req, res) => {
   res.send("EduFlow API Running");
