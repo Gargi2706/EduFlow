@@ -34,8 +34,9 @@ exports.registerUser = async (req , res) =>{
             res.status(400).json({message : "Invalid user data"});
         }    
     } catch (error) {
-        res.status(500).json({message : "Server error"});      
-    }
+    console.log(error);   // print real error in terminal
+    res.status(500).json({ message: "Server error" });
+}
 }
 
 exports.loginUser = async (req, res) => {
@@ -64,6 +65,7 @@ exports.loginUser = async (req, res) => {
         });
 
     } catch (error) {
-        res.status(500).json({ message: "Server error" });
-    }
-};
+    console.log(error);   // print real error in terminal
+    res.status(500).json({ message: "Server error" });
+      }
+    } 

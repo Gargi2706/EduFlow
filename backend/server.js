@@ -1,14 +1,16 @@
-
-
-
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/db");
+const authRoutes = require("./routes/authRoutes");
+const enrollmentRoutes = require("./routes/enrollmentRoutes");
+const courseRoutes = require("./routes/courseRoutes");
+
 
 dotenv.config();
 
 const app = express();
+
 
 connectDB();
 
@@ -31,6 +33,8 @@ app.use("/api/courses", courseRoutes);
 const lessonRoutes = require("./routes/lessonRoutes");
 
 app.use("/api", lessonRoutes);
+
+app.use("/api/enrollments", enrollmentRoutes);
 
 
 const PORT = process.env.PORT || 3000;
