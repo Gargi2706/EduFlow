@@ -5,6 +5,7 @@ const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const enrollmentRoutes = require("./routes/enrollmentRoutes");
 const courseRoutes = require("./routes/courseRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 
 
 dotenv.config();
@@ -33,6 +34,8 @@ const lessonRoutes = require("./routes/lessonRoutes");
 app.use("/api", lessonRoutes);
 
 app.use("/api/enrollments", enrollmentRoutes);
+
+app.use("/api/admin", adminRoutes);
 
 
 const PORT = process.env.PORT || 3000;

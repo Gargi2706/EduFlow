@@ -6,7 +6,6 @@ const User = require("../models/User");
 exports.enrollCourse = async (req,res)=>{
  try{
 
- // ✅ Allow only students
  if(req.user.role !== "Student"){
   return res.status(403).json({
    success:false,
@@ -22,7 +21,6 @@ exports.enrollCourse = async (req,res)=>{
   });
  }
 
- // ✅ Prevent duplicate enrollment
  const alreadyEnrolled = await Enrollment.findOne({
    student: req.user.id,
    course: req.params.courseId
@@ -56,14 +54,13 @@ exports.getEnrolledCourses = async (req, res) => {
 
     try {
 
-        const courses = await Enrollment
-            .find({ Student: req.user._id })
+        const enrollments = await Enrollment
+            .find({ student: req.user.id })
             .populate("course");
 
-        res.json({
+        res.status(200).json({
             success: true,
-            count: course.length,
-            data: course,
+            data: enrollments,
             message: "Enrolled courses retrieved successfully"
         });
 
@@ -93,4 +90,45 @@ exports.updateProgress = async (req, res) => {
     res.status(500).json({ message: error.message });
 }
 
+};
+
+//check enrolled students for a course - for instructor dashboard
+exports.getEnrollmentsByCourse = async (req, res) => {
+  try {
+
+    const { courseId } = req.params;
+    const userId = req.user.id;
+
+    const course = await Course.findById(courseId);
+
+    if (!course) {
+      return res.status(404).json({
+        message: "Course not found"
+      });
+    }
+
+    if (course.instructor.toString() !== userId) {
+      return res.status(403).json({
+        message: "You are not allowed to view this course enrollments"
+      });
+    }
+
+    const enrollments = await Enrollment.find({ course: courseId })
+      .populate("student", "name email");
+
+    const totalStudents = enrollments.length;
+
+    res.status(200).json({
+      success: true,
+      totalStudents,
+      data: enrollments
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+      message: error.message
+    });
+
+  }
 };
