@@ -1,43 +1,55 @@
-    const Enrollment = require("../models/Enrollment");
-    const Course = require("../models/Course");
+const Enrollment = require("../models/Enrollment");
+const Course = require("../models/Course");
+const User = require("../models/User");
 
 
-    // Enroll in course
-    exports.enrollCourse = async (req, res) => {
-            console.log("Enroll API hit");
-        try {
+exports.enrollCourse = async (req,res)=>{
+ try{
 
-            const enrollment = await Enrollment.create({
-                student: req.user._id,
-                course: req.body.courseId
-            });
+ // ✅ Allow only students
+ if(req.user.role !== "Student"){
+  return res.status(403).json({
+   success:false,
+   message:"Only students can enroll in courses"
+  });
+ }
 
-            res.status(201).json(enrollment);
+ const course = await Course.findById(req.params.courseId);
 
-        } catch (error) {
-            res.status(500).json({ message: "Server error" });
-        }
+ if(!course){
+  return res.status(404).json({
+   message:"Course not found"
+  });
+ }
 
-    };
+ // ✅ Prevent duplicate enrollment
+ const alreadyEnrolled = await Enrollment.findOne({
+   student: req.user.id,
+   course: req.params.courseId
+ });
 
+ if(alreadyEnrolled){
+  return res.status(400).json({
+   message:"You are already enrolled in this course"
+  });
+ }
 
-    // Get enrolled courses
-    exports.getEnrolledCourses = async (req, res) => {
+ const enrollment = await Enrollment.create({
+   student: req.user.id,
+   course: req.params.courseId
+ });
 
-        try {
+ res.json({
+  success:true,
+  data:enrollment,
+  message:"Enrolled successfully"
+ });
 
-            const courses = await Enrollment
-                .find({ student: req.user._id })
-                .populate("course");
+ }catch(err){
+  res.status(500).json({message:err.message});
+ }
+}
 
-            res.json(courses);
-
-        } catch (error) {
-        console.log(error);
-        res.status(500).json({ message: error.message });
-    }
-
-    };
 
 
     // Update progress
@@ -45,13 +57,16 @@
 
         try {
 
-            const enrollment = await Enrollment.findByIdAndUpdate(
-                req.params.id,
-                { progress: req.body.progress },
-                { new: true }
-            );
+        const courses = await Enrollment
+            .find({ Student: req.user._id })
+            .populate("course");
 
-            res.json(enrollment);
+        res.json({
+            success: true,
+            count: course.length,
+            data: course,
+            message: "Enrolled courses retrieved successfully"
+        });
 
         } catch (error) {
         console.log(error);
