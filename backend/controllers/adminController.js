@@ -45,7 +45,7 @@ exports.getAllUsers = async (req, res) => {
 // Get all courses - for admin dashboard
 exports.getAllCourses = async (req, res) => {
     try {
-        const courses = await Course.find().populate("Instructor", "name email");
+        const courses = await Course.find().populate("instructor", "name email");
 
         res.status(200).json({
             success: true,
@@ -63,7 +63,7 @@ exports.getAllCourses = async (req, res) => {
 exports.getAllEnrollments = async (req, res) => {
     try {
         const enrollments = await Enrollment.find()
-            .populate("Student", "name email")
+            .populate("student", "name email")
             .populate("course", "title");
 
         res.status(200).json({
