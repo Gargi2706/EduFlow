@@ -6,6 +6,7 @@ const authRoutes = require("./routes/authRoutes");
 const enrollmentRoutes = require("./routes/enrollmentRoutes");
 const courseRoutes = require("./routes/courseRoutes");
 const lessonRoutes = require("./routes/lessonRoutes");
+const reviewRoutes = require("./routes/reviewRoutes");
 
 dotenv.config();
 
@@ -27,7 +28,8 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/lessons", lessonRoutes);
-app.use("/api/enrollments", enrollmentRoutes);
+app.use("/api/enrollment", enrollmentRoutes);
+app.use("/api/reviews", reviewRoutes);
 
 
 const PORT = process.env.PORT || 3000;
