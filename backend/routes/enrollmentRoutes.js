@@ -9,12 +9,15 @@ const {
     getEnrollmentsByCourse
 } = require("../controllers/enrollmentController");
 
+// ✅ ADD THIS LINE
 const verifyToken = require("../middleware/verifyToken");
 
 router.post("/enroll/:courseId", verifyToken, authorizeRoles("Student"), (req, res, next) => {
     console.log("Enroll route hit");
     next();
-}, enrollCourse);
+  },
+  enrollCourse
+);
 
 router.get("/my-courses", verifyToken, authorizeRoles("Student"), getEnrolledCourses);
 

@@ -49,10 +49,11 @@ exports.enrollCourse = async (req,res)=>{
 }
 
 
-// Get enrolled courses
-exports.getEnrolledCourses = async (req, res) => {
 
-    try {
+
+    exports.getEnrolledCourses = async (req, res) => {
+
+        try {
 
         const enrollments = await Enrollment
             .find({ student: req.user.id })
@@ -64,10 +65,10 @@ exports.getEnrolledCourses = async (req, res) => {
             message: "Enrolled courses retrieved successfully"
         });
 
-    } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: error.message });
-}
+        } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error.message });
+    }
 
 };
 

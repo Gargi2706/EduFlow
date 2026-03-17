@@ -7,7 +7,8 @@ const enrollmentRoutes = require("./routes/enrollmentRoutes");
 const courseRoutes = require("./routes/courseRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
-
+const lessonRoutes = require("./routes/lessonRoutes");
+const reviewRoutes = require("./routes/reviewRoutes");
 
 dotenv.config();
 
@@ -27,17 +28,11 @@ app.use(express.json());
 
 
 app.use('/api/auth', authRoutes);
-
 app.use("/api/courses", courseRoutes);
-
-const lessonRoutes = require("./routes/lessonRoutes");
-
-app.use("/api", lessonRoutes);
-
-app.use("/api/enrollments", enrollmentRoutes);
-
+app.use("/api/lessons", lessonRoutes);
+app.use("/api/enrollment", enrollmentRoutes);
+app.use("/api/reviews", reviewRoutes);
 app.use("/api/admin", adminRoutes);
-
 app.use("/dashboard", dashboardRoutes);
 
 
