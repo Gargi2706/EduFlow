@@ -1,23 +1,34 @@
 const Enrollment = require("../models/Enrollment");
+const Course = require("../models/Course");
+const User = require("../models/User");
 
+exports.enrollCourse = async (req,res)=>{
+ try{
 
-// Enroll in course
-exports.enrollCourse = async (req, res) => {
-        console.log("Enroll API hit");
-    try {
+ const course = await Course.findById(req.params.courseId)
 
-        const enrollment = await Enrollment.create({
-            student: req.user._id,
-            course: req.body.courseId
-        });
+ if(!course){
+  return res.status(404).json({
+   message:"Course not found"
+  })
+ }
 
-        res.status(201).json(enrollment);
+ const enrollment = await Enrollment.create({
+   student:req.User.id,
+   course:req.params.courseId
 
-    } catch (error) {
-        res.status(500).json({ message: "Server error" });
-    }
+ })
 
-};
+ res.json({
+  success:true,
+    data:enrollment,    
+    message:"Enrolled successfully"
+ })
+
+ }catch(err){
+  res.status(500).json({message:err.message})
+ }
+}
 
 
 // Get enrolled courses

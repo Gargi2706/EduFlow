@@ -22,11 +22,9 @@ app.use(express.json());
 //   res.send("EduFlow API Running");
 // });
 
-const authRoutes = require('./routes/authRoutes');
+
 
 app.use('/api/auth', authRoutes);
-
-const courseRoutes = require("./routes/courseRoutes");
 
 app.use("/api/courses", courseRoutes);
 
