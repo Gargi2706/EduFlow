@@ -1,4 +1,3 @@
-
 const uploadImageController = (req, res) => {
   try {
     res.status(200).json({
@@ -20,7 +19,6 @@ const uploadVideoController = (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
 
 const uploadFileController = (req, res) => {
   try {
