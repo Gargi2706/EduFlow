@@ -8,10 +8,16 @@ import CourseDetails from "./pages/CourseDetails";
 
 import Navbar from "./components/Navbar";
 
+import StudentDashboard from "./pages/studentDashboard/StudentDashboard"; // adjust path if needed
+
+
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<AuthPage />} />
+        <Route path="/student-dashboard" element={<StudentDashboard />} />
 
         
         <Route path="/" element={<Auth />} /> 
