@@ -3,21 +3,26 @@
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  padding: 15px 50px;
+  padding: 15px 80px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .logo {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 27px;
   color: #2563eb;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap : 30px;
-  text-decoration: none;
+  gap : 35px;
+}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:25px;
 }
 
 .nav-links li {
@@ -39,6 +44,7 @@
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  
 }
 
 .register-btn:hover {

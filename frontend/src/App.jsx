@@ -6,11 +6,32 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import CourseDetails from "./pages/CourseDetails";
 
 import Navbar from "./components/Navbar/Navbar";
+import CourseCard from "./components/CourseCard/coursecard";
 
 function App() {
   return (
     <BrowserRouter>
     <Navbar />
+    <CourseCard
+      course={{
+        title: "Web Development",
+        instructor: "Justin Lee",
+        image: "/images/web.jpg"
+      }}
+    />
+    <CourseCard
+      course={{
+        title: "Web Development",
+        instructor: "Justin Lee",
+        image: "/images/web.jpg"
+      }}
+    />
+
+
+
+
+
+    
       <Routes>
 
 
