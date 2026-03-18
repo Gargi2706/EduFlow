@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 //Upload Image
+=======
+
+>>>>>>> ba7196647e4f97fcfac8826efcc16e8817ab0daa
 const uploadImageController = (req, res) => {
   try {
     res.status(200).json({
@@ -10,7 +14,10 @@ const uploadImageController = (req, res) => {
   }
 };
 
+<<<<<<< HEAD
 //Upload Video
+=======
+>>>>>>> ba7196647e4f97fcfac8826efcc16e8817ab0daa
 const uploadVideoController = (req, res) => {
   try {
     res.status(200).json({
@@ -22,7 +29,11 @@ const uploadVideoController = (req, res) => {
   }
 };
 
+<<<<<<< HEAD
 //Upload File
+=======
+
+>>>>>>> ba7196647e4f97fcfac8826efcc16e8817ab0daa
 const uploadFileController = (req, res) => {
   try {
     res.status(200).json({
