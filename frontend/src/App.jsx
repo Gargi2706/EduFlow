@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// import Auth from "./pages/Auth";
+import Auth from "./pages/Auth";
 // import Home from "./pages/Home";
 // import Courses from "./pages/Courses";
 // import CourseDetails from "./pages/CourseDetails";
@@ -10,7 +10,9 @@ import CourseCard from "./components/CourseCard/coursecard";
 
 function App() {
   return (
+
     <BrowserRouter>
+    {/* <Auth /> */}
     <Navbar />
     <CourseCard
       course={{
@@ -31,7 +33,7 @@ function App() {
 
 
 
-    
+
       <Routes>
 
 
