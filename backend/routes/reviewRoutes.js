@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const {authorizeRoles} = require("../middleware/roleMiddleware");
 
 const {
   addReview,
@@ -9,13 +10,13 @@ const {
 
 const verifyToken = require("../middleware/verifyToken");
 
-// ✅ Add Review
-router.post("/", verifyToken, addReview);
 
-// ✅ Get Reviews of a Course
-router.get("/:courseId", getCourseReviews);
+router.post("/", verifyToken, authorizeRoles("Student"), addReview);
 
-// ✅ Get Average Rating
+
+router.get("/:courseId", verifyToken, authorizeRoles("Instructor"), getCourseReviews);
+
+
 router.get("/average/:courseId", getAverageRating);
 
 module.exports = router;
