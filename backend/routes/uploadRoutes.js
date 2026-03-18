@@ -14,13 +14,13 @@ const {
   uploadFile,
 } = require("../middleware/upload");
 
-// 📸 Image
+// Image
 router.post("/image", verifyToken, uploadImage.single("image"), uploadImageController);
 
-// 🎥 Video
+//  Video
 router.post("/video", verifyToken, uploadVideo.single("video"), uploadVideoController);
 
-// 📄 File
+// File
 router.post("/file", verifyToken, uploadFile.single("file"), uploadFileController);
 
 module.exports = router;

@@ -1,4 +1,4 @@
-// 📸 Upload Image
+//Upload Image
 const uploadImageController = (req, res) => {
   try {
     res.status(200).json({
@@ -10,7 +10,7 @@ const uploadImageController = (req, res) => {
   }
 };
 
-// 🎥 Upload Video
+//Upload Video
 const uploadVideoController = (req, res) => {
   try {
     res.status(200).json({
@@ -22,7 +22,7 @@ const uploadVideoController = (req, res) => {
   }
 };
 
-// 📄 Upload File
+//Upload File
 const uploadFileController = (req, res) => {
   try {
     res.status(200).json({

@@ -1,11 +1,11 @@
 const Review = require("../models/Review");
 
-// ✅ Add Review
+// Add Review
 const addReview = async (req, res) => {
   try {
     const { rating, comment, courseId } = req.body;
 
-    // ✅ Check if student is enrolled
+    // Check if student is enrolled
     const isEnrolled = await Enrollment.findOne({
       student: req.user.id,
       course: courseId,
@@ -17,7 +17,7 @@ const addReview = async (req, res) => {
       });
     }
 
-    // ✅ Prevent duplicate review
+    // Prevent duplicate review
     const alreadyReviewed = await Review.findOne({
       student: req.user.id,
       course: courseId,
@@ -29,7 +29,7 @@ const addReview = async (req, res) => {
       });
     }
 
-    // ✅ Create review
+    //  Create review
     const review = await Review.create({
       rating,
       comment,
@@ -48,7 +48,7 @@ const addReview = async (req, res) => {
 };
 
 
-// ✅ Get Reviews of a Course
+// Get Reviews of a Course
 const getCourseReviews = async (req, res) => {
   try {
     const reviews = await Review.find({ course: req.params.courseId })
@@ -66,7 +66,7 @@ const getCourseReviews = async (req, res) => {
 };
 
 
-// ✅ Get Average Rating
+//  Get Average Rating
 const getAverageRating = async (req, res) => {
   try {
     const result = await Review.aggregate([

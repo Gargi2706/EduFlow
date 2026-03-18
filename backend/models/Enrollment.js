@@ -11,10 +11,10 @@ const enrollmentSchema = new mongoose.Schema({
         ref : 'Course',
         required : true
     },
-    progress: {
-        type : Number,
-        default : 0
-    }
+    //progress: {
+        //type : Number,
+        //default : 0
+    //}
 },
     { timestamps : true }
 );

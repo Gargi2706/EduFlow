@@ -2,7 +2,7 @@ const multer = require("multer");
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const cloudinary = require("../config/cloudinary");
 
-// 📸 Image upload (thumbnail)
+// Image upload (thumbnail)
 const imageStorage = new CloudinaryStorage({
   cloudinary,
   params: {
@@ -11,7 +11,7 @@ const imageStorage = new CloudinaryStorage({
   },
 });
 
-// 🎥 Video upload
+// Video upload
 const videoStorage = new CloudinaryStorage({
   cloudinary,
   params: {
@@ -20,7 +20,7 @@ const videoStorage = new CloudinaryStorage({
   },
 });
 
-// 📄 File upload (assignments, docs, pdf)
+// File upload (assignments, docs, pdf)
 const fileStorage = new CloudinaryStorage({
   cloudinary,
   params: {
