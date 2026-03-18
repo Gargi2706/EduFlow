@@ -4,7 +4,7 @@ import "./navbar.css";
 function Navbar() {
   return (
     <nav className="navbar">
-      
+       
       <div className="logo">EduFlow</div>
       <div className="nav-right">
         <ul className="nav-links">
@@ -23,7 +23,7 @@ function Navbar() {
           <button className="register-btn">Register</button>
         </Link>
       </div>
-
+     
     </nav>
   );
 }

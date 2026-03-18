@@ -10,13 +10,14 @@
 .logo {
   font-weight: bold;
   font-size: 27px;
-  color: #2563eb;
+  color: #4f46e5;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
   gap : 35px;
+  color :#4f46e5;
 }
 
 .nav-right{
@@ -30,25 +31,26 @@
   font-weight: 500;
   font-size: 20px;
   text-decoration: none;
+  color :#4f46e5;
 }
 
 .nav-links li:hover {
-/* color: #60a5fa; */
-   color: #2563eb;
+  opacity: 0.9;
 }
 
 .register-btn {
-  background-color: #2563eb;
+  background: linear-gradient(135deg, #4f46e5, #6d28d9);
   color: white;
   padding: 8px 18px;
   border: none;
   border-radius: 6px;
+  font-weight: bold;
   cursor: pointer;
   
 }
 
 .register-btn:hover {
-  background-color: #1d4ed8;
+  opacity: 0.9;
 }
 
 
