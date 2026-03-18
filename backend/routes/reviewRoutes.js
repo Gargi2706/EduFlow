@@ -1,21 +1,18 @@
 const express = require("express");
 const router = express.Router();
+const {authorizeRoles} = require("../middleware/roleMiddleware");
 
 const {
   addReview,
-  getCourseReviews,
-  getAverageRating,
+  getCourseReviews
 } = require("../controllers/reviewController");
 
 const verifyToken = require("../middleware/verifyToken");
 
-// ✅ Add Review
-router.post("/", verifyToken, addReview);
 
-// ✅ Get Reviews of a Course
-router.get("/:courseId", getCourseReviews);
+router.post("/", verifyToken, authorizeRoles("Student"), addReview);
 
-// ✅ Get Average Rating
-router.get("/average/:courseId", getAverageRating);
+
+router.get("/:courseId", verifyToken ,  getCourseReviews);
 
 module.exports = router;

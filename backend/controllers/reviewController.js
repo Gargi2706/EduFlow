@@ -1,11 +1,12 @@
 const Review = require("../models/Review");
+const Enrollment = require("../models/Enrollment");
 
-// ✅ Add Review
+
 const addReview = async (req, res) => {
   try {
     const { rating, comment, courseId } = req.body;
 
-    // ✅ Check if student is enrolled
+   
     const isEnrolled = await Enrollment.findOne({
       student: req.user.id,
       course: courseId,
@@ -17,7 +18,7 @@ const addReview = async (req, res) => {
       });
     }
 
-    // ✅ Prevent duplicate review
+   
     const alreadyReviewed = await Review.findOne({
       student: req.user.id,
       course: courseId,
@@ -29,11 +30,11 @@ const addReview = async (req, res) => {
       });
     }
 
-    // ✅ Create review
+   
     const review = await Review.create({
+      course: courseId,
       rating,
       comment,
-      course: courseId,
       student: req.user.id,
     });
 
@@ -47,8 +48,6 @@ const addReview = async (req, res) => {
   }
 };
 
-
-// ✅ Get Reviews of a Course
 const getCourseReviews = async (req, res) => {
   try {
     const reviews = await Review.find({ course: req.params.courseId })
@@ -66,34 +65,7 @@ const getCourseReviews = async (req, res) => {
 };
 
 
-// ✅ Get Average Rating
-const getAverageRating = async (req, res) => {
-  try {
-    const result = await Review.aggregate([
-      {
-        $match: { course: require("mongoose").Types.ObjectId(req.params.courseId) },
-      },
-      {
-        $group: {
-          _id: "$course",
-          averageRating: { $avg: "$rating" },
-        },
-      },
-    ]);
-
-    res.json({
-      success: true,
-      averageRating: result.length > 0 ? result[0].averageRating : 0,
-    });
-
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
-
 module.exports = {
   addReview,
   getCourseReviews,
-  getAverageRating,
 };
