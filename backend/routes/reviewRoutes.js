@@ -4,8 +4,7 @@ const {authorizeRoles} = require("../middleware/roleMiddleware");
 
 const {
   addReview,
-  getCourseReviews,
-  getAverageRating,
+  getCourseReviews
 } = require("../controllers/reviewController");
 
 const verifyToken = require("../middleware/verifyToken");
@@ -14,9 +13,6 @@ const verifyToken = require("../middleware/verifyToken");
 router.post("/", verifyToken, authorizeRoles("Student"), addReview);
 
 
-router.get("/:courseId", verifyToken, authorizeRoles("Instructor"), getCourseReviews);
-
-
-router.get("/average/:courseId", getAverageRating);
+router.get("/:courseId", verifyToken ,  getCourseReviews);
 
 module.exports = router;
