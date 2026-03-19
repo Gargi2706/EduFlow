@@ -1,13 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Auth from "./pages/AuthPage/Auth";
 import Home from "./pages/Home";
-import Courses from "./pages/Courses";
-import CourseDetails from "./pages/CourseDetails";
-import Navbar from "./components/Navbar/Navbar";
-import CourseCard from "./components/Course/CourseCard/coursecard";
-import Sidebar from "./components/Sidebar/Sidebar";
-import CreateCourse from "./pages/CreateCourse";
-import CourseBuilder from "./pages/CourseBuilder";  
+// import Courses from "./pages/Courses";
+// import CourseDetails from "./pages/CourseDetails";
+// import Navbar from "./components/Navbar/Navbar";
+// import CourseCard from "./components/Course/CourseCard/coursecard";
+// import Sidebar from "./components/Sidebar/Sidebar";
+ import CreateCourse from "./pages/CreateCourse";
+// import CourseBuilder from "./pages/CourseBuilder";  
 import StudentDashboard from "./pages/studentDashboard/StudentDashboard";
 import InstructorDashboard from "./pages/instructorDashboard/InstructorDashboard";
 import AdminDashboard from "./pages/adminDashboard/AdminDashboard";
@@ -37,7 +37,7 @@ function App() {
       }}
     /> */}
 
-    <CreateCourse />
+    {/* <CreateCourse /> */}
     
 
 {/* <CourseBuilder /> */}
@@ -54,38 +54,9 @@ function App() {
         
         <Route path="/instructor-dashboard" element={<InstructorDashboard />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/create-course" element={<CreateCourse />} />
 
-        {/* Home */}
-        <Route path="/home"
-          element={
-            <>
-              <Navbar />
-              <Home />
-            </>
-          }
-        />
-
-        {/* Courses */}
-        <Route
-          path="/courses"
-          element={
-            <>
-              <Navbar />
-              <Courses />
-            </>
-          }
-        />
-
-        {/* Course Details */}
-        <Route
-          path="/course/:id"
-          element={
-            <>
-              <Navbar />
-              <CourseDetails />
-            </>
-          }
-        /> */
+     
 
       </Routes>
     </BrowserRouter>

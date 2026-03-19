@@ -1,0 +1,52 @@
+/* MAIN LAYOUT */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  background: linear-gradient(135deg, #4f46e5, #6d28d9);
+  color: white;
+  padding: 20px;
+}
+
+/* LOGO */
+.logo {
+  margin-bottom: 30px;
+}
+
+/* SIDEBAR MENU */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 15px 0;
+}
+
+/* LINKS */
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 8px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+/* HOVER EFFECT */
+.sidebar a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* MAIN CONTENT */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background: #f5f6fa;
+  overflow-y: auto;
+}
