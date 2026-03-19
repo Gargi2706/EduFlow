@@ -10,6 +10,9 @@ import Navbar from "./components/Navbar";
 
 import StudentDashboard from "./pages/studentDashboard/StudentDashboard";
 import InstructorDashboard from "./pages/instructorDashboard/InstructorDashboard";
+import AdminDashboard from "./pages/adminDashboard/AdminDashboard";
+
+
 
 
 function App() {
@@ -24,6 +27,7 @@ function App() {
         <Route path="/student-dashboard" element={<StudentDashboard />} />
         
         <Route path="/instructor-dashboard" element={<InstructorDashboard />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
 
         {/* Home */}
         <Route path="/home"

@@ -8,7 +8,7 @@
 /* SIDEBAR */
 .sidebar {
   width: 220px;
-  background: linear-gradient(135deg, #4f46e5, #6d28d9); /* SAME as student */
+  background: linear-gradient(135deg, #4f46e5, #6d28d9); /* SAME */
   color: white;
   padding: 20px;
 }
@@ -28,7 +28,6 @@
   transition: 0.3s;
 }
 
-/* hover effect (small improvement but consistent) */
 .sidebar li:hover {
   opacity: 0.8;
 }
@@ -50,7 +49,7 @@
 .logout-btn {
   padding: 8px 15px;
   border: none;
-  background: #4f46e5; /* SAME as student */
+  background: #4f46e5;
   color: white;
   border-radius: 6px;
   cursor: pointer;
@@ -72,31 +71,20 @@
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* COURSES / INSTRUCTOR SECTION */
+/* SECTION */
 .section h3 {
   margin-bottom: 15px;
 }
 
-.course-list {
+.activity-list {
   display: flex;
   gap: 20px;
 }
 
-.course-card {
+.activity-card {
   background: white;
   padding: 15px;
   border-radius: 10px;
   width: 200px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.course-card button {
-  margin-top: 10px;
-  padding: 8px;
-  width: 100%;
-  border: none;
-  background: #4f46e5; /* SAME */
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
 }
