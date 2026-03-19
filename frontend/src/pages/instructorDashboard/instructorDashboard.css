@@ -6,9 +6,9 @@
 }
 
 /* SIDEBAR */
-.sidebar {
+/* .sidebar {
   width: 220px;
-  background: linear-gradient(135deg, #4f46e5, #6d28d9); /* SAME as student */
+  background: linear-gradient(135deg, #4f46e5, #6d28d9); 
   color: white;
   padding: 20px;
 }
@@ -28,10 +28,10 @@
   transition: 0.3s;
 }
 
-/* hover effect (small improvement but consistent) */
+
 .sidebar li:hover {
   opacity: 0.8;
-}
+} */
 
 /* MAIN CONTENT */
 .main-content {

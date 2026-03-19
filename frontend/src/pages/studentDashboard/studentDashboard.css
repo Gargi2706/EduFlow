@@ -6,7 +6,7 @@
 }
 
 /* SIDEBAR */
-.sidebar {
+/* .sidebar {
   width: 220px;
   background: linear-gradient(135deg, #4f46e5, #6d28d9);
   color: white;
@@ -25,7 +25,7 @@
 .sidebar li {
   margin: 15px 0;
   cursor: pointer;
-}
+} */
 
 /* MAIN CONTENT */
 .main-content {

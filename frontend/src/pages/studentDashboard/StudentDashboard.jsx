@@ -1,21 +1,16 @@
+import DashboardLayout from "../../Layout/DashboardLayout";
 import "./studentDashboard.css";
 
 export default function StudentDashboard() {
   const user = JSON.parse(localStorage.getItem("user"));
 
   return (
+   
+    <div>
+      <DashboardLayout/>
     <div className="dashboard-container">
       
-      {/* SIDEBAR */}
-      <div className="sidebar">
-        <h2 className="logo">LMS</h2>
-        <ul>
-          <li>Dashboard</li>
-          <li>My Courses</li>
-          <li>All Courses</li>
-          <li>Profile</li>
-        </ul>
-      </div>
+      
 
       {/* MAIN CONTENT */}
       <div className="main-content">
@@ -64,6 +59,7 @@ export default function StudentDashboard() {
         </div>
 
       </div>
+    </div>
     </div>
   );
 }

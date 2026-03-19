@@ -1,6 +1,7 @@
 import React from "react";
 import "./adminDashboard.css";
 import { useNavigate } from "react-router-dom";
+import DashboardLayout from "../../Layout/DashboardLayout";
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
@@ -14,21 +15,12 @@ export default function AdminDashboard() {
   };
 
   return (
+    <div>
+      <DashboardLayout />
     <div className="dashboard-container">
 
-      {/* SIDEBAR */}
-      <div className="sidebar">
-        <h2 className="logo">EduFlow</h2>
-
-        <ul>
-          <li>Dashboard</li>
-          <li>Users</li>
-          <li>Courses</li>
-          <li>Reports</li>
-          <li>Settings</li>
-        </ul>
-      </div>
-
+    
+    
       {/* MAIN CONTENT */}
       <div className="main-content">
 
@@ -79,6 +71,7 @@ export default function AdminDashboard() {
         </div>
 
       </div>
+    </div>
     </div>
   );
 }
