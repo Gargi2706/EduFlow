@@ -1,13 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import Auth from "./pages/AuthPage/Auth";
-
 import Home from "./pages/Home";
 import Courses from "./pages/Courses";
 import CourseDetails from "./pages/CourseDetails";
-
 import Navbar from "./components/Navbar";
-
 import StudentDashboard from "./pages/studentDashboard/StudentDashboard";
 import InstructorDashboard from "./pages/instructorDashboard/InstructorDashboard";
 import AdminDashboard from "./pages/adminDashboard/AdminDashboard";
