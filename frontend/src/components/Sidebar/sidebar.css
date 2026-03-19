@@ -14,6 +14,9 @@
   left: 0;
 }
 
+.sidebar-top{
+    padding: 20px;
+}
 .sidebar-title {
   font-size: 22px;
   font-weight: bold;
@@ -25,7 +28,7 @@
   padding: 0;
 }
 
-.sidebar li {
+.sidebar ul li {
   padding: 10px 5px;
   cursor: pointer;
   border-radius: 4px;
@@ -52,4 +55,9 @@
   color:white;
   border:none;
   cursor:pointer;
+}
+
+.sidebar-bottom{
+  margin-top: auto;
+  padding: 20px;
 }

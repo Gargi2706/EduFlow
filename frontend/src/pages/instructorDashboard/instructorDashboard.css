@@ -38,6 +38,9 @@
   flex: 1;
   padding: 20px;
   background: #f5f6fa;
+ 
+  margin-left: 250px; /* sidebar width jetlu */
+  padding: 20px;
 }
 
 /* HEADER */

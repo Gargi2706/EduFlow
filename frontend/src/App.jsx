@@ -14,11 +14,11 @@ import AdminDashboard from "./pages/adminDashboard/AdminDashboard";
 
 
 
-
 function App() {
   return (
 
     <BrowserRouter>
+    <InstructorDashboard />
     {/* <Sidebar role="Instructor" />
     <Auth />
     <Navbar />
@@ -37,7 +37,7 @@ function App() {
       }}
     /> */}
 
-    <CreateCourse />
+    {/* <CreateCourse /> */}
     
 
 {/* <CourseBuilder /> */}
@@ -47,26 +47,26 @@ function App() {
       <Routes>
 
         {/* Default Page */}
-        <Route path="/" element={<Auth />} />
+        {/* <Route path="/" element={<Auth />} /> */}
 
         {/* Student Dashboard */}
-        <Route path="/student-dashboard" element={<StudentDashboard />} />
+        {/* <Route path="/student-dashboard" element={<StudentDashboard />} />
         
         <Route path="/instructor-dashboard" element={<InstructorDashboard />} />
-        <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} /> */}
 
         {/* Home */}
-        <Route path="/home"
+        {/* <Route path="/home"
           element={
             <>
               <Navbar />
               <Home />
             </>
           }
-        />
+        /> */}
 
         {/* Courses */}
-        <Route
+        {/* <Route
           path="/courses"
           element={
             <>
@@ -74,10 +74,10 @@ function App() {
               <Courses />
             </>
           }
-        />
+        /> */}
 
         {/* Course Details */}
-        <Route
+        {/* <Route
           path="/course/:id"
           element={
             <>
@@ -85,7 +85,7 @@ function App() {
               <CourseDetails />
             </>
           }
-        /> */
+        /> */ }
 
       </Routes>
     </BrowserRouter>

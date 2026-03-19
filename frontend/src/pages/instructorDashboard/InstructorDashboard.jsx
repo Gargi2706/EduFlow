@@ -1,37 +1,29 @@
 import React from "react";
 import "./instructorDashboard.css";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import DashboardLayout from "../../Layout/DashboardLayout";
 
 export default function InstructorDashboard() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const user = JSON.parse(localStorage.getItem("user"));
+  // const user = JSON.parse(localStorage.getItem("user"));
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    navigate("/");
-  };
+  // const handleLogout = () => {
+  //   localStorage.removeItem("token");
+  //   localStorage.removeItem("user");
+  //   navigate("/");
+  // };
 
   return (
     <div>
-    <DashboardLayout/>
-    <div className="dashboard-container">
+      <DashboardLayout />
       
-      
-
-        <button className="logout-btn" onClick={handleLogout}>
-          Logout
-        </button>
-      </div>
 
       {/* Main Content */}
       <div className="main-content">
-        
         {/* Header */}
         <div className="header">
-          <h2>Welcome, {user?.name || "Instructor"} 👋</h2>
+          {/* <h2>Welcome, {user?.name || "Instructor"} 👋</h2> */}
         </div>
 
         {/* Cards */}
@@ -68,7 +60,6 @@ export default function InstructorDashboard() {
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );
