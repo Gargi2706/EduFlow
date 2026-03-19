@@ -1,6 +1,7 @@
 import React from "react";
 import "./instructorDashboard.css";
 import { useNavigate } from "react-router-dom";
+import DashboardLayout from "../../Layout/DashboardLayout";
 
 export default function InstructorDashboard() {
   const navigate = useNavigate();
@@ -14,19 +15,11 @@ export default function InstructorDashboard() {
   };
 
   return (
+    <div>
+    <DashboardLayout/>
     <div className="dashboard-container">
       
-      {/* Sidebar */}
-      <div className="sidebar">
-        <h2 className="logo">EduFlow</h2>
-
-        <ul>
-          <li>Dashboard</li>
-          <li>My Courses</li>
-          <li>Create Course</li>
-          <li>Students</li>
-          <li>Reviews</li>
-        </ul>
+      
 
         <button className="logout-btn" onClick={handleLogout}>
           Logout

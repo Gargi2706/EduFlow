@@ -5,15 +5,9 @@
   font-family: Arial, sans-serif;
 }
 
-/* SIDEBAR */
-.sidebar {
-  width: 220px;
-  background: linear-gradient(135deg, #4f46e5, #6d28d9); /* SAME */
-  color: white;
-  padding: 20px;
-}
 
-.logo {
+
+/* .logo {
   margin-bottom: 30px;
 }
 
@@ -30,7 +24,7 @@
 
 .sidebar li:hover {
   opacity: 0.8;
-}
+} */
 
 /* MAIN CONTENT */
 .main-content {
