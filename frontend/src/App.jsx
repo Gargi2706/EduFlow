@@ -8,21 +8,25 @@ import CourseDetails from "./pages/CourseDetails";
 
 import Navbar from "./components/Navbar";
 
-import StudentDashboard from "./pages/studentDashboard/StudentDashboard"; // adjust path if needed
-
+import StudentDashboard from "./pages/studentDashboard/StudentDashboard";
+import InstructorDashboard from "./pages/instructorDashboard/InstructorDashboard";
 
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<AuthPage />} />
-        <Route path="/student-dashboard" element={<StudentDashboard />} />
 
+        {/* Default Page */}
+        <Route path="/" element={<Auth />} />
+
+        {/* Student Dashboard */}
+        <Route path="/student-dashboard" element={<StudentDashboard />} />
         
-        <Route path="/" element={<Auth />} /> 
-        <Route
-          path="/home"
+        <Route path="/instructor-dashboard" element={<InstructorDashboard />} />
+
+        {/* Home */}
+        <Route path="/home"
           element={
             <>
               <Navbar />
@@ -31,6 +35,7 @@ function App() {
           }
         />
 
+        {/* Courses */}
         <Route
           path="/courses"
           element={
@@ -41,6 +46,7 @@ function App() {
           }
         />
 
+        {/* Course Details */}
         <Route
           path="/course/:id"
           element={
