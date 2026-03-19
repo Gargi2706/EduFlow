@@ -1,41 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: white;
-  padding: 15px 80px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .logo {
   font-weight: bold;
-  font-size: 27px;
+  font-size: 32px;
   color: #4f46e5;
+}
+.logo-image {
+  width: 160px;
+  height: 160px;
+}
+.logo span {
+  margin-left: 0px;
+  font-size: 28px;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap : 35px;
-  color :#4f46e5;
+  gap: 35px;
+  color: #4f46e5;
 }
 
-.nav-right{
-  display:flex;
-  align-items:center;
-  gap:25px;
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
 }
 
-.nav-links li {
+.nav-links :link {
   cursor: pointer;
   font-weight: 500;
   font-size: 20px;
   text-decoration: none;
-  color :#4f46e5;
-}
-
-.nav-links li:hover {
-  opacity: 0.9;
+  color: #4f46e5;
+  list-style: none;
 }
 
 .register-btn {
@@ -46,11 +54,32 @@
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
-  
+  margin-right: 25px;
 }
 
 .register-btn:hover {
   opacity: 0.9;
 }
 
+.nav-link {
+  text-decoration: none;
+  color: #4f46e5; /* unvisited */
+  margin: 0 15px;
+  font-size: 18px;
+}
 
+.nav-link:visited {
+  color: #4f46e5; /* visited */
+}
+
+.nav-link:hover {
+  opacity: 0.5; /* hover */
+}
+
+.active-link {
+  color: #4f46e5; /* active page */
+  font-weight: bold;
+}
+.main-content {
+  margin-top: 70px; /* navbar height jetlu */
+}

@@ -1,16 +1,16 @@
 import React from 'react'
 import "./sidebar.css";
-import StudentSidebar from "../StudentSidebar";
-import InstructorSidebar from "../InstructorSidebar";   
-import AdminSidebar from "../AdminSidebar"; 
+import StudentSidebar from "./Studentsidebar";
+import InstructorSidebar from "./Instructorsidebar";
+import AdminSidebar from "./Adminsidebar";  
 
 
 export default function Sidebar({role}) {
   return (
     <div>
-      {role === "student" && <StudentSidebar />}
-      {role === "instructor" && <InstructorSidebar />}
-      {role === "admin" && <AdminSidebar />}
+      {role === "Student" && <StudentSidebar />}
+      {role === "Instructor" && <InstructorSidebar />}
+      {role === "Admin" && <AdminSidebar />}
     </div>
   )
 }

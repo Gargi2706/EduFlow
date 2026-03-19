@@ -6,7 +6,7 @@ export default function coursecard({ course }) {
   const rating = 1;
   return (
     <div className="course-card">
-      <img src={course.image} alt={course.title} className="course-img" />
+      <img src={course.thumbnail} alt={course.title} className="course-img" />
 
       <div className="course-content">
         <h3>{course.title}</h3>
