@@ -8,6 +8,13 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import CreateCourse from "./pages/CreateCourse";
 import CourseBuilder from "./pages/CourseBuilder";  
 
+import StudentDashboard from "./pages/studentDashboard/StudentDashboard";
+import InstructorDashboard from "./pages/instructorDashboard/InstructorDashboard";
+import AdminDashboard from "./pages/adminDashboard/AdminDashboard";
+
+
+
+
 function App() {
   return (
 
@@ -39,10 +46,17 @@ function App() {
 
       <Routes>
 
+        {/* Default Page */}
+        <Route path="/" element={<Auth />} />
 
-        {/* <Route path="/" element={<Auth />} />  */}
-        {/* <Route
-          path="/home"
+        {/* Student Dashboard */}
+        <Route path="/student-dashboard" element={<StudentDashboard />} />
+        
+        <Route path="/instructor-dashboard" element={<InstructorDashboard />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
+
+        {/* Home */}
+        <Route path="/home"
           element={
             <>
               <Navbar />
@@ -51,6 +65,7 @@ function App() {
           }
         />
 
+        {/* Courses */}
         <Route
           path="/courses"
           element={
@@ -61,6 +76,7 @@ function App() {
           }
         />
 
+        {/* Course Details */}
         <Route
           path="/course/:id"
           element={
@@ -69,7 +85,7 @@ function App() {
               <CourseDetails />
             </>
           }
-        /> */}
+        /> */
 
       </Routes>
     </BrowserRouter>

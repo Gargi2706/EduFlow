@@ -12,18 +12,18 @@ export default function AuthPage() {
 
   const navigate = useNavigate();
 
-  
-  useEffect(() => {
+  // ✅ Redirect if already logged in
+  {/*useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      navigate("/dashboard");
+      navigate("/student-dashboard");
     }
-  }, []);
+  }, [navigate]);*/}
 
   
   const handleLogin = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/auth/login", {
+      const res = await fetch("http://localhost:5000/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -36,25 +36,31 @@ export default function AuthPage() {
       if (data.token) {
         localStorage.setItem("token", data.token);
 
-        // store user (optional)
         if (data.user) {
           localStorage.setItem("user", JSON.stringify(data.user));
         }
 
-        navigate("/dashboard");
+        
+        if (data.role === "Student") {
+            navigate("/student-dashboard");
+          } else if (data.role === "Instructor") {
+            navigate("/instructor-dashboard");
+          } else if (data.role === "Admin") {
+            navigate("/admin-dashboard");
+          }
       } else {
         alert(data.message || "Login failed");
       }
     } catch (err) {
       console.error(err);
-      alert("Something went wrong");
+      alert("Server not reachable");
     }
   };
 
  
- const handleRegister = async () => {
+  const handleRegister = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/auth/register", {
+    const res = await fetch("http://localhost:5000/api/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -70,11 +76,19 @@ export default function AuthPage() {
     }
 
     alert("Registered successfully");
+
+    
+    setEmail("");
+    setPassword("");
+    setName("");
+    setRole("");
+
+    
     setIsLogin(true);
 
   } catch (err) {
     console.error(err);
-    alert("Server not reachable ");
+    alert("Server not reachable");
   }
 };
 
@@ -96,9 +110,11 @@ export default function AuthPage() {
               <h2>Welcome Back</h2>
 
               <input
+                type="text"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                autoComplete="off"
               />
 
               <input
@@ -106,8 +122,8 @@ export default function AuthPage() {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                autoComplete="new-password"
               />
-
               <button className="auth-btn" onClick={handleLogin}>
                 Login
               </button>
@@ -143,10 +159,10 @@ export default function AuthPage() {
               />
 
               <select onChange={(e) => setRole(e.target.value)}>
-                <option>Select Role</option>
-                <option>Student</option>
-                <option>Instuctor</option>
-                <option>Admin</option>
+                <option value="">Select Role</option>
+                <option value="Student">Student</option>
+                <option value="Instructor">Instructor</option>
+                <option value="Admin">Admin</option>
               </select>
 
               <button className="auth-btn" onClick={handleRegister}>
