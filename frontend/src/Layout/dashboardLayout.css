@@ -1,8 +1,11 @@
-/* .main-content {
+.main-content {
   flex: 1;
   padding: 20px;
   background: #f5f6fa;
 
   margin-left: 250px;
   padding: 20px;
-} */
+}
+.main-body {
+    display: flex;
+}

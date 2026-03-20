@@ -1,20 +1,18 @@
-import React from 'react'
-import Navbar from '../components/Navbar/Navbar'
-import Sidebar from '../components/Sidebar/Sidebar'
-import Studentsidebar from '../components/Sidebar/Studentsidebar';
-import Adminsidebar from '../components/Sidebar/Adminsidebar';
-import Instructorsidebar from '../components/Sidebar/Instructorsidebar';
-import { useEffect } from 'react';
-import './dashboardLayout.css'
-import { useState , useRef } from 'react';
+import React from "react";
+import Navbar from "../components/Navbar/Navbar";
+import Sidebar from "../components/Sidebar/Sidebar";
+import Studentsidebar from "../components/Sidebar/Studentsidebar";
+import Adminsidebar from "../components/Sidebar/Adminsidebar";
+import Instructorsidebar from "../components/Sidebar/Instructorsidebar";
+import { useEffect } from "react";
+import "./dashboardLayout.css";
+import { useState, useRef } from "react";
 
-export default function DashboardLayout({children}) {
-
+export default function DashboardLayout({ children }) {
   const [open, setOpen] = useState(false);
   const sidebarRef = useRef();
 
   useEffect(() => {
-
     function handleClickOutside(event) {
       if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
         setOpen(false);
@@ -26,37 +24,26 @@ export default function DashboardLayout({children}) {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-
   }, []);
 
-
   const renderSidebar = () => {
-
-    if (role === "student") return < Studentsidebar isOpen={open} />;
+    if (role === "student") return <Studentsidebar isOpen={open} />;
 
     if (role === "instructor") return <Instructorsidebar isOpen={open} />;
 
     if (role === "admin") return <Adminsidebar isOpen={open} />;
-
   };
   const role = "instructor";
-
 
   return (
     <div>
       <Navbar setOpen={setOpen} open={open} />
 
-      {open && (
-      <div ref={sidebarRef}>
-        {renderSidebar()}
-      </div>
-    )}
+      <div className="main-body">
+        {open && <div ref={sidebarRef}>{renderSidebar()}</div>}
 
-    
-        <div className="main-content">
-        {children}
+        <div className="main-content">{children}</div>
+      </div>
     </div>
-    </div>
-   
-  )
+  );
 }
