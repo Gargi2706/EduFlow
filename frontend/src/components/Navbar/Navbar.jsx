@@ -1,14 +1,18 @@
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import "./navbar.css";
-import logoImg from "../../assets/image.png";
 
-function Navbar({ toggleSidebar }) {
+import logoImg from "../../assets/logo.png";
+
+function Navbar({ setOpen, open }) {
+
+
+
   return (
     <nav className="navbar">
       <div className="logo">
         <img
-          onClick={toggleSidebar}
+          onClick={() => setOpen(!open)}
           src={logoImg}
           alt="EduFlow Logo"
           className="logo-image"

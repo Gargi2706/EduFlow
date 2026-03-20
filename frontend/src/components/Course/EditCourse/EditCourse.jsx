@@ -1,8 +1,9 @@
 import React from 'react'
-import { editCourse } from '../../services/courseSevice'
-import { fetchById } from '../../services/courseSevice'
+import { editCourse } from '../../../services/courseService'
+import { fetchById } from '../../../services/courseService'
 import {useEffect , useState} from "react"
 import { useParams, useNavigate } from 'react-router-dom'
+import './editCourse.css'
 
 export default function EditCourse() {
 
@@ -14,15 +15,18 @@ export default function EditCourse() {
   const [title, setTitle] = useState("");
   const [status, setStatus] = useState("");
 
-  useEffect(() => {
-    fetchCourse();
-  }, []);
 
-  const fetchCourse = async () => {
+  useEffect(() => {
+
+  const loadCourse = async () => {
     const data = await fetchById(id);
     setTitle(data.title);
     setStatus(data.status);
   };
+
+  loadCourse();
+
+}, [id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,7 +40,7 @@ export default function EditCourse() {
   };
 
   return (
-    <div>
+    <div className='nain-content'>
      
   <div className="edit-course-container">
 

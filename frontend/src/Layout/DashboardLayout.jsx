@@ -1,45 +1,61 @@
-import React, { useState } from "react";
-import Navbar from "../components/Navbar/Navbar";
-import Studentsidebar from "../components/Sidebar/Studentsidebar";
-import Adminsidebar from "../components/Sidebar/Adminsidebar";
-import Instructorsidebar from "../components/Sidebar/Instructorsidebar";
-import "./DashboardLayout.css";
-
-export default function DashboardLayout({ children }) {
+import React from 'react'
+import Navbar from '../components/Navbar/Navbar'
+import Sidebar from '../components/Sidebar/Sidebar'
+import Studentsidebar from '../components/Sidebar/Studentsidebar';
+import Adminsidebar from '../components/Sidebar/Adminsidebar';
+import Instructorsidebar from '../components/Sidebar/Instructorsidebar';
+import { useEffect } from 'react';
+import './dashboardLayout.css'
+import { useState , useRef } from 'react';
 
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
-  // later you can use localStorage
-  const role = "instructor";
+  const [open, setOpen] = useState(false);
+  const sidebarRef = useRef();
 
-  const toggleSidebar = () => {
-    setSidebarOpen(prev => !prev);
-  };
+  useEffect(() => {
+
+    function handleClickOutside(event) {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+
+  }, []);
+
 
   const renderSidebar = () => {
-    if (role === "student") return <Studentsidebar isOpen={sidebarOpen} />;
-    if (role === "instructor") return <Instructorsidebar isOpen={sidebarOpen} />;
-    if (role === "admin") return <Adminsidebar isOpen={sidebarOpen} />;
+
+    if (role === "student") return < Studentsidebar isOpen={open} />;
+
+    if (role === "instructor") return <Instructorsidebar isOpen={open} />;
+
+    if (role === "admin") return <Adminsidebar isOpen={open} />;
+
   };
+  const role = "instructor";
 
   return (
-    <div className="layout-container">
+    <div>
+      <Navbar setOpen={setOpen} open={open} />
 
-      {/* NAVBAR */}
-      <Navbar toggleSidebar={toggleSidebar} />
-
-      {/* BODY */}
-      <div className="layout-body">
-
-        {/* SIDEBAR */}
+      {open && (
+      <div ref={sidebarRef}>
         {renderSidebar()}
+      </div>
+    )}
 
-        {/* MAIN CONTENT */}
+    
         <div className="main-content">
           {children}
         </div>
 
       </div>
-    </div>
+    
   );
-}
