@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar/Navbar";
 import Studentsidebar from "../components/Sidebar/Studentsidebar";
 import Adminsidebar from "../components/Sidebar/Adminsidebar";
 import Instructorsidebar from "../components/Sidebar/Instructorsidebar";
-//import "./dashboardLayout.css";
+import "./DashboardLayout.css";
 
 export default function DashboardLayout({ children }) {
 

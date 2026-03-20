@@ -1,74 +1,80 @@
-import React from 'react'
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "./createcourse.css";
 
-
 export default function CourseForm() {
-
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [thumbnail, setThumbnail] = useState(null);
+  const [thumbnail, setThumbnail] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("thumbnail", thumbnail);
-
     try {
       const res = await axios.post(
-        // "http://localhost:5000/api/courses/create",
-        formData,
+        "http://localhost:5000/api/courses",
+        {
+          title,
+          description,
+          thumbnail,
+        },
         {
           headers: {
-            "Content-Type": "multipart/form-data",
+            "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         }
       );
 
-      alert("Course Created Successfully");
+      alert("Course Created Successfully ✅");
       console.log(res.data);
 
+      // Reset form
+      setTitle("");
+      setDescription("");
+      setThumbnail("");
+
     } catch (error) {
-      console.log(error);
-      alert("Error creating course");
+      console.log(error.response?.data || error.message);
+      alert("Error creating course ❌");
     }
-};
+  };
 
   return (
     <div>
-       <form className="course-form" onSubmit={handleSubmit}>
+      <form className="course-form" onSubmit={handleSubmit}>
 
-  <label>Course Title</label>
-  <input
-    type="text"
-    placeholder="Enter course title"
-    value={title}
-    onChange={(e) => setTitle(e.target.value)}
-  />
+        <label>Course Title</label>
+        <input
+          type="text"
+          placeholder="Enter course title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
 
-  <label>Description</label>
-  <textarea
-    placeholder="Enter course description"
-    value={description}
-    onChange={(e) => setDescription(e.target.value)}
-  />
+        <label>Description</label>
+        <textarea
+          placeholder="Enter course description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+        />
 
-  <label>Thumbnail</label>
-  <input
-    type="file"
-    onChange={(e) => setThumbnail(e.target.files[0])}
-  />
+        <label>Thumbnail URL</label>
+        <input
+          type="text"
+          placeholder="Enter image URL"
+          value={thumbnail}
+          onChange={(e) => setThumbnail(e.target.value)}
+          required
+        />
 
-  <button  className="course-form-button" type="submit">Create Course</button>
+        <button className="course-form-button" type="submit">
+          Create Course
+        </button>
 
-</form>
-
-    
+      </form>
     </div>
-  )
+  );
 }
