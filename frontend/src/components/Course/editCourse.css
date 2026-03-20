@@ -1,0 +1,67 @@
+/* Page container */
+.edit-course-container {
+  padding: 30px;
+  background-color: #f4f6fb;
+  min-height: 100vh;
+}
+
+/* Form card */
+.edit-course-card {
+  width: 500px;
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* Title */
+.edit-course-card h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Form group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+/* Labels */
+.form-group label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #444;
+}
+
+/* Inputs */
+.form-group input,
+.form-group select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Focus effect */
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #3b82f6;
+  outline: none;
+}
+
+/* Update button */
+.update-btn {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%;
+}
+
+.update-btn:hover {
+  background-color: #2563eb;
+}

@@ -3,8 +3,8 @@ import "./sidebar.css";
 
 export default function Adminsidebar() {
   return (
-    <div>
-      <div className="sidebar">
+    <div className='sidebar'>
+      <div className="sidebar-top">
         <div className="sidebar-title">Admin Panel</div>
         <ul>
           <li>Dashboard</li>
@@ -15,10 +15,11 @@ export default function Adminsidebar() {
           <li>Profile</li>
          
         </ul>
+        </div>
         <div className="sidebar-bottom">
         <button className="logout-btn">Logout</button>
       </div>
       </div>
-    </div>
+    
   )
 }

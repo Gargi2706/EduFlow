@@ -1,62 +1,23 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Auth from "./pages/AuthPage/Auth";
-import Home from "./pages/Home";
-// import Courses from "./pages/Courses";
-// import CourseDetails from "./pages/CourseDetails";
-// import Navbar from "./components/Navbar/Navbar";
-// import CourseCard from "./components/Course/CourseCard/coursecard";
-// import Sidebar from "./components/Sidebar/Sidebar";
- import CreateCourse from "./pages/CreateCourse";
-// import CourseBuilder from "./pages/CourseBuilder";  
 import StudentDashboard from "./pages/studentDashboard/StudentDashboard";
 import InstructorDashboard from "./pages/instructorDashboard/InstructorDashboard";
 import AdminDashboard from "./pages/adminDashboard/AdminDashboard";
-
-
-
+import CreateCourse from "./pages/CreateCourse";
 
 function App() {
   return (
-
     <BrowserRouter>
-    {/* <Sidebar role="Instructor" />
-    <Auth />
-    <Navbar />
-    <CourseCard
-      course={{
-        title: "Web Development",
-        instructor: "Justin Lee",
-        image: "/images/web.jpg"
-      }}
-    />
-    <CourseCard
-      course={{
-        title: "Web Development",
-        instructor: "Justin Lee",
-        image: "/images/web.jpg"
-      }}
-    /> */}
-
-    {/* <CreateCourse /> */}
-    
-
-{/* <CourseBuilder /> */}
-
-
-
       <Routes>
 
-        {/* Default Page */}
         <Route path="/" element={<Auth />} />
 
-        {/* Student Dashboard */}
         <Route path="/student-dashboard" element={<StudentDashboard />} />
-        
         <Route path="/instructor-dashboard" element={<InstructorDashboard />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
-        <Route path="/create-course" element={<CreateCourse />} />
 
-     
+        {/* ✅ IMPORTANT */}
+        <Route path="/create-course" element={<CreateCourse />} />
 
       </Routes>
     </BrowserRouter>

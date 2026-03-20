@@ -5,16 +5,11 @@ export default function StudentDashboard() {
   const user = JSON.parse(localStorage.getItem("user"));
 
   return (
-   
     <div>
-      <DashboardLayout/>
-    <div className="dashboard-container">
-      
-      
+      <DashboardLayout />
 
       {/* MAIN CONTENT */}
       <div className="main-content">
-        
         {/* HEADER */}
         <div className="header">
           <h2>Welcome, {user?.name}</h2>
@@ -57,9 +52,7 @@ export default function StudentDashboard() {
             </div>
           </div>
         </div>
-
       </div>
-    </div>
     </div>
   );
 }

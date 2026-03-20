@@ -1,20 +1,16 @@
-/* OUTER CONTAINER */
 .layout-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
 
-/* NAVBAR + BODY STRUCTURE */
 .layout-body {
   display: flex;
   flex: 1;
 }
 
-/* MAIN CONTENT */
 .main-content {
   flex: 1;
   padding: 20px;
   background: #f5f6fa;
-  overflow-y: auto;
 }

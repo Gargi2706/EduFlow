@@ -17,7 +17,7 @@ export default function AdminDashboard() {
   return (
     <div>
       <DashboardLayout />
-    <div className="dashboard-container">
+    
 
     
     
@@ -70,7 +70,7 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-      </div>
+     
     </div>
     </div>
   );
