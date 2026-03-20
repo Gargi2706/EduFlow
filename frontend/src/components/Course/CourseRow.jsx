@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { deleteCourse } from "../../../../backend/controllers/courseController";
-import { editCourse } from "../../services/courseSevice";
+import { deleteCourse } from "../../services/courseService";
+import './managecourses.css'
+
 
 export default function CourseRow({course , refresh}) {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ export default function CourseRow({course , refresh}) {
   };
 
   return (
-    <div>
+    <div className="main-content">
       <tr>
         <td>{course.title}</td>
 

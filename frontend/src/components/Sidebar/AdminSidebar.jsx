@@ -1,25 +1,65 @@
-import React from 'react'
+import React from "react";
 import "./sidebar.css";
 
 export default function Adminsidebar() {
   return (
-    <div className='sidebar'>
+    <div className="sidebar">
       <div className="sidebar-top">
         <div className="sidebar-title">Admin Panel</div>
-        <ul>
-          <li>Dashboard</li>
-          <li>Manage User</li>
-          <li>Manage Course</li>
-          <li>Manage Reviews</li>
-          <li>Reports</li>
-          <li>Profile</li>
-         
+        <ul className="links">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "link active-link" : "nav-link"
+            }
+          >
+            Dashboard
+          </NavLink>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "link active-link" : "nav-link"
+            }
+          >
+            Manage User
+          </NavLink>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "link active-link" : "nav-link"
+            }
+          >
+            Manage Course
+          </NavLink>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "link active-link" : "nav-link"
+            }
+          >
+            Manage Reviews
+          </NavLink>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "link active-link" : "nav-link"
+            }
+          >
+            Reports
+          </NavLink>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "link active-link" : "nav-link"
+            }
+          >
+            Profile
+          </NavLink>
         </ul>
-        </div>
-        <div className="sidebar-bottom">
+      </div>
+      <div className="sidebar-bottom">
         <button className="logout-btn">Logout</button>
       </div>
-      </div>
-    
-  )
+    </div>
+  );
 }

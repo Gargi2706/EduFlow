@@ -1,25 +1,24 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Auth from "./pages/AuthPage/Auth";
-
-import Navbar from "./components/Navbar/Navbar";
-import CourseCard from "./components/Course/CourseCard/coursecard";
-import Sidebar from "./components/Sidebar/Sidebar";
 import CreateCourse from "./pages/CreateCourse";
-import CourseBuilder from "./pages/CourseBuilder";  
+import CourseBuilder from "./pages/CourseBuilder";
 
 import StudentDashboard from "./pages/studentDashboard/StudentDashboard";
 import InstructorDashboard from "./pages/instructorDashboard/InstructorDashboard";
 import AdminDashboard from "./pages/adminDashboard/AdminDashboard";
-
-
+import ManageCourse from "./pages/ManageCourse";
+import EditCourse from "./components/Course/EditCourse/EditCourse";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
-
     <BrowserRouter>
-    <InstructorDashboard />
-    {/* <Sidebar role="Instructor" />
+    {/* <Profile /> */}
+
+    <ManageCourse />
+      {/* <InstructorDashboard /> */}
+      {/* <Sidebar role="Instructor" />
     <Auth />
     <Navbar />
     <CourseCard
@@ -37,14 +36,22 @@ function App() {
       }}
     /> */}
 
-    {/* <CreateCourse /> */}
-    
+      {/* <CreateCourse /> */}
 
-{/* <CourseBuilder /> */}
-
-
+      {/* <CourseBuilder /> */}
 
       <Routes>
+
+        {/* <Route
+          path="/instructor/manage-courses"
+          element={<ManageCourses />}
+        /> */}
+
+        {/* Edit course page */}
+        {/* <Route
+          path="/instructor/edit-course/:id"
+          element={<EditCourse />}
+        /> */}
 
         {/* Default Page */}
         {/* <Route path="/" element={<Auth />} /> */}
@@ -85,8 +92,7 @@ function App() {
               <CourseDetails />
             </>
           }
-        /> */ }
-
+        /> */}
       </Routes>
     </BrowserRouter>
   );

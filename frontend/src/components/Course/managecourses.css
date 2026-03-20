@@ -1,98 +1,77 @@
-/* Page Container */
-.manage-courses {
-  padding: 30px;
-  background-color: #f4f6fb;
-  min-height: 100vh;
-}
 
-/* Page Title */
-.manage-courses h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-/* Table */
 .course-table {
   width: 100%;
   border-collapse: collapse;
   background: white;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
-
-/* Table Header */
 .course-table thead {
   background-color: #f1f3f8;
 }
-
 .course-table th {
   text-align: left;
   padding: 14px 18px;
-  font-size: 15px;
+  font-size: 20px;
   color: #555;
 }
-
-/* Table Body */
 .course-table td {
   padding: 16px 18px;
   border-bottom: 1px solid #eee;
   font-size: 14px;
 }
-
-/* Hover effect */
 .course-table tbody tr:hover {
   background-color: #f9fbff;
 }
-
-/* Status Badge */
 .status {
   padding: 5px 12px;
   border-radius: 15px;
   font-size: 12px;
   font-weight: 500;
 }
-
-/* Published */
 .status.published {
   background-color: #d4f6df;
   color: #1a8f4c;
 }
-
-/* Draft */
 .status.draft {
   background-color: #ffe7b3;
   color: #c98500;
 }
-
-/* Buttons */
 .edit-btn {
-  background-color: #3b82f6;
   color: white;
+  background-color: #6d28d9;
+  padding: 8px 18px;
   border: none;
-  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
   margin-right: 8px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 13px;
 }
-
 .edit-btn:hover {
-  background-color: #2563eb;
+  opacity: 0.6;
 }
-
-/* Delete Button */
 .delete-btn {
-  background-color: #ef4444;
   color: white;
+  background-color: red;
+  padding: 8px 18px;
   border: none;
-  padding: 6px 12px;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-weight: bold;
   cursor: pointer;
-  font-size: 13px;
+}
+.delete-btn:hover {
+  opacity: 0.6;
 }
 
-.delete-btn:hover {
-  background-color: #dc2626;
-}
+/* .main-content {
+  flex: 1;
+  padding: 20px;
+  background: #f5f6fa;
+
+  margin-left: 250px;
+  padding: 20px;
+} */
+
+
+

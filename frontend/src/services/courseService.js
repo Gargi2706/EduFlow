@@ -7,17 +7,17 @@ export const fetchAllCourse = async ()=>{
     return res.data;
 }
 
-export const deleteCourse = async ()=>{
+export const deleteCourse = async (id)=>{
     const res = await axios.delete(`${api}/${id}`);
     return res.data;
 }
 
-export const editCourse = async () =>{
-    const res = await axios.put(`${api}/${id}`);
+export const editCourse = async (id, data) =>{
+    const res = await axios.put(`${api}/${id}`, data);
     return res.data;
 }
 
-export const fetchById = async () => {
+export const fetchById = async (id) => {
     const res = await axios.get(`${api}/${id}`)
     return res.data
 }

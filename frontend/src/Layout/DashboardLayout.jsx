@@ -4,37 +4,55 @@ import Sidebar from '../components/Sidebar/Sidebar'
 import Studentsidebar from '../components/Sidebar/Studentsidebar';
 import Adminsidebar from '../components/Sidebar/Adminsidebar';
 import Instructorsidebar from '../components/Sidebar/Instructorsidebar';
-
-import { useState } from 'react';
+import { useEffect } from 'react';
+import './dashboardLayout.css'
+import { useState , useRef } from 'react';
 
 export default function DashboardLayout({children}) {
 
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const sidebarRef = useRef();
 
-  const role = "instructor"; 
+  useEffect(() => {
 
-  // const role = localStorage.getItem("role"); 
-  // student / instructor / admin
+    function handleClickOutside(event) {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    }
 
-  const toggleSidebar = () => {
-    setSidebarOpen(prev => !prev); ;
-  };
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+
+  }, []);
+
 
   const renderSidebar = () => {
 
-    if (role === "student") return < Studentsidebar isOpen={sidebarOpen} />;
+    if (role === "student") return < Studentsidebar isOpen={open} />;
 
-    if (role === "instructor") return <Instructorsidebar isOpen={sidebarOpen} />;
+    if (role === "instructor") return <Instructorsidebar isOpen={open} />;
 
-    if (role === "admin") return <Adminsidebar isOpen={sidebarOpen} />;
+    if (role === "admin") return <Adminsidebar isOpen={open} />;
 
   };
+  const role = "instructor";
 
 
   return (
     <div>
-      <Navbar toggleSidebar={toggleSidebar} />
+      <Navbar setOpen={setOpen} open={open} />
+
+      {open && (
+      <div ref={sidebarRef}>
         {renderSidebar()}
+      </div>
+    )}
+
+    
         <div className="main-content">
         {children}
     </div>

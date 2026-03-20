@@ -6,17 +6,51 @@ export default function Studentsidebar() {
     <div>
       <div className="sidebar">
         <div className="sidebar-title">Student Panel</div>
-        <ul>
-          <li>Dashboard</li>
-          <li>Browse Course</li>
-          <li>My Courses</li>
-          <li>My Reviews</li>
-          <li>Profile</li>
-          
+        <ul className="links">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "link active-link" : "nav-link"
+            }
+          >
+            Dashboard
+          </NavLink>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "link active-link" : "nav-link"
+            }
+          >
+            Browse Course
+          </NavLink>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "link active-link" : "nav-link"
+            }
+          >
+            My Courses
+          </NavLink>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "link active-link" : "nav-link"
+            }
+          >
+            My Reviews
+          </NavLink>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "link active-link" : "nav-link"
+            }
+          >
+            Profile
+          </NavLink>
         </ul>
         <div className="sidebar-bottom">
-        <button className="logout-btn">Logout</button>
-      </div>
+          <button className="logout-btn">Logout</button>
+        </div>
       </div>
     </div>
   );
