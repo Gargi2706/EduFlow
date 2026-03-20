@@ -19,10 +19,11 @@ function App() {
 
         <Route path="/student-dashboard" element={<StudentDashboard />} />
         <Route path="/instructor-dashboard" element={<InstructorDashboard />} />
-        <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} /> 
+        <Route path="/profile" element={<Profile />} />
 
-        {/* ✅ IMPORTANT */}
-        <Route path="/create-course" element={<CreateCourse />} />
+        
+        <Route path="/create-course" element={<CreateCourse />} /> 
 
       </Routes>
     </BrowserRouter>
