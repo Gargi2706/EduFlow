@@ -1,34 +1,45 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./DashboardLayout.css";
+import React, { useState } from "react";
+import Navbar from "../components/Navbar/Navbar";
+import Studentsidebar from "../components/Sidebar/Studentsidebar";
+import Adminsidebar from "../components/Sidebar/Adminsidebar";
+import Instructorsidebar from "../components/Sidebar/Instructorsidebar";
+//import "./dashboardLayout.css";
 
 export default function DashboardLayout({ children }) {
+
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+
+  // later you can use localStorage
+  const role = "instructor";
+
+  const toggleSidebar = () => {
+    setSidebarOpen(prev => !prev);
+  };
+
+  const renderSidebar = () => {
+    if (role === "student") return <Studentsidebar isOpen={sidebarOpen} />;
+    if (role === "instructor") return <Instructorsidebar isOpen={sidebarOpen} />;
+    if (role === "admin") return <Adminsidebar isOpen={sidebarOpen} />;
+  };
+
   return (
-    <div className="dashboard-container">
+    <div className="layout-container">
 
-      {/* SIDEBAR */}
-      <div className="sidebar">
-        <h2 className="logo">EduFlow</h2>
+      {/* NAVBAR */}
+      <Navbar toggleSidebar={toggleSidebar} />
 
-        <ul>
-          <li>
-            <Link to="/instructor-dashboard">Dashboard</Link>
-          </li>
+      {/* BODY */}
+      <div className="layout-body">
 
-          <li>
-            <Link to="/create-course">Create Course</Link>
-          </li>
+        {/* SIDEBAR */}
+        {renderSidebar()}
 
-          <li>My Courses</li>
-          <li>Students</li>
-        </ul>
+        {/* MAIN CONTENT */}
+        <div className="main-content">
+          {children}
+        </div>
+
       </div>
-
-      {/* MAIN CONTENT */}
-      <div className="main-content">
-        {children}
-      </div>
-
     </div>
   );
 }

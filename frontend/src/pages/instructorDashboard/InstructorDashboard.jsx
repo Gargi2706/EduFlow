@@ -5,7 +5,6 @@ import DashboardLayout from "../../Layout/DashboardLayout";
 
 export default function InstructorDashboard() {
   const navigate = useNavigate();
-
   const user = JSON.parse(localStorage.getItem("user"));
 
   const handleLogout = () => {
@@ -16,57 +15,50 @@ export default function InstructorDashboard() {
 
   return (
     <DashboardLayout>
-      <div className="dashboard-container">
 
-        {/* MAIN CONTENT */}
-        <div className="main-content">
+      {/* HEADER */}
+      <div className="header">
+        <h2>Welcome, {user?.name || "Instructor"} 👋</h2>
+        <button className="logout-btn" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
 
-          {/* HEADER */}
-          <div className="header">
-            <h2>Welcome, {user?.name || "Instructor"} 👋</h2>
+      {/* CARDS */}
+      <div className="cards">
+        <div className="card">
+          <h3>Total Courses</h3>
+          <p>5</p>
+        </div>
 
-            <button className="logout-btn" onClick={handleLogout}>
-              Logout
-            </button>
-          </div>
+        <div className="card">
+          <h3>Total Students</h3>
+          <p>120</p>
+        </div>
 
-          {/* CARDS */}
-          <div className="cards">
-            <div className="card">
-              <h3>Total Courses</h3>
-              <p>5</p>
-            </div>
-
-            <div className="card">
-              <h3>Total Students</h3>
-              <p>120</p>
-            </div>
-
-            <div className="card">
-              <h3>Revenue</h3>
-              <p>₹15,000</p>
-            </div>
-          </div>
-
-          {/* COURSES SECTION */}
-          <div className="section">
-            <h3>Your Courses</h3>
-
-            <div className="course-list">
-              <div className="course-card">
-                <h4>React Basics</h4>
-                <p>Students: 40</p>
-              </div>
-
-              <div className="course-card">
-                <h4>Node.js Mastery</h4>
-                <p>Students: 30</p>
-              </div>
-            </div>
-          </div>
-
+        <div className="card">
+          <h3>Revenue</h3>
+          <p>₹15,000</p>
         </div>
       </div>
+
+      {/* COURSES */}
+      <div className="section">
+        <h3>Your Courses</h3>
+
+        <div className="course-list">
+          <div className="course-card">
+            <h4>React Basics</h4>
+            <p>Students: 40</p>
+          </div>
+
+          <div className="course-card">
+            <h4>Node.js Mastery</h4>
+            <p>Students: 30</p>
+          </div>
+        </div>
+      </div>
+
     </DashboardLayout>
   );
 }
