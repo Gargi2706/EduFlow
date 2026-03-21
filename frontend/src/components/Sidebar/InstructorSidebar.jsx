@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 import "./sidebar.css";
 export default function Instructorsidebar({ isOpen }) {
   return (
-    <div>
-      <div className={`sidebar ${isOpen ? "open" : ""}`}>
+    <div className="sidebar">
+      <div className={`sidebar-top ${isOpen ? "open" : ""}`}>
         <div className="sidebar-title">Instructor Panel</div>
         <ul className="links">
           <NavLink
@@ -61,10 +61,11 @@ export default function Instructorsidebar({ isOpen }) {
             Profile
           </NavLink>
         </ul>
+        </div>
         <div className="sidebar-bottom">
           <button className="logout-btn">Logout</button>
         </div>
       </div>
-    </div>
+   
   );
 }

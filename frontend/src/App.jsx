@@ -15,8 +15,9 @@ function App() {
   return (
     <BrowserRouter>
     {/* <Profile /> */}
+    <StudentDashboard />
 
-    <ManageCourse />
+    {/* <ManageCourse /> */}
       {/* <InstructorDashboard /> */}
       {/* <Sidebar role="Instructor" />
     <Auth />

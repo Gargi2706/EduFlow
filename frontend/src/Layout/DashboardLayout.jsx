@@ -33,14 +33,16 @@ export default function DashboardLayout({ children }) {
 
     if (role === "admin") return <Adminsidebar isOpen={open} />;
   };
-  const role = "instructor";
+  const role = "student";
 
   return (
-    <div>
+    <div className="page-layout">
       <Navbar setOpen={setOpen} open={open} />
 
-      <div className="main-body">
+      <div className="layout">
+        <div className ={`sidepanel ${open ? "open" : ""}`} ref={sidebarRef}>
         {open && <div ref={sidebarRef}>{renderSidebar()}</div>}
+        </div>
 
         <div className="main-content">{children}</div>
       </div>

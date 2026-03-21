@@ -1,10 +1,10 @@
 import React from "react";
 import "./sidebar.css";
 
-export default function Adminsidebar() {
+export default function Adminsidebar({isOpen}) {
   return (
     <div className="sidebar">
-      <div className="sidebar-top">
+     <div className={`sidebar-top ${isOpen ? "open" : ""}`}>
         <div className="sidebar-title">Admin Panel</div>
         <ul className="links">
           <NavLink

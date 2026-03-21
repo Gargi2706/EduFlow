@@ -1,11 +1,28 @@
+.layout {
+  display: flex;
+}
+
+.sidepanel {
+  transform: translateX(-100%);
+  transition: 0.3s;
+  z-index: 1000;
+  overflow-y: auto;
+  width: 250px;
+  height: calc(100vh - 60px);
+  background: linear-gradient(135deg, #4f46e5, #6d28d9);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  left: 0;
+  top: 60px;
+  box-sizing: border-box;
+}
+.sidepanel.open {
+  transform: translateX(0);
+}
+
 .main-content {
   flex: 1;
-  padding: 20px;
-  background: #f5f6fa;
-
-  margin-left: 250px;
-  padding: 20px;
-}
-.main-body {
-    display: flex;
+  padding: 30px;
 }
