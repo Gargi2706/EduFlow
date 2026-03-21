@@ -9,12 +9,21 @@ import Auth from "./pages/AuthPage/Auth";
 // import ManageCourse from "./pages/ManageCourse";
 // import EditCourse from "./components/Course/EditCourse/EditCourse";
 import Profile from "./pages/Profile";
+import DashboardLayout from "./Layout/DashboardLayout";
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
+<<<<<<< HEAD
+=======
+    {/* <Profile /> */}
+    
 
+>>>>>>> b3abe412cd8aa0f0809c45a97e1b398092f2e819
+      <Routes>
+         <Route path="/" element={<DashboardLayout />} />
+
+<<<<<<< HEAD
         <Route path="/" element={<Profile/>} />
 
         {/* <Route path="/student-dashboard" element={<StudentDashboard />} />
@@ -25,6 +34,10 @@ function App() {
         
         {/* <Route path="/create-course" element={<CreateCourse />} />  */}
 
+=======
+      <Route path="/instructor/create-course" element={<CreateCourse />} />
+      <Route path="/instructor/profile" element={<Profile />} />
+>>>>>>> b3abe412cd8aa0f0809c45a97e1b398092f2e819
       </Routes>
     </BrowserRouter>
   );

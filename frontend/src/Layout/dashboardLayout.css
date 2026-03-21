@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .layout-container {
   display: flex;
   flex-direction: column;
@@ -25,3 +26,38 @@
   padding: 20px;
   background: #f5f6fa;
 }
+=======
+.layout {
+  display: flex;
+}
+
+
+.main-content  {
+  width: calc(100% - 260px);
+}
+.sidepanel {
+  width: 240px;
+}
+
+/* .layoutdev{
+  display: flex;
+}
+
+.sidebardev{
+  background-color: red;
+  min-height: 90vh;
+  width: 244px;
+}
+
+.main-content1{
+  background-color: yellow;
+}
+
+.main-content-open-width{
+ width: calc(100% - 250px);
+}
+
+.main-content-close-width{
+  width: 100%;
+} */
+>>>>>>> b3abe412cd8aa0f0809c45a97e1b398092f2e819

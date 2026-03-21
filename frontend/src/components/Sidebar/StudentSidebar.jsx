@@ -1,10 +1,11 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./sidebar.css";
 
-export default function Studentsidebar() {
+export default function Studentsidebar({isOpen }) {
   return (
-    <div>
-      <div className="sidebar">
+    <div className="sidebar">
+     <div className={`sidebar-top ${isOpen ? "open" : ""}`}>
         <div className="sidebar-title">Student Panel</div>
         <ul className="links">
           <NavLink

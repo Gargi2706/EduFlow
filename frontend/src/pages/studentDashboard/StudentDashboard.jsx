@@ -13,7 +13,6 @@ export default function StudentDashboard() {
         {/* HEADER */}
         <div className="header">
           <h2>Welcome, {user?.name}</h2>
-          <button className="logout-btn">Logout</button>
         </div>
 
         {/* CARDS */}
