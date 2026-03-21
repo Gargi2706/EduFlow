@@ -7,6 +7,8 @@ import Instructorsidebar from "../components/Sidebar/Instructorsidebar";
 import { useEffect } from "react";
 import "./dashboardLayout.css";
 import { useState, useRef } from "react";
+import SidebarDev from "../components/Sidebar_dev";
+import MianContainer from "../components/MainContent";
 
 export default function DashboardLayout({ children }) {
   const [open, setOpen] = useState(false);
@@ -33,19 +35,22 @@ export default function DashboardLayout({ children }) {
 
     if (role === "admin") return <Adminsidebar isOpen={open} />;
   };
-  const role = "student";
+  const role = "instructor";
 
   return (
     <div className="page-layout">
       <Navbar setOpen={setOpen} open={open} />
 
       <div className="layout">
-        <div className ={`sidepanel ${open ? "open" : ""}`} ref={sidebarRef}>
-        {open && <div ref={sidebarRef}>{renderSidebar()}</div>}
+        <div className={`sidepanel ${open ? "open" : ""}`} ref={sidebarRef}>
+          {open && <div ref={sidebarRef}>{renderSidebar()}</div>}
         </div>
-
         <div className="main-content">{children}</div>
       </div>
+      {/* <div className="layoutdev">
+        {open && <SidebarDev />}
+        <MianContainer open={open} />
+      </div> */}
     </div>
   );
 }

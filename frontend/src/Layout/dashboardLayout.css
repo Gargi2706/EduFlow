@@ -2,27 +2,32 @@
   display: flex;
 }
 
-.sidepanel {
-  transform: translateX(-100%);
-  transition: 0.3s;
-  z-index: 1000;
-  overflow-y: auto;
-  width: 250px;
-  height: calc(100vh - 60px);
-  background: linear-gradient(135deg, #4f46e5, #6d28d9);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  left: 0;
-  top: 60px;
-  box-sizing: border-box;
+
+.main-content  {
+  width: calc(100% - 260px);
 }
-.sidepanel.open {
-  transform: translateX(0);
+.sidepanel {
+  width: 240px;
 }
 
-.main-content {
-  flex: 1;
-  padding: 30px;
+/* .layoutdev{
+  display: flex;
 }
+
+.sidebardev{
+  background-color: red;
+  min-height: 90vh;
+  width: 244px;
+}
+
+.main-content1{
+  background-color: yellow;
+}
+
+.main-content-open-width{
+ width: calc(100% - 250px);
+}
+
+.main-content-close-width{
+  width: 100%;
+} */
