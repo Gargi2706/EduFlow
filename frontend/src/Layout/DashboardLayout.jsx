@@ -1,17 +1,16 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Navbar from '../components/Navbar/Navbar';
+import Sidebar from '../components/Sidebar/Sidebar';
 import Studentsidebar from '../components/Sidebar/Studentsidebar';
 import Adminsidebar from '../components/Sidebar/Adminsidebar';
 import Instructorsidebar from '../components/Sidebar/Instructorsidebar';
 import './dashboardLayout.css';
 
-const DashboardLayout = ({ children }) => {
-
-function DashboardLayout({ children }) {
+export default function DashboardLayout({ children }) {
   const [open, setOpen] = useState(false);
   const sidebarRef = useRef();
 
-  const role = "instructor"; // define before use
+  const role = "instructor"; // later replace with dynamic role
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -36,20 +35,20 @@ function DashboardLayout({ children }) {
 
   return (
     <div>
+      {/* NAVBAR */}
       <Navbar setOpen={setOpen} open={open} />
 
+      {/* SIDEBAR */}
       {open && (
         <div ref={sidebarRef}>
           {renderSidebar()}
         </div>
       )}
 
+      {/* MAIN CONTENT */}
       <div className="main-content">
         {children}
       </div>
     </div>
   );
-};
 }
-
-export default DashboardLayout;

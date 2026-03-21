@@ -1,64 +1,94 @@
-.sidebar {
-  width: 240px;
-  height: 100%;
+/* .sidebar {
+  width: 250px;
+height: calc(100vh - 60px);
   background: linear-gradient(135deg, #4f46e5, #6d28d9);
   color: white;
+display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+left: 0;
+top:60px;
+box-sizing: border-box;
+left:0;
+} */
+ 
+.sidebar-top {
   padding: 20px;
-  box-sizing: border-box;
-  position: relative;
-  /* top: 60px; */
-  left: -220px;
-  transition: 0.3s;
 }
-.sidebar.open{
-  left: 0;
-}
-
-.sidebar-top{
-    padding: 20px;
-}
+ 
 .sidebar-title {
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 25px;
+  align-items: center;
 }
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
+ 
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
-
-.sidebar ul li {
-  padding: 10px 5px;
+ 
+.link {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+ 
+.link:hover {
+  opacity: 0.6;
+}
+ 
+.active-link {
+  font-weight: bold;
+  color: white;
+}
+ 
+.sidebar-bottom {
+  padding: 20px;
+}
+.logout-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #631fd0;
+  color: white;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
-  border-radius: 4px;
+  font-weight: bold;
 }
 
-.sidebar li:hover {
-  opacity: 0.8;
-  background : rgba(255, 255, 255, 0.1);
-}
-
- .layout {
+.layout {
   display: flex;
 }
-
+ 
+.sidepanel {
+  transform: translateX(-100%);
+  transition: 0.3s;
+  z-index: 1000;
+  overflow-y: auto;
+  width: 250px;
+  height: calc(100vh - 60px);
+  background: linear-gradient(135deg, #4f46e5, #6d28d9);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  left: 0;
+  top: 60px;
+  box-sizing: border-box;
+}
+.sidepanel.open {
+  transform: translateX(0);
+}
+ 
 .main-content {
   flex: 1;
-  padding: 20px;
-} */
-.logout-btn{
-    
-  width:100%;
-  padding:10px 5px;
-  background-color: #631fd0;
-  color:white;
-  border:none;
-  cursor:pointer;
+  padding: 30px;
 }
-
-.sidebar-bottom{
-  margin-top: auto;
-  padding: 20px;
-}
-
+ 
+ 
+ 
+ 
