@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .layout-container {
   display: flex;
   flex-direction: column;
@@ -20,8 +21,19 @@
 }
 
 /* MAIN CONTENT */
+=======
+>>>>>>> b9fb3835417bbd6ee9ac8e0cb70b4c5ac1a1f394
 .main-content {
   flex: 1;
   padding: 20px;
   background: #f5f6fa;
+<<<<<<< HEAD
+=======
+
+  margin-left: 250px;
+  padding: 20px;
+}
+.main-body {
+    display: flex;
+>>>>>>> b9fb3835417bbd6ee9ac8e0cb70b4c5ac1a1f394
 }
