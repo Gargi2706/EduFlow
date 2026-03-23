@@ -19,9 +19,12 @@ function App() {
     
 
       <Routes>
-         <Route path="/" element={<DashboardLayout />} />
+        {/* <Route path="/" element={<Auth  />} />
+         <Route path="/dashboard" element={<DashboardLayout />} /> */}
+        <Route path="/" element={<DashboardLayout />} />
 
       <Route path="/instructor/create-course" element={<CreateCourse />} />
+      
       <Route path="/instructor/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>

@@ -7,15 +7,14 @@ import DashboardLayout from '../Layout/DashboardLayout';
 
 export default function CreateCourse() {
   return (
-    <div>
-      <DashboardLayout />
+    
+      < DashboardLayout >
       <div className="create-course">
         <h2>Create New Course</h2>
         <CourseForm />
-
-      </div>
-    </div>
-  )
+     </div>
+ </DashboardLayout>
+  );
 }
 
     

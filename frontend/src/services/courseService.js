@@ -2,6 +2,17 @@ import axios from "axios"
 
 const api = "http://localhost:3000/api/courses"
 
+
+export const createCourse = async (formData) => {
+  const res = await axios.post(`${api}/`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+
+  return res.data;
+};
 export const fetchAllCourse = async ()=>{
     const res  = await axios.get(`${api}/instructor`);
     return res.data;

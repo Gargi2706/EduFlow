@@ -1,8 +1,7 @@
 import React from 'react'
-import { useState } from "react";
-import axios from "axios";
+import { useState } from 'react';
 import "./createcourse.css";
-
+import {createCourse} from '../../../services/courseService';
 
 export default function CourseForm() {
 
@@ -10,33 +9,25 @@ export default function CourseForm() {
   const [description, setDescription] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
 
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("thumbnail", thumbnail);
+  const formData = new FormData();
+  formData.append("title", title);
+  formData.append("description", description);
+  formData.append("thumbnail", thumbnail);
 
-    try {
-      const res = await axios.post(
-        // "http://localhost:5000/api/courses/create",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
+  try {
+    const data = await createCourse(formData);
 
-      alert("Course Created Successfully");
-      console.log(res.data);
+    alert("Course Created Successfully");
+    console.log(data);
 
-    } catch (error) {
-      console.log(error);
-      alert("Error creating course");
-    }
+  } catch (error) {
+    console.log(error);
+    alert("Error creating course");
+  }
 };
 
   return (
@@ -64,7 +55,7 @@ export default function CourseForm() {
     onChange={(e) => setThumbnail(e.target.files[0])}
   />
 
-  <button  className="course-form-button" type="submit">Create Course</button>
+  <button  onClick={handleSubmit} className="course-form-button" type="submit">Create Course</button>
 
 </form>
 

@@ -22,7 +22,7 @@ export default function Profile() {
 
   return (
     <div>
-    <DashboardLayout />
+    <DashboardLayout>
     <div className="profile-page">
       
 
@@ -30,6 +30,7 @@ export default function Profile() {
 
       <ProfileCard user={user} />
     </div>
+    </DashboardLayout>
     </div>
   );
 }

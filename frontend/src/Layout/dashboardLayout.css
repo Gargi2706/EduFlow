@@ -4,30 +4,5 @@
 
 
 .main-content  {
-  width: calc(100% - 260px);
+  width: calc(100% - 250px);
 }
-.sidepanel {
-  width: 240px;
-}
-
-/* .layoutdev{
-  display: flex;
-}
-
-.sidebardev{
-  background-color: red;
-  min-height: 90vh;
-  width: 244px;
-}
-
-.main-content1{
-  background-color: yellow;
-}
-
-.main-content-open-width{
- width: calc(100% - 250px);
-}
-
-.main-content-close-width{
-  width: 100%;
-} */

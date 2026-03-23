@@ -37,13 +37,14 @@ export default function ManageCourse() {
 
   return (
     <div>
-      <DashboardLayout />
+      <DashboardLayout>
 
       <div className="manage-courses-container">
         <h2>Manage Courses</h2>
 
         <CourseTable courses={courses} refreshCourses={loadCourses} />
       </div>
+      </DashboardLayout>
     </div>
   );
 }

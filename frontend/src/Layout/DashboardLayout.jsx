@@ -38,7 +38,7 @@ export default function DashboardLayout({ children }) {
   const role = "instructor";
 
   return (
-    <div className="page-layout">
+     <div>
       <Navbar setOpen={setOpen} open={open} />
 
       <div className="layout">
@@ -46,11 +46,14 @@ export default function DashboardLayout({ children }) {
           {open && <div ref={sidebarRef}>{renderSidebar()}</div>}
         </div>
         <div className="main-content">{children}</div>
+        </div>
       </div>
-      {/* <div className="layoutdev">
+  
+  );
+}
+
+
+{/* <div className="layoutdev">
         {open && <SidebarDev />}
         <MianContainer open={open} />
       </div> */}
-    </div>
-  );
-}
