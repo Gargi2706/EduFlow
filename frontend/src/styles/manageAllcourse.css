@@ -1,0 +1,66 @@
+.manage-courses{
+  padding:30px;
+}
+
+.manage-courses h2{
+  margin-bottom:20px;
+  font-size: 34px;
+  font-weight: 600;
+  color: #333;
+}
+
+.course-table{
+  width:100%;
+  border-collapse:collapse;
+  background:#fff;
+  border-radius:8px;
+  overflow:hidden;
+}
+
+.course-table th{
+  background:#f4f6f8;
+  text-align:left;
+  padding: 30px;
+  font-size: 20px;
+}
+
+.course-table td{
+  padding:15px;
+  border-bottom:1px solid #eee;
+}
+
+.course-img{
+  width:60px;
+  height:40px;
+  object-fit:cover;
+  border-radius:5px;
+}
+
+.status{
+  padding:4px 10px;
+  border-radius:6px;
+  font-size:12px;
+}
+
+.status.active{
+  background:#d4edda;
+  color:#155724;
+}
+
+.status.draft{
+  background:#fff3cd;
+  color:#856404;
+}
+
+.delete-btn{
+  background:#ff4d4f;
+  color:white;
+  border:none;
+  padding:6px 12px;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+.delete-btn:hover{
+  background:#d9363e;
+}

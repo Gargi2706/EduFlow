@@ -19,20 +19,15 @@
   transition:0.3s;
 }
 
+
+
+
 /* body {
   margin: 0;
 }
-
-
-
-
 .layout {
   display: flex;
 }
-
-
-
-
 .sidebar {
   position: fixed;
   top: 75px;
@@ -50,8 +45,6 @@
 .layout.open .sidebar {
   transform: translateX(0);
 }
-
-
 .content {
   margin-top: 75px;
   padding: 30px;

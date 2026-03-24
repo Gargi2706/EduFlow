@@ -12,24 +12,28 @@ import Profile from "./pages/Profile";
 import DashboardLayout from "./Layout/DashboardLayout";
 import StudentsEnrolled from "./pages/Instructor Module/StudentsEnrolled";
 import ManageUser from "./pages/Admin Module/ManageUser";
+import ManageAllCourses from "./pages/Admin Module/ManageAllCourses";
 
 function App() {
   return (
     <BrowserRouter>
       {/* <Profile /> */}
-
-      <ManageUser />
+      {/* < ManageAllCourses />
+      <ManageUser /> */}
       {/* <InstructorDashboard/> */}
 
       {/* <StudentDashboard /> */}
-      {/* <Routes> */}
-        {/* <Route path="/" element ={<DashboardLayout />} />
-
+      <Routes>
+        <Route path="/" element ={<DashboardLayout />} />
+{/*
       <Route path="/instructor/create-course" element={<CreateCourse />} />
       <Route path="/instructor/manage-course" element={<ManageCourse />} />
       <Route path="/instructor/profile" element={<Profile />} />
       <Route path="/instructor/students-enrolled" element={<StudentsEnrolled />} /> */}
 
+      <Route path="/admin/manage-users" element ={<ManageUser />} />
+      <Route path="/admin/manage-course" element ={<ManageAllCourses />} />
+ 
         {/* <Route path="/" element={<Auth />} />
         <Route path="/student-dashboard" element={<StudentDashboard />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
@@ -38,8 +42,8 @@ function App() {
         <Route path="/create-course" element={<CreateCourse />} />
         <Route path="/course-builder" element={<CourseBuilder />} />
         <Route path="/dashboard" element={<StudentDashboard />} />
-        <Route path="/enroll-course" element={<EnrollCourse />} />
-      </Routes> */}
+        <Route path="/enroll-course" element={<EnrollCourse />} /> */}
+      </Routes> 
     </BrowserRouter>
   );
 }

@@ -17,7 +17,7 @@ export default function Adminsidebar({isOpen}) {
             Dashboard
           </NavLink>
           <NavLink
-            to="/"
+            to="/admin/manage-users"
             className={({ isActive }) =>
               isActive ? "link active-link" : "nav-link"
             }
@@ -25,7 +25,7 @@ export default function Adminsidebar({isOpen}) {
             Manage User
           </NavLink>
           <NavLink
-            to="/"
+            to="/admin/manage-course"
             className={({ isActive }) =>
               isActive ? "link active-link" : "nav-link"
             }
