@@ -12,22 +12,24 @@ import EditCourse from "./components/Course/EditCourse/EditCourse";
 import Profile from "./pages/Profile";
 import DashboardLayout from "./Layout/DashboardLayout";
 import StudentsEnrolled from "./pages/Instructor Module/StudentsEnrolled";
+import ManageUser from "./pages/Admin Module/ManageUser";
 
 function App() {
   return (
     <BrowserRouter>
     {/* <Profile /> */}
-    
+   
+    <ManageUser />
 {/* <InstructorDashboard/> */}
 
 {/* <StudentDashboard /> */}
       <Routes>
-        <Route path="/" element ={<DashboardLayout />} />
+        {/* <Route path="/" element ={<DashboardLayout />} />
 
       <Route path="/instructor/create-course" element={<CreateCourse />} />
       <Route path="/instructor/manage-course" element={<ManageCourse />} />
       <Route path="/instructor/profile" element={<Profile />} />
-      <Route path="/instructor/students-enrolled" element={<StudentsEnrolled />} />
+      <Route path="/instructor/students-enrolled" element={<StudentsEnrolled />} /> */}
       </Routes>
     </BrowserRouter>
   );

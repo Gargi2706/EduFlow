@@ -1,0 +1,84 @@
+.manage-users {
+  min-height: 100vh;
+  /* margin-left: 30px; */
+}
+
+.manage-users h2 {
+  margin-bottom: 20px;
+  font-size: 34px;
+  font-weight: 600;
+  color: #333;
+
+}
+
+/* TABLE */
+
+.manage-users table {
+ 
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.manage-users th {
+  background: #f1f3f6;
+  padding: 30px;
+  text-align: left;
+  font-weight: 600;
+  color: #444;
+  font-size: 20px;
+}
+
+.manage-users td {
+  padding: 14px;
+  border-top: 1px solid #eee;
+}
+
+.manage-users tr:hover {
+  background: #f9fafc;
+}
+
+/* STATUS */
+
+.active {
+  color: green;
+  font-weight: 600;
+}
+
+.blocked {
+  color: red;
+  font-weight: 600;
+}
+
+/* BUTTONS */
+
+.block-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.block-btn:hover {
+  background: #c0392b;
+}
+
+.unblock-btn {
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.unblock-btn:hover {
+  background: #1e874b;
+}
