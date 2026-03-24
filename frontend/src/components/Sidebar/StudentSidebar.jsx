@@ -1,11 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./sidebar.css";
-
-export default function Studentsidebar({isOpen }) {
+export default function StudentSidebar({ isOpen }) {
   return (
     <div className="sidebar">
-     <div className={`sidebar-top ${isOpen ? "open" : ""}`}>
+      <div className={`sidebar-top ${isOpen ? "open" : ""}`}>
         <div className="sidebar-title">Student Panel</div>
         <ul className="links">
           <NavLink
@@ -16,14 +15,16 @@ export default function Studentsidebar({isOpen }) {
           >
             Dashboard
           </NavLink>
+ 
           <NavLink
-            to="/"
+            to="/instructor/create-course"
             className={({ isActive }) =>
               isActive ? "link active-link" : "nav-link"
             }
           >
             Browse Course
           </NavLink>
+ 
           <NavLink
             to="/"
             className={({ isActive }) =>
@@ -32,6 +33,7 @@ export default function Studentsidebar({isOpen }) {
           >
             My Courses
           </NavLink>
+ 
           <NavLink
             to="/"
             className={({ isActive }) =>
@@ -40,19 +42,26 @@ export default function Studentsidebar({isOpen }) {
           >
             My Reviews
           </NavLink>
-          <NavLink
-            to="/"
+ 
+ 
+          {/* <NavLink
+            to="/instructor/profile"
             className={({ isActive }) =>
               isActive ? "link active-link" : "nav-link"
             }
           >
             Profile
-          </NavLink>
+          </NavLink> */}
         </ul>
+        </div>
         <div className="sidebar-bottom">
           <button className="logout-btn">Logout</button>
         </div>
       </div>
-    </div>
+   
   );
 }
+
+
+
+      

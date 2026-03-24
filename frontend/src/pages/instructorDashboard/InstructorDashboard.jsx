@@ -7,12 +7,12 @@ export default function InstructorDashboard() {
     <DashboardLayout>
 
       {/* Main Content */}
-      <div className="main-content">
+      {/* <div className="main-content">
 
         {/* Header */}
-        <div className="header">
+        {/* <div className="header">
           <h2>Welcome, Instructor 👋</h2>
-        </div>
+        </div> */} 
 
         {/* Cards */}
         <div className="cards">
@@ -49,7 +49,7 @@ export default function InstructorDashboard() {
           </div>
         </div>
 
-      </div>
+      {/* </div> */}
 
     </DashboardLayout>
   );
