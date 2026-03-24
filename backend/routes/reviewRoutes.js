@@ -4,7 +4,11 @@ const {authorizeRoles} = require("../middleware/roleMiddleware");
 
 const {
   addReview,
-  getCourseReviews
+  getCourseReviews,
+  getAllReviews,
+  approveReview,
+  rejectReview,
+  deleteReview
 } = require("../controllers/reviewController");
 
 const verifyToken = require("../middleware/verifyToken");
@@ -14,5 +18,10 @@ router.post("/", verifyToken, authorizeRoles("Student"), addReview);
 
 
 router.get("/:courseId", verifyToken ,  getCourseReviews);
+route.get("/review" , verifyToken , getAllReviews)
+route.put("/approve/:id", verifyToken, approveReview);
+router.put("/reject/:id",verifyToken,  rejectReview);
+router.delete("/:id",verifyToken , deleteReview);
+
 
 module.exports = router;

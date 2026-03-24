@@ -1,5 +1,5 @@
 .manage-courses{
-  padding:30px;
+  padding:0 30px;
 }
 
 .manage-courses h2{
@@ -25,8 +25,9 @@
 }
 
 .course-table td{
-  padding:15px;
+  padding:30pxpx;
   border-bottom:1px solid #eee;
+  font-size: 18px;
 }
 
 .course-img{
@@ -63,4 +64,16 @@
 
 .delete-btn:hover{
   background:#d9363e;
+}
+@media (max-width:768px){
+
+  .course-table{
+    font-size:12px;
+  }
+
+  .course-table th,
+  .course-table td{
+    padding:10px;
+  }
+
 }

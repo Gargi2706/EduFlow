@@ -33,8 +33,9 @@
 }
 
 .manage-users td {
-  padding: 14px;
+  padding: 30pxpx;
   border-top: 1px solid #eee;
+    font-size:18px;
 }
 
 .manage-users tr:hover {
@@ -81,4 +82,17 @@
 
 .unblock-btn:hover {
   background: #1e874b;
+}
+
+@media (max-width:768px){
+
+  .manage-users{
+    font-size:12px;
+  }
+
+  .manage-users th,
+  .manage-users td{
+    padding:10px;
+  }
+
 }

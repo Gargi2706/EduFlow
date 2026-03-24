@@ -65,7 +65,75 @@ const getCourseReviews = async (req, res) => {
 };
 
 
+ const getAllReviews = async (req, res) => {
+  try {
+
+    const reviews = await Review.find()
+      .populate("student", "name email")
+      .populate("course", "title");
+
+    res.json(reviews);
+
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+const approveReview = async (req, res) => {
+
+  try {
+
+    const review = await Review.findByIdAndUpdate(
+      req.params.id,
+      { status: "Approved" },
+      { new: true }
+    );
+
+    res.json(review);
+
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+
+};
+
+ const rejectReview = async (req, res) => {
+
+  try {
+
+    const review = await Review.findByIdAndUpdate(
+      req.params.id,
+      { status: "Rejected" },
+      { new: true }
+    );
+
+    res.json(review);
+
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+
+};
+
+const deleteReview = async (req, res) => {
+
+  try {
+
+    await Review.findByIdAndDelete(req.params.id);
+
+    res.json({ message: "Review deleted" });
+
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+
+};
+
+
 module.exports = {
   addReview,
   getCourseReviews,
+  getAllReviews,
+  approveReview,
+  rejectReview,
+  deleteReview
 };

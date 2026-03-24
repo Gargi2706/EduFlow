@@ -1,0 +1,113 @@
+import React from "react";
+import {
+  getReview,
+  approveReview,
+  rejectReview,
+  deleteReview,
+} from "../../services/reviewService";
+import { useState, useEffect } from "react";
+import DashboardLayout from "../../Layout/DashboardLayout";
+import '../../styles/managereviews.css'
+
+export default function ManageReview() {
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    fetchReviews();
+  }, []);
+
+  const fetchReviews = async () => {
+    const data = await getReview();
+    setReviews(data);
+  };
+
+  const handleApprove = async (id) => {
+    await approveReview(id);
+    fetchReviews();
+  };
+
+  const handleReject = async (id) => {
+    await rejectReview(id);
+    fetchReviews();
+  };
+
+  const handleDelete = async (id) => {
+    await deleteReview(id);
+    fetchReviews();
+  };
+  return (
+    <DashboardLayout>
+      <div className="manage-reviews-page">
+        <h2>Manage Reviews</h2>
+
+        <table className="reviews-table">
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Course</th>
+              <th>Rating</th>
+              <th>Comment</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {reviews.map((review) => (
+              <tr key={review._id}>
+                <td>{review.student?.name}</td>
+        
+
+                <td>{review.course?.title}</td>
+              
+
+                <td className="rating">{review.rating}</td>
+
+                <td>{review.comment}</td>
+               
+
+                <td>{review.status}</td>
+         
+
+                <td>
+                  {review.status === "Pending" && (
+                    <>
+                      <button
+                        className="action-btn approve-btn"
+                        onClick={() => handleApprove(review._id)}
+                      >
+                        Approve
+                      </button>
+
+                      <button
+                        className="action-btn reject-btn"
+                        onClick={() => handleReject(review._id)}
+                      >
+                        Reject
+                      </button>
+                    </>
+                  )}
+
+                  <button
+                    className="action-btn delete-btn"
+                    onClick={() => handleDelete(review._id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+              {/* <td>Gargi</td>
+                <td>React Course</td>
+                 <td >3</td>
+                 <td>veryuseful</td>
+                 <td>pending</td>
+                 <button className="action-btn approve-btn">approve</button>
+                 <button className="action-btn reject-btn">approve</button>
+                 <button className="action-btn delete-btn">approve</button> */}
+          </tbody>
+        </table>
+      </div>
+    </DashboardLayout>
+  );
+}

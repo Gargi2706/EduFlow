@@ -13,6 +13,7 @@ import DashboardLayout from "./Layout/DashboardLayout";
 import StudentsEnrolled from "./pages/Instructor Module/StudentsEnrolled";
 import ManageUser from "./pages/Admin Module/ManageUser";
 import ManageAllCourses from "./pages/Admin Module/ManageAllCourses";
+import ManageReview from "./pages/Admin Module/ManageReview";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
 
       <Route path="/admin/manage-users" element ={<ManageUser />} />
       <Route path="/admin/manage-course" element ={<ManageAllCourses />} />
+      <Route path="/admin/manage-reviews" element ={<ManageReview />} />
  
         {/* <Route path="/" element={<Auth />} />
         <Route path="/student-dashboard" element={<StudentDashboard />} />

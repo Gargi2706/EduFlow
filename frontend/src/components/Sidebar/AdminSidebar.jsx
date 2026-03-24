@@ -33,7 +33,7 @@ export default function Adminsidebar({isOpen}) {
             Manage Course
           </NavLink>
           <NavLink
-            to="/"
+            to="/admin/manage-reviews"
             className={({ isActive }) =>
               isActive ? "link active-link" : "nav-link"
             }
