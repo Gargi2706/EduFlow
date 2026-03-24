@@ -57,4 +57,44 @@ exports.instructorDashboard = async (req, res) => {
 }catch (error) {
     res.status(500).json({ message: error.message });
 }
-};     
+};    
+
+exports.getEnrolledStudents = async (req,res ) =>{
+  try{
+    const courses = await Course.find({
+instructorId: req.params.instructorId
+});
+
+let result = [];
+
+for(let course of courses){
+
+const enrollments = await Enrollment.find({
+courseId: course._id
+}).populate("studentId");
+
+const students = enrollments.map(e => ({
+
+name: e.studentId.name,
+email: e.studentId.email,
+date: new Date(e.enrolledAt).toDateString()
+
+}));
+
+result.push({
+courseName: course.title,
+students
+});
+
+}
+
+res.json(result);
+
+}catch(err){
+
+res.status(500).json(err);
+
+}
+
+};
+  
