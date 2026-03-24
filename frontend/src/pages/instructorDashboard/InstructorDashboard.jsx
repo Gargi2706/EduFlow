@@ -16,11 +16,11 @@ export default function InstructorDashboard() {
 
   return (
     <div>
-      <DashboardLayout />
+      <DashboardLayout>
       
 
       {/* Main Content */}
-      <div className="main-content">
+      <div className="dashboard container">
         {/* Header */}
         <div className="header">
           {/* <h2>Welcome, {user?.name || "Instructor"} 👋</h2> */}
@@ -61,6 +61,7 @@ export default function InstructorDashboard() {
           </div>
         </div>
       </div>
+      </DashboardLayout>
     </div>
   );
 }

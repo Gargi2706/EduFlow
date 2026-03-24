@@ -7,20 +7,21 @@ import Instructorsidebar from "../components/Sidebar/Instructorsidebar";
 import { useEffect } from "react";
 import "./dashboardLayout.css";
 import { useState, useRef } from "react";
-import SidebarDev from "../components/Sidebar_dev";
-import MianContainer from "../components/MainContent";
+
 
 export default function DashboardLayout({ children }) {
   const [open, setOpen] = useState(false);
   const sidebarRef = useRef();
 
+const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const role = user?.role?.toLowerCase() || "instructor";
+ 
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+    function handleClickOutside(e) {
+      if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
         setOpen(false);
       }
     }
-
     document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
@@ -35,8 +36,7 @@ export default function DashboardLayout({ children }) {
 
     if (role === "admin") return <Adminsidebar isOpen={open} />;
   };
-  const role = "instructor";
-
+  
   return (
      <div>
       <Navbar setOpen={setOpen} open={open} />
@@ -45,15 +45,36 @@ export default function DashboardLayout({ children }) {
         <div className={`sidepanel ${open ? "open" : ""}`} ref={sidebarRef}>
           {open && <div ref={sidebarRef}>{renderSidebar()}</div>}
         </div>
-        <div className="main-content">{children}</div>
+        <div className={`main-content ${open ? "shift" : ""}`}>{children}</div>
         </div>
       </div>
   
   );
 }
 
-
-{/* <div className="layoutdev">
-        {open && <SidebarDev />}
-        <MianContainer open={open} />
-      </div> */}
+ 
+//   const renderSidebar = () => {
+//     if (role === "student") return <Studentsidebar />;
+//     if (role === "instructor") return <Instructorsidebar />;
+//     if (role === "admin") return <Adminsidebar />;
+//     return <Sidebar />;
+//   };
+ 
+//   return (
+//     <>
+//       <Navbar setOpen={setOpen} open={open} />
+ 
+//       <div className={`layout ${open ? "open" : ""}`}>
+ 
+//         <div className="sidebar" ref={sidebarRef}>
+//           {renderSidebar()}
+//         </div>
+ 
+//         <div className="content">
+//           {children}
+//         </div>
+ 
+//       </div>
+//     </>
+//   );
+// }

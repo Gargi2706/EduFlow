@@ -1,8 +1,8 @@
 import React from 'react'
 
-import CourseForm from '../components/Course/CourseForm/CourseForm';
-import  "../components/Course/CourseForm/createcourse.css";
-import DashboardLayout from '../Layout/DashboardLayout';
+import CourseForm from '../../components/Course/CourseForm/CourseForm';
+import  "../../components/Course/CourseForm/createcourse.css";
+import DashboardLayout from '../../Layout/DashboardLayout';
 
 
 export default function CreateCourse() {

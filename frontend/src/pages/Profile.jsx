@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProfileCard from "../components/Profile/ProfileCard";
 import DashboardLayout from "../Layout/DashboardLayout";
-import '../styles/profile.css'
+import '../components/Profile/profile.css'
 
 export default function Profile() {
   const [user, setUser] = useState({});

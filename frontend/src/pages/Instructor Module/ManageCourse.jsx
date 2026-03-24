@@ -1,9 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { fetchAllCourse } from "../services/courseService";
-import '../styles/managecourse.css'
-import CourseTable from "../components/Course/CourseTable";
-import DashboardLayout from "../Layout/DashboardLayout";
+import { fetchAllCourse } from "../../services/courseService"
+import '../../styles/managecourse.css'
+import CourseTable from "../../components/Course/CourseTable";
+import DashboardLayout from "../../Layout/DashboardLayout"
 
 export default function ManageCourse() {
   const [courses, setCourses] = useState([]);
@@ -40,7 +40,7 @@ export default function ManageCourse() {
       <DashboardLayout>
 
       <div className="manage-courses-container">
-        <h2>Manage Courses</h2>
+        <h2>My Courses</h2>
 
         <CourseTable courses={courses} refreshCourses={loadCourses} />
       </div>

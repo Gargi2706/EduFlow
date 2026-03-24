@@ -1,11 +1,10 @@
 
 
 .manage-courses-container h2{
-align-items: center;
   display: flex;
-  justify-content: center;
+padding: 0 30px;
   margin-bottom: 30px;
   color: #333;
-  font-size: 40px;
-  font-weight: bold;
+  font-size: 32px;
+
 }

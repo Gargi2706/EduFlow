@@ -1,8 +1,24 @@
-.layout {
+  .layout {
   display: flex;
 }
-
-
-.main-content  {
-  width: calc(100% - 250px);
+.sidepanel{
+  width:0;
+  transition:0.3s;
+  overflow:hidden;
 }
+
+/* sidebar open */
+.sidepanel.open{
+  width:270px;
+}
+
+/* main content */
+.main-content{
+  flex:1;
+  padding:20px;
+  transition:0.3s;
+}
+
+
+
+

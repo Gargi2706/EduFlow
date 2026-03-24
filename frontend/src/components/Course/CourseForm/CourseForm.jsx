@@ -34,7 +34,7 @@ export default function CourseForm() {
     <div>
        <form className="course-form" onSubmit={handleSubmit}>
 
-  <label>Course Title</label>
+  <label >Course Title</label>
   <input
     type="text"
     placeholder="Enter course title"
