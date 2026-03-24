@@ -10,7 +10,7 @@
   z-index: 1000;
   background: linear-gradient(135deg, #4f46e5, #6d28d9);
 }
-
+ 
 .logo {
   font-weight: bold;
   font-size: 32px;
@@ -25,20 +25,20 @@
   margin-left: 10px;
   font-size: 30px;
 }
-
+ 
 .nav-links {
   display: flex;
   list-style: none;
   gap: 35px;
   color: white;
 }
-
+ 
 .nav-right {
   display: flex;
   align-items: center;
   gap: 25px;
 }
-
+ 
 .nav-links :link {
   cursor: pointer;
   font-weight: 500;
@@ -47,7 +47,7 @@
   color: white;
   list-style: none;
 }
-
+ 
 .register-btn {
   background-color: white;
   color: #6d28d9;
@@ -58,26 +58,26 @@
   cursor: pointer;
   margin-right: 25px;
 }
-
+ 
 .register-btn:hover {
   opacity: 0.9;
 }
-
+ 
 .nav-link {
   text-decoration: none;
   color: white; /* unvisited */
   margin: 0 15px;
   font-size: 18px;
 }
-
+ 
 .nav-link:visited {
   color: white; /* visited */
 }
-
+ 
 .nav-link:hover {
   opacity: 0.5; /* hover */
 }
-
+ 
 .active-link {
   color: white; /* active page */
   font-weight: bold;

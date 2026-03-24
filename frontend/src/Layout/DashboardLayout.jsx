@@ -14,7 +14,7 @@ export default function DashboardLayout({ children }) {
   const sidebarRef = useRef();
 
 const user = JSON.parse(localStorage.getItem("user") || "{}");
-  const role = user?.role?.toLowerCase() || "admin";
+  const role = user?.role?.toLowerCase() || "instructor";
  
   useEffect(() => {
     function handleClickOutside(e) {
@@ -51,6 +51,33 @@ const user = JSON.parse(localStorage.getItem("user") || "{}");
   
   );
 }
+
+ 
+//   const renderSidebar = () => {
+//     if (role === "student") return <Studentsidebar />;
+//     if (role === "instructor") return <Instructorsidebar />;
+//     if (role === "admin") return <Adminsidebar />;
+//     return <Sidebar />;
+//   };
+ 
+//   return (
+//     <>
+//       <Navbar setOpen={setOpen} open={open} />
+ 
+//       <div className={`layout ${open ? "open" : ""}`}>
+ 
+//         <div className="sidebar" ref={sidebarRef}>
+//           {renderSidebar()}
+//         </div>
+ 
+//         <div className="content">
+//           {children}
+//         </div>
+ 
+//       </div>
+//     </>
+//   );
+// }
 
  
 //   const renderSidebar = () => {

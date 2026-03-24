@@ -1,0 +1,27 @@
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.layout-body {
+  display: flex;
+  flex: 1;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  background: linear-gradient(135deg, #4f46e5, #6d28d9);
+  color: white;
+  padding: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+/* MAIN CONTENT */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background: #f5f6fa;
+}

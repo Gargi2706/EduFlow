@@ -15,7 +15,7 @@ export default function Instructorsidebar({ isOpen }) {
           >
             Dashboard
           </NavLink>
-
+ 
           <NavLink
             to="/instructor/create-course"
             className={({ isActive }) =>
@@ -24,7 +24,7 @@ export default function Instructorsidebar({ isOpen }) {
           >
             Create Course
           </NavLink>
-
+ 
           <NavLink
             to="/instructor/manage-course"
             className={({ isActive }) =>
@@ -33,7 +33,7 @@ export default function Instructorsidebar({ isOpen }) {
           >
             My Course
           </NavLink>
-
+ 
           <NavLink
             to="/instructor/students-enrolled"
             className={({ isActive }) =>
@@ -42,7 +42,7 @@ export default function Instructorsidebar({ isOpen }) {
           >
             Student Enrolled
           </NavLink>
-
+ 
           <NavLink
             to="/"
             className={({ isActive }) =>
@@ -51,7 +51,7 @@ export default function Instructorsidebar({ isOpen }) {
           >
             Course Review
           </NavLink>
-
+ 
           <NavLink
             to="/instructor/profile"
             className={({ isActive }) =>

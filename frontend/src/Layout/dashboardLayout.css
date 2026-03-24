@@ -19,6 +19,47 @@
   transition:0.3s;
 }
 
+/* body {
+  margin: 0;
+}
 
 
 
+
+.layout {
+  display: flex;
+}
+
+
+
+
+.sidebar {
+  position: fixed;
+  top: 75px;
+  left: 0;
+
+  width: 240px;
+  height: calc(100vh - 75px);
+
+  background: linear-gradient(135deg, #4f46e5, #6d28d9);
+
+  transform: translateX(-100%);
+  transition: 0.3s;
+}
+
+.layout.open .sidebar {
+  transform: translateX(0);
+}
+
+
+.content {
+  margin-top: 75px;
+  padding: 30px;
+
+  width: 100%;
+  transition: 0.3s;
+}
+
+.layout.open .content {
+  margin-left: 240px;
+} */
