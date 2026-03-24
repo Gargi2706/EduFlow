@@ -1,42 +1,38 @@
-.create-course h2 {
-  align-items: center;
+h2 {
+ padding: 0 30px;
   display: flex;
-  justify-content: center;
   margin-bottom: 30px;
   color: #333;
-  font-size: 40px;
+  font-size: 55px;
   font-weight: bold;
-  
-}
-.course-form {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 30px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
 }
 
+
+.course-form {
+  height: 100%;
+  margin: 40px auto;
+  padding: 0 30px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+} 
 /* Heading */
 .course-form h2 {
   text-align: center;
   color: #333;
 }
-
-/* Form layout */
+ /* Form layout */
 .course-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
-}
-
+} 
 /* Labels */
 .course-form label {
   font-weight: 500;
   margin-bottom: 5px;
   font-size: 25px;
-}
-
+} 
 /* Inputs */
 .course-form input,
 .course-form textarea {
@@ -45,21 +41,17 @@
   border-radius: 5px;
   font-size: 22px;
 }
-
-/* Textarea height */
+ /* Textarea height */
 .course-form textarea {
   min-height: 100px;
   resize: vertical;
 }
-
-/* File input */
+ /* File input */
 .course-form input[type="file"] {
   border: none;
-}
-
+} 
 /* Button */
 .course-form button {
- 
   padding: 12px 18px;
   border: none;
   background: linear-gradient(135deg, #4f46e5, #6d28d9);
@@ -69,11 +61,9 @@
   font-weight: bold;
   font-size: 20px;
 }
-
 .course-form button:hover {
   opacity: 0.9;
-}
-
+} 
 /* Button hover */
 .course-form button:hover {
   background-color: #364ed8;

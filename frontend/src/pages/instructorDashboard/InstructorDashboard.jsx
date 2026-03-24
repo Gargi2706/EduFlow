@@ -4,7 +4,13 @@ import DashboardLayout from "../../Layout/DashboardLayout";
 
 export default function InstructorDashboard() {
   return (
-    <DashboardLayout>
+    <div>
+      <DashboardLayout>
+      
+
+      {/* Main Content */}
+      <div className="dashboard container">
+
 
       {/* Main Content */}
       {/* <div className="main-content">
@@ -48,9 +54,8 @@ export default function InstructorDashboard() {
             </div>
           </div>
         </div>
-
-      {/* </div> */}
-
-    </DashboardLayout>
+      </div>
+      </DashboardLayout>
+    </div>
   );
 }

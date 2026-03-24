@@ -22,7 +22,7 @@ export default function AdminDashboard() {
     
     
       {/* MAIN CONTENT */}
-      <div className="main-content">
+      <div className="dashboard-container">
 
         {/* HEADER */}
         <div className="header">

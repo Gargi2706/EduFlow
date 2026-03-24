@@ -52,7 +52,7 @@ function Navbar({ setOpen, open }) {
         </ul>
  
         <Link to="Profile">
-          <button className="register-btn">Profile</button>
+          <button className="profile-btn">Profile</button>
         </Link>
       </div>
     </nav>

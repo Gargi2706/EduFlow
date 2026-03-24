@@ -1,44 +1,62 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React from 'react'
+import { useState } from 'react';
 import "./createcourse.css";
+import {createCourse} from '../../../services/courseService';
 
 export default function CourseForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [thumbnail, setThumbnail] = useState("");
 
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      const res = await axios.post(
-        "http://localhost:5000/api/courses",
-        {
-          title,
-          description,
-          thumbnail,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
+  const formData = new FormData();
+  formData.append("title", title);
+  formData.append("description", description);
+  formData.append("thumbnail", thumbnail);
 
-      alert("Course Created Successfully ✅");
-      console.log(res.data);
+  try {
+    const data = await createCourse(formData);
 
-      // Reset form
-      setTitle("");
-      setDescription("");
-      setThumbnail("");
+    alert("Course Created Successfully");
+    console.log(data);
 
-    } catch (error) {
-      console.log(error.response?.data || error.message);
-      alert("Error creating course ❌");
-    }
-  };
+  } catch (error) {
+    console.log(error);
+    alert("Error creating course");
+  }
+};
+  //   try {
+  //     const res = await axios.post(
+  //       "http://localhost:5000/api/courses",
+  //       {
+  //         title,
+  //         description,
+  //         thumbnail,
+  //       },
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //         },
+  //       }
+  //     );
+
+  //     alert("Course Created Successfully ✅");
+  //     console.log(res.data);
+
+  //     // Reset form
+  //     setTitle("");
+  //     setDescription("");
+  //     setThumbnail("");
+
+  //   } catch (error) {
+  //     console.log(error.response?.data || error.message);
+  //     alert("Error creating course ❌");
+  //   }
+  // };
 
   return (
     <div>
@@ -70,9 +88,7 @@ export default function CourseForm() {
           required
         />
 
-        <button className="course-form-button" type="submit">
-          Create Course
-        </button>
+  <button  onClick={handleSubmit} className="course-form-button" type="submit">Create Course</button>
 
       </form>
     </div>
