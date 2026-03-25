@@ -1,54 +1,63 @@
-import React, { useState, useRef, useEffect } from "react";
- 
-import Navbar from "../../components/Navbar/Navbar";
-import Sidebar from "../../components/Sidebar/Sidebar";
-import Studentsidebar from "../../components/Sidebar/Studentsidebar";
-import Adminsidebar from "../../components/Sidebar/Adminsidebar";
-import Instructorsidebar from "../../components/Sidebar/Instructorsidebar";
- 
-// import "./dashboardLayout.css";
- 
-export default function DashboardLayout({ children }) {
-  const [open, setOpen] = useState(false);
-  const sidebarRef = useRef();
- 
+import DashboardLayout from "../../Layout/DashboardLayout";
+import "./studentDashboard.css";
+import { useNavigate } from "react-router-dom";
+
+export default function StudentDashboard() {
   const user = JSON.parse(localStorage.getItem("user") || "{}");
-  const role = user?.role?.toLowerCase() || "student";
- 
-  useEffect(() => {
-    function handleClickOutside(e) {
-      if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
-        setOpen(false);
-      }
-    }
- 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () =>
-      document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
- 
-  const renderSidebar = () => {
-    if (role === "student") return <Studentsidebar />;
-    if (role === "instructor") return <Instructorsidebar />;
-    if (role === "admin") return <Adminsidebar />;
-    return <Sidebar />;
-  };
- 
+  const navigate = useNavigate();
+
   return (
-    <>
-      <Navbar setOpen={setOpen} open={open} />
- 
-      <div className={`layout ${open ? "open" : ""}`}>
- 
-        <div className="sidebar" ref={sidebarRef}>
-          {renderSidebar()}
+    <DashboardLayout>
+      <div className="student-dashboard-container">
+        
+        <div className="header">
+          <h2>Welcome, {user?.name}</h2>
         </div>
- 
-        <div className="content">
-          {children}
+
+        <div className="cards">
+          <div className="card">
+            <h3>Enrolled Courses</h3>
+            <p>5</p>
+          </div>
+
+          <div className="card">
+            <h3>Completed</h3>
+            <p>2</p>
+          </div>
+
+          <div className="card">
+            <h3>Progress</h3>
+            <p>40%</p>
+          </div>
         </div>
- 
+
+        <div className="courses">
+          <h3>My Courses</h3>
+
+          <div className="course-list">
+            <div className="course-card">
+              <h4>React Basics</h4>
+              <p>Progress: 60%</p>
+              <button
+                onClick={() => navigate("/course-player")}
+              >
+                Continue
+              </button>
+            </div>
+
+            <div className="course-card">
+              <h4>Node.js</h4>
+              <p>Progress: 30%</p>
+              <button
+                onClick={() => navigate("/course-player")}
+              >
+                Continue
+              </button>
+            </div>
+          </div>
+        </div>
+
       </div>
-    </>
+    </DashboardLayout>
   );
 }

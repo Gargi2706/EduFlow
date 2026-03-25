@@ -1,94 +1,77 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-
+import React, { useState } from "react";
+import DashboardLayout from "../../Layout/DashboardLayout";
 import "./enrollCourse.css";
-
-import { enrollCourse } from "../../services/enrollService";
-import { fetchById } from "../../services/courseService";
 
 export default function EnrollCourse() {
 
-  const { id } = useParams();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
-  const [course, setCourse] = useState(null);
-
-
-  useEffect(() => {
-
-    const fetchCourse = async () => {
-
-      try {
-
-        const data = await fetchById(id);
-        setCourse(data);
-
-      } catch (error) {
-        console.log(error);
-      }
-
-    };
-
-    if (id) {
-      fetchCourse();
+  const handleEnroll = () => {
+    if (!name || !email) {
+      alert("Please fill all fields");
+      return;
     }
 
-  }, [id]);
-
-
-  const handleEnroll = async () => {
-
-    try {
-
-      await enrollCourse(id);
-
-      alert("Course Enrolled Successfully");
-
-    } catch (error) {
-
-      console.log(error);
-      alert("Enrollment Failed");
-
-    }
-
+    alert("Enrolled Successfully");
   };
 
-
-  // ✅ IMPORTANT (prevent crash)
-
-  if (!course) {
-    return <h2>Loading...</h2>;
-  }
-
-
   return (
-    <div className="enroll-container">
+    <DashboardLayout>
 
-      <div className="course-content">
+      <div className="enrollPage">
 
-        <h1 className="course-title">
-          {course.title}
-        </h1>
+        {/* LEFT CARD */}
+        <div className="courseCard">
 
-        <img
-          src={course.image}
-          alt=""
-          className="course-image"
-        />
+          <h2>React Basics</h2>
 
-        <p className="course-description">
-          {course.description}
-        </p>
+          <p>
+            Learn fundamentals of React including components,
+            hooks and state.
+          </p>
 
-        <button
-          className="enroll-button"
-          onClick={handleEnroll}
-        >
-          Enroll
-        </button>
+          <div className="ratingRow">
+            <span className="stars">⭐⭐⭐⭐☆</span>
+            <span className="reviews">(750 reviews)</span>
+          </div>
+
+          <div className="levelBadge">
+            Beginner Level
+          </div>
+
+        </div>
+
+
+        {/* RIGHT FORM */}
+        <div className="enrollForm">
+
+          <h2>Enroll in React Basics</h2>
+
+          <label>Full Name</label>
+          <input
+            type="text"
+            placeholder="Enter your full name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+
+          <label>Email</label>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
+          <button onClick={handleEnroll}>
+            Enroll Now
+          </button>
+
+        </div>
 
       </div>
 
-    </div>
+    </DashboardLayout>
   );
 }

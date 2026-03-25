@@ -4,8 +4,11 @@ import Auth from "./pages/AuthPage/Auth";
 import CreateCourse from "./pages/CreateCourse";
 import CourseBuilder from "./pages/CourseBuilder";
 
-import EnrollCourse from "./StudentModule/EnrollCourse/EnrollCourse";
+import EnrollCourse from "./StudentModule/enrollCourse/EnrollCourse";
 import StudentDashboard from "./StudentModule/studentDashboard/StudentDashboard";
+import MyCourses from "./StudentModule/myCourses/MyCourses";
+import MyReviews from "./StudentModule/myReviews/MyReviews";
+import CoursePlayer from "./StudentModule/CoursePlayer/CoursePlayer";
 
 import InstructorDashboard from "./pages/instructorDashboard/InstructorDashboard";
 import AdminDashboard from "./pages/adminDashboard/AdminDashboard";
@@ -30,12 +33,14 @@ function App() {
 
         <Route path="/profile" element={<Profile />} />
 
-        <Route path="/create-course" element={<CreateCourse />} />
+        {/* <Route path="/create-course" element={<CreateCourse />} />
 
-        <Route path="/course-builder" element={<CourseBuilder />} />
+        <Route path="/course-builder" element={<CourseBuilder />} /> */}
+        <Route path="/enroll-course" element={<EnrollCourse />} />
+        <Route path="/my-courses" element={<MyCourses />} />
+        <Route path="/my-reviews" element={<MyReviews />} />
+        <Route path="/course-player" element={<CoursePlayer />} />
 
-        {/* ✅ IMPORTANT */}
-        <Route path="/enroll-course/:id" element={<EnrollCourse />} />
 
       </Routes>
     </BrowserRouter>
@@ -45,40 +50,3 @@ function App() {
 export default App;
 
 
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-// import Auth from "./pages/AuthPage/Auth";
-// import EnrollCourse from "./StudentModule/EnrollCourse/EnrollCourse";
-// import StudentDashboard from "./StudentModule/studentDashboard/StudentDashboard";
-// import Profile from "./pages/Profile";
-
-// import DashboardLayout from "./Layout/DashboardLayout";
-// import StudentsEnrolled from "./pages/Instructor Module/StudentsEnrolled";
-// import ManageUser from "./pages/Admin Module/ManageUser";
-// import ManageAllCourses from "./pages/Admin Module/ManageAllCourses";
-
-// function App() {
-//   return (
-//     <BrowserRouter>
-//       {/* <Profile /> */}
-//       {/* < ManageAllCourses />
-//       <ManageUser /> */}
-//       {/* <InstructorDashboard/> */}
-
-//         {/* AUTH */}
-//         <Route path="/" element={<Auth />} />
-
-//         {/* DASHBOARD LAYOUT */}
-//         <Route element={<DashboardLayout />}>
-
-//           <Route path="/student-dashboard" element={<StudentDashboard />} />
-//           <Route path="/enroll-course" element={<EnrollCourse />} />
-//           <Route path="/profile" element={<Profile />} />
-
-//         </Route>
-
-//     </BrowserRouter>
-//   );
-// }
-
-// export default App;

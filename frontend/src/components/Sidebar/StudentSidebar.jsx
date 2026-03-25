@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./sidebar.css";
 
-export default function Studentsidebar() {
+export default function StudentSidebar() {
   return (
     <div className="sidebar">
 
@@ -35,7 +35,7 @@ export default function Studentsidebar() {
 
           <li>
             <NavLink
-              to="/student-dashboard"
+              to="/my-courses"
               className={({ isActive }) =>
                 isActive ? "nav-link active-link" : "nav-link"
               }
@@ -46,7 +46,7 @@ export default function Studentsidebar() {
 
           <li>
             <NavLink
-              to="/student-dashboard"
+              to="/my-reviews"
               className={({ isActive }) =>
                 isActive ? "nav-link active-link" : "nav-link"
               }
