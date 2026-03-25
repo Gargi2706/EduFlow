@@ -44,7 +44,7 @@ export default function Instructorsidebar({ isOpen }) {
           </NavLink>
  
           <NavLink
-            to="/"
+            to="/instructor/course-review"
             className={({ isActive }) =>
               isActive ? "link active-link" : "nav-link"
             }
@@ -52,19 +52,17 @@ export default function Instructorsidebar({ isOpen }) {
             Course Review
           </NavLink>
  
-          <NavLink
+          {/* <NavLink
             to="/instructor/profile"
             className={({ isActive }) =>
               isActive ? "link active-link" : "nav-link"
             }
           >
             Profile
-          </NavLink>
+          </NavLink> */}
         </ul>
         </div>
-        <div className="sidebar-bottom">
-          <button className="logout-btn">Logout</button>
-        </div>
+        
       </div>
    
   );

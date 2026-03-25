@@ -129,11 +129,45 @@ const deleteReview = async (req, res) => {
 };
 
 
+
+const getStats = async (req, res) => {
+  try {
+    const reviews = await Review.find();
+
+    const totalReviews = reviews.length;
+
+    const avgRating =
+      reviews.reduce((acc, r) => acc + r.rating, 0) / totalReviews;
+
+    const ratingCount = {
+      5: 0,
+      4: 0,
+      3: 0,
+      2: 0,
+      1: 0,
+    };
+
+    reviews.forEach((r) => {
+      ratingCount[r.rating]++;
+    });
+
+    res.json({
+      totalReviews,
+      avgRating: avgRating.toFixed(1),
+      ratingCount,
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+
 module.exports = {
   addReview,
   getCourseReviews,
   getAllReviews,
   approveReview,
   rejectReview,
-  deleteReview
+  deleteReview,
+  getStats
 };

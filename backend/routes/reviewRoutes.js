@@ -22,6 +22,6 @@ router.get("/review" , verifyToken , getAllReviews)
 router.put("/approve/:id", verifyToken, approveReview);
 router.put("/reject/:id",verifyToken,  rejectReview);
 router.delete("/:id",verifyToken , deleteReview);
-
+router.get("/stats", getStats);
 
 module.exports = router;

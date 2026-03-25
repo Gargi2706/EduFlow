@@ -54,9 +54,7 @@ export default function StudentSidebar({ isOpen }) {
           </NavLink> */}
         </ul>
         </div>
-        <div className="sidebar-bottom">
-          <button className="logout-btn">Logout</button>
-        </div>
+      
       </div>
    
   );

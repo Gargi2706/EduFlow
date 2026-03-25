@@ -48,19 +48,17 @@ export default function Adminsidebar({isOpen}) {
           >
             Reports
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to="/"
             className={({ isActive }) =>
               isActive ? "link active-link" : "nav-link"
             }
           >
             Profile
-          </NavLink>
+          </NavLink> */}
         </ul>
       </div>
-      <div className="sidebar-bottom">
-        <button className="logout-btn">Logout</button>
-      </div>
+      
     </div>
   );
 }

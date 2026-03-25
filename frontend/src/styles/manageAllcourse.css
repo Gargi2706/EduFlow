@@ -4,7 +4,7 @@
 
 .manage-courses h2{
   margin-bottom:20px;
-  font-size: 34px;
+  font-size: 32px;
   font-weight: 600;
   color: #333;
 }
@@ -22,13 +22,13 @@
   background:#f4f6f8;
   text-align:left;
   padding: 30px;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .course-table td{
   padding:30px;
   border-bottom:1px solid #eee;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .course-img{

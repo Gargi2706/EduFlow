@@ -1,5 +1,5 @@
 import React from "react";
-import "../..styles/adminDashboard.css";
+import '../../styles/adminDashboard.css'
 // import { useNavigate } from "react-router-dom";
 import DashboardLayout from "../../Layout/DashboardLayout";
 

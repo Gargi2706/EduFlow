@@ -4,7 +4,7 @@ import './managecourses.css'
 
 export default function CourseTable({courses , refresh}) {
   return (
-    <div className='main-content'>
+    
       <table className="course-table">
 
       <thead>
@@ -27,6 +27,6 @@ export default function CourseTable({courses , refresh}) {
       </tbody>
 
     </table>
-    </div>
+  
   )
 }
