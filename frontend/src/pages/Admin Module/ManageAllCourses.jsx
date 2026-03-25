@@ -82,6 +82,22 @@ export default function ManageAllCourses() {
                   </td>
                 </tr>
               ))}
+              <tr>
+              <td>img</td>
+              <td>React course</td>
+              <td>Gnpatel</td>
+              <td>34</td>
+              <td> <span className="status active">Published</span></td>
+              <button className="delete-btn">Delete</button>
+</tr>
+<tr>
+              <td>img</td>
+              <td>Java course</td>
+              <td>Pnpatel</td>
+              <td>46</td>
+              <td>  <span className="status draft">Draft</span></td>
+              <button className="delete-btn">Delete</button>
+</tr>
             </tbody>
           </table>
         </div>

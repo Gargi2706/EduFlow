@@ -15,6 +15,7 @@
   background:#fff;
   border-radius:8px;
   overflow:hidden;
+  padding: 30px;
 }
 
 .course-table th{
@@ -25,9 +26,9 @@
 }
 
 .course-table td{
-  padding:30pxpx;
+  padding:30px;
   border-bottom:1px solid #eee;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .course-img{
@@ -46,11 +47,13 @@
 .status.active{
   background:#d4edda;
   color:#155724;
+  font-size: 20px;
 }
 
 .status.draft{
   background:#fff3cd;
   color:#856404;
+  font-size: 20px;
 }
 
 .delete-btn{
@@ -60,6 +63,8 @@
   padding:6px 12px;
   border-radius:5px;
   cursor:pointer;
+  font-size : 20px;
+  margin-top: 20px;
 }
 
 .delete-btn:hover{

@@ -116,22 +116,88 @@ exports.unblockUser = async (req, res) => {
         res.status(500).json({ success: false, message: "Server error" });      
     }};
 
-// // Delete an enrollment - for admin dashboard
-// exports.deleteEnrollment = async (req, res) => {
-//     try {
-//         const enrollment = await Enrollment.findByIdAndDelete(req.params.id);
 
-//         if (!enrollment) {
-//             return res.status(404).json({ success: false, message: "Enrollment not found" });
-//         }
 
-//         res.status(200).json({
-//             success: true,
-//             message: "Enrollment deleted successfully"
-//         });
-//     } catch (error) {
-//         console.error("Error deleting enrollment:", error);
-//         res.status(500).json({ success: false, message: "Server error" });
-//     }
-// };
+//Reports -section for admin
+exports.getAdminReports = async (req, res) => {
+  try {
+   
+    const totalUsers = await User.countDocuments();
+    const blockedUsers = await User.countDocuments({ isBlocked: true });
+    const activeUsers = await User.countDocuments({ isBlocked: false });
+    const totalCourses = await Course.countDocuments();
+    const totalEnrollments = await Enrollment.countDocuments();
+
+
+    const userGrowth = await User.aggregate([
+      {
+        $group: {
+          _id: { $month: "$createdAt" },
+          users: { $sum: 1 },
+        },
+      },
+      { $sort: { _id: 1 } },
+    ]);
+
+    const formattedUserGrowth = userGrowth.map((item) => ({
+      month: `Month ${item._id}`,
+      users: item.users,
+    }));
+
+    
+    const enrollments = await Enrollment.aggregate([
+      {
+        $group: {
+          _id: "$courseId",
+          enrollments: { $sum: 1 },
+        },
+      },
+      {
+        $lookup: {
+          from: "courses",
+          localField: "_id",
+          foreignField: "_id",
+          as: "course",
+        },
+      },
+      { $unwind: "$course" },
+      {
+        $project: {
+          course: "$course.title",
+          enrollments: 1,
+        },
+      },
+    ]);
+
+
+    const recentActivity = await Enrollment.find()
+      .sort({ createdAt: -1 })
+      .limit(5)
+      .populate("userId", "name")
+      .populate("courseId", "title");
+
+    const formattedActivity = recentActivity.map((item) => ({
+      user: item.userId?.name || "Unknown",
+      action: `Enrolled in ${item.courseId?.title}`,
+      date: new Date(item.createdAt).toLocaleString(),
+    }));
+
+    res.json({
+      stats: {
+        totalUsers,
+        blockedUsers,
+        activeUsers,
+        totalCourses,
+        totalEnrollments,
+      },
+      userGrowth: formattedUserGrowth,
+      enrollments,
+      recentActivity: formattedActivity,
+    });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error fetching reports" });
+  }
+};
 

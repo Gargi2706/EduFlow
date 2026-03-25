@@ -14,7 +14,7 @@ export default function DashboardLayout({ children }) {
   const sidebarRef = useRef();
 
 const user = JSON.parse(localStorage.getItem("user") || "{}");
-  const role = user?.role?.toLowerCase() || "admin";
+  const role = user?.role?.toLowerCase() || "instructor";
  
   useEffect(() => {
     function handleClickOutside(e) {

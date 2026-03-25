@@ -74,6 +74,11 @@ export default function ManageUser() {
                   </td>
                 </tr>
               ))}
+              <td>Gargi</td>
+              <td>gnpatel@gmail.com</td>
+              <td>Student</td>
+              <td>Blocked</td>
+              <button>Unblock</button>
             </tbody>
           </table>
         </div>

@@ -14,6 +14,7 @@ import StudentsEnrolled from "./pages/Instructor Module/StudentsEnrolled";
 import ManageUser from "./pages/Admin Module/ManageUser";
 import ManageAllCourses from "./pages/Admin Module/ManageAllCourses";
 import ManageReview from "./pages/Admin Module/ManageReview";
+import AdminReports from "./pages/Admin Module/AdminReports";
 
 function App() {
   return (
@@ -25,16 +26,20 @@ function App() {
 
       {/* <StudentDashboard /> */}
       <Routes>
-        <Route path="/" element ={<DashboardLayout />} />
-{/*
+          <Route path="/" element ={<DashboardLayout />} />
+        <Route path="/admin-dashboard" element ={<AdminDashboard />} />
+
       <Route path="/instructor/create-course" element={<CreateCourse />} />
       <Route path="/instructor/manage-course" element={<ManageCourse />} />
       <Route path="/instructor/profile" element={<Profile />} />
-      <Route path="/instructor/students-enrolled" element={<StudentsEnrolled />} /> */}
+      <Route path="/instructor/students-enrolled" element={<StudentsEnrolled />} />
 
       <Route path="/admin/manage-users" element ={<ManageUser />} />
       <Route path="/admin/manage-course" element ={<ManageAllCourses />} />
       <Route path="/admin/manage-reviews" element ={<ManageReview />} />
+       <Route path="/admin/reports" element ={<AdminReports/>} />
+      
+ 
  
         {/* <Route path="/" element={<Auth />} />
         <Route path="/student-dashboard" element={<StudentDashboard />} />

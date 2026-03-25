@@ -9,7 +9,7 @@ export default function Adminsidebar({isOpen}) {
         <div className="sidebar-title">Admin Panel</div>
         <ul className="links">
           <NavLink
-            to="/"
+            to="/admin-dashboard"
             className={({ isActive }) =>
               isActive ? "link active-link" : "nav-link"
             }
@@ -41,7 +41,7 @@ export default function Adminsidebar({isOpen}) {
             Manage Reviews
           </NavLink>
           <NavLink
-            to="/"
+            to="/admin/reports"
             className={({ isActive }) =>
               isActive ? "link active-link" : "nav-link"
             }

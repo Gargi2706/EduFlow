@@ -16,15 +16,6 @@
   align-items: center;
 }
 
-.logout-btn {
-  padding: 8px 15px;
-  border: none;
-  background: #4f46e5;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
 /* CARDS */
 .cards {
   display: flex;

@@ -97,14 +97,26 @@ export default function ManageReview() {
                 </td>
               </tr>
             ))}
-              {/* <td>Gargi</td>
+            <tr>
+              <td>Gargi</td>
                 <td>React Course</td>
                  <td >3</td>
                  <td>veryuseful</td>
                  <td>pending</td>
                  <button className="action-btn approve-btn">approve</button>
-                 <button className="action-btn reject-btn">approve</button>
-                 <button className="action-btn delete-btn">approve</button> */}
+                 <button className="action-btn reject-btn">reject</button>
+                 <button className="action-btn delete-btn">delete</button>
+                 </tr>
+                 <tr>
+              <td>Gargi</td>
+                <td>React Course</td>
+                 <td >3</td>
+                 <td>veryuseful</td>
+                 <td>Complete</td>
+                 {/* <button className="action-btn approve-btn">approve</button>
+                 <button className="action-btn reject-btn">reject</button> */}
+                 <button className="action-btn delete-btn">delete</button>
+                 </tr>
           </tbody>
         </table>
       </div>

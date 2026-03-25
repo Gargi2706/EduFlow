@@ -18,8 +18,8 @@ router.post("/", verifyToken, authorizeRoles("Student"), addReview);
 
 
 router.get("/:courseId", verifyToken ,  getCourseReviews);
-route.get("/review" , verifyToken , getAllReviews)
-route.put("/approve/:id", verifyToken, approveReview);
+router.get("/review" , verifyToken , getAllReviews)
+router.put("/approve/:id", verifyToken, approveReview);
 router.put("/reject/:id",verifyToken,  rejectReview);
 router.delete("/:id",verifyToken , deleteReview);
 

@@ -8,7 +8,7 @@ export default function Instructorsidebar({ isOpen }) {
         <div className="sidebar-title">Instructor Panel</div>
         <ul className="links">
           <NavLink
-            to="/"
+            to="/dashboard"
             className={({ isActive }) =>
               isActive ? "link active-link" : "nav-link"
             }
