@@ -1,4 +1,4 @@
-import { useState, } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./auth.css";
 
@@ -13,22 +13,23 @@ export default function AuthPage() {
   const navigate = useNavigate();
 
   // ✅ Redirect if already logged in
-  {/*useEffect(() => {
+  {
+    /*useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       navigate("/student-dashboard");
     }
-  }, [navigate]);*/}
+  }, [navigate]);*/
+  }
 
-  
   const handleLogin = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const res = await fetch("http://localhost:3000/api/auth/login", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password }),
       });
 
       const data = await res.json();
@@ -40,14 +41,13 @@ export default function AuthPage() {
           localStorage.setItem("user", JSON.stringify(data.user));
         }
 
-        
         if (data.role === "Student") {
-            navigate("/student-dashboard");
-          } else if (data.role === "Instructor") {
-            navigate("/instructor-dashboard");
-          } else if (data.role === "Admin") {
-            navigate("/admin-dashboard");
-          }
+          navigate("/student-dashboard");
+        } else if (data.role === "Instructor") {
+          navigate("/instructor-dashboard");
+        } else if (data.role === "Admin") {
+          navigate("/admin-dashboard");
+        }
       } else {
         alert(data.message || "Login failed");
       }
@@ -57,54 +57,53 @@ export default function AuthPage() {
     }
   };
 
- 
   const handleRegister = async () => {
-  try {
-    const res = await fetch("http://localhost:5000/api/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ name, email, password, role })
-    });
+    try {
+      const res = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password, role }),
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (!res.ok) {
-      alert(data.message || "Registration failed");
-      return;
+      if (!res.ok) {
+        alert(data.message || "Registration failed");
+        return;
+      }
+
+      alert("Registered successfully");
+
+      setEmail("");
+      setPassword("");
+      setName("");
+      setRole("");
+
+      setIsLogin(true);
+    } catch (err) {
+      console.error(err);
+      alert("Server not reachable");
     }
-
-    alert("Registered successfully");
-
-    
-    setEmail("");
-    setPassword("");
-    setName("");
-    setRole("");
-
-    
-    setIsLogin(true);
-
-  } catch (err) {
-    console.error(err);
-    alert("Server not reachable");
-  }
-};
+  };
 
   return (
     <div className="page-center">
       <div className="auth-container">
-
         {/* LEFT */}
         <div className="auth-left">
+          <img
+            src="frontend/public/logo.png" 
+            alt="EduFlow Logo"
+            className="logo"
+          />
           <h1>EduFlow</h1>
           <p>Welcome to EduFlow, biggest platform for learning!</p>
         </div>
 
         {/* RIGHT */}
         <div className="auth-right">
-
           {isLogin ? (
             <>
               <h2>Welcome Back</h2>
@@ -177,7 +176,6 @@ export default function AuthPage() {
               </p>
             </>
           )}
-
         </div>
       </div>
     </div>

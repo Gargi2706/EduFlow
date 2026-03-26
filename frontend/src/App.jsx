@@ -33,7 +33,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-          <Route path="/" element ={<DashboardLayout />} />
+          <Route path="/" element ={<Auth />} />
         <Route path="/admin-dashboard" element ={<AdminDashboard />} />
 
       <Route path="/instructor/create-course" element={<CreateCourse />} />

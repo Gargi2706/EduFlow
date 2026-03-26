@@ -158,22 +158,34 @@ exports.searchCourses = async (req, res) => {
 
 
 exports.publishCourse = async (req, res) => {
-    try {
-        const courseId = req.params.id;
-        const { publish } = req.body;
+  try {
 
-        const course = await Course.findById(courseId);
-        if(!course) return res.status(404).json({ success: false, message: "Course not found" });
+    const courseId = req.params.id;
 
-        course.isPublished = publish;
-        await course.save();
+    const course = await Course.findById(courseId);
 
-        res.json({ success: true, message: `Course has been ${publish ? "published" : "unpublished"}`, course });
-    } catch (error) {
-        res.status(500).json({ success: false, message: error.message });
+    if (!course) {
+      return res.status(404).json({
+        message: "Course not found",
+      });
     }
-};
 
+    course.status = "published";
+
+    await course.save();
+
+    res.json({
+      message: "Course published successfully",
+      course,
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      message: "Error publishing course",
+      error: error.message,
+    });
+  }
+};
 
 exports.getCourseRating = async (req, res) => {
     try {
@@ -190,4 +202,89 @@ exports.getCourseRating = async (req, res) => {
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }
+};
+
+
+
+ exports.getInstructorCourses = async (req, res) => {
+  try {
+
+    const instructorId = req.user.id;
+
+    const courses = await Course.find({
+      instructor: instructorId
+    })
+    .populate("instructor", "name email")
+    .sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      count: courses.length,
+      courses
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+      error: error.message
+    });
+  }
+};
+
+
+exports.createDraftCourse = async (req, res) => {
+  try {
+
+    const { title, description,  thumbnail } = req.body;
+
+    const instructorId = req.user.id;
+
+    const course = new Course({
+      title,
+      description,
+      thumbnail,
+      instructor: instructorId,
+      status: "draft",   
+    });
+
+    await course.save();
+
+    res.status(201).json({
+      message: "Course saved as draft",
+      course,
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      message: "Error creating draft",
+      error: error.message,
+    });
+  }
+};
+
+
+exports.getDraftCourses = async (req, res) => {
+  try {
+
+    const instructorId = req.user.id;
+
+    const drafts = await Course.find({
+      instructor: instructorId,
+      status: "draft",
+    });
+
+    res.status(200).json({
+      success: true,
+      count: drafts.length,
+      drafts
+    });
+;
+
+  } catch (error) {
+    res.status(500).json({
+      message: "Error fetching drafts",
+      error: error.message,
+    });
+  }
 };

@@ -11,6 +11,7 @@ const lessonRoutes = require("./routes/lessonRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 const uploadRoutes = require("./routes/uploadRoutes");
 const progressRoutes = require("./routes/progressRoutes");
+const fileRoutes = require("./routes/fileRoutes")
 
 dotenv.config();
 
@@ -23,9 +24,9 @@ app.use(cors());
 app.use(express.json());
 
 
-// app.get("/", (req, res) => {
-//   res.send("EduFlow API Running");
-// });
+app.get("/", (req, res) => {
+  res.send("EduFlow API Running");
+});
 
 
 
@@ -37,7 +38,8 @@ app.use("/api/reviews", reviewRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/dashboard", dashboardRoutes);
 app.use("/api/upload", uploadRoutes);
-app.use("/api/progress", progressRoutes)
+app.use("/api/progress", progressRoutes);
+app.use("/api/file" , fileRoutes)
 
 const PORT = 3000;
 

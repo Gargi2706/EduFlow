@@ -21,12 +21,20 @@ const courseSchema = new mongoose.Schema(
         ref: "User",
       },
     ],
+    lessons: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Lesson",
+    },
+  ],
     level: { type: String, enum: ["beginner", "intermediate", "advanced"], default: "beginner" },
 
-    isPublished: {
-      type: Boolean,
-      default: false,
-    },
+    status: {
+    type: String,
+    enum: ["draft", "published"],
+    default: "draft",
+  },
+
     
   },
   
