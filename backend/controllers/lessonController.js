@@ -1,5 +1,6 @@
 const Lesson = require("../models/Lesson");
 const Course = require("../models/Course");
+const User = require("../models/User")
 
 exports.createLesson = async (req, res) => {
   try {
@@ -145,3 +146,32 @@ exports.deleteLesson = async (req, res) => {
         })
     }
 } 
+
+
+exports.markLessonComplete = async (req, res) => {
+  try {
+    const userId = req.user.id; // from protect middleware
+    const lessonId = req.params.id;
+
+    // Fetch lesson
+    const lesson = await Lesson.findById(lessonId);
+    if (!lesson) {
+      return res.status(404).json({ message: "Lesson not found" });
+    }
+
+    // Update user's completed lessons
+    const user = await User.findById(userId);
+    if (!user.completedLessons.includes(lessonId)) {
+      user.completedLessons.push(lessonId);
+      await user.save();
+    }
+
+    res.status(200).json({
+      message: "Lesson marked as complete",
+      completedLessons: user.completedLessons,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+};

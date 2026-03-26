@@ -1,5 +1,6 @@
 const express = require("express");
 const Course = require("../models/Course");
+const Rating = require("../models/Rating")
 
 exports.createCourse = async (req, res) => {
   try {
@@ -138,4 +139,55 @@ exports.deleteCourse = async (req, res) => {
       message: error.message
     });
   }
+};
+
+exports.searchCourses = async (req, res) => {
+    try {
+        const { query, level } = req.query;
+        let filter = {};
+
+        if(query) filter.title = { $regex: query, $options: "i" };
+        if(level) filter.level = level;
+
+        const courses = await Course.find(filter);
+        res.json({ success: true, courses });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+
+exports.publishCourse = async (req, res) => {
+    try {
+        const courseId = req.params.id;
+        const { publish } = req.body;
+
+        const course = await Course.findById(courseId);
+        if(!course) return res.status(404).json({ success: false, message: "Course not found" });
+
+        course.isPublished = publish;
+        await course.save();
+
+        res.json({ success: true, message: `Course has been ${publish ? "published" : "unpublished"}`, course });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+
+exports.getCourseRating = async (req, res) => {
+    try {
+        const courseId = req.params.id;
+        const ratings = await Rating.find({ course: courseId });
+
+        const totalReviews = ratings.length;
+        const averageRating = totalReviews ? (ratings.reduce((acc, r) => acc + r.rating, 0) / totalReviews).toFixed(2) : 0;
+
+        const ratingsBreakdown = { "5":0, "4":0, "3":0, "2":0, "1":0 };
+        ratings.forEach(r => ratingsBreakdown[r.rating]++);
+
+        res.json({ success: true, courseId, averageRating, totalReviews, ratingsBreakdown });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
 };

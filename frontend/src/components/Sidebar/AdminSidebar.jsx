@@ -59,6 +59,6 @@ export default function Adminsidebar({isOpen}) {
         </ul>
       </div>
       
-    </div>
+     </div>
   );
 }

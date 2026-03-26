@@ -19,20 +19,17 @@ function Navbar({ setOpen, open }) {
         />
         <span>EduFlow</span>
       </div>
-
       <div className="nav-right">
-
         <ul className="nav-links">
-
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive ? "nav-link active-link" : "nav-link"
-            }
-          >
-            Home
-          </NavLink>
-
+         
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "nav-link active-link" : "nav-link"
+              }
+            >
+              Home
+            </NavLink>
         </ul>
 
 

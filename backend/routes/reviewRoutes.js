@@ -8,7 +8,8 @@ const {
   getAllReviews,
   approveReview,
   rejectReview,
-  deleteReview
+  deleteReview,
+  getStats
 } = require("../controllers/reviewController");
 
 const verifyToken = require("../middleware/verifyToken");

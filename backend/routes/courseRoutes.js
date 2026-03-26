@@ -1,7 +1,7 @@
 const express = require ("express");
 const router = express.Router();
 
-const { createCourse, getAllCourses, getCourseById , updateCourse , deleteCourse } = require("../controllers/courseController");
+const { createCourse, getAllCourses, getCourseById , updateCourse , deleteCourse, searchCourses,publishCourse , getCourseRating} = require("../controllers/courseController");
 const verifyToken = require("../middleware/verifyToken");
 const { authorizeRoles} = require("../middleware/roleMiddleware");
 const upload = require("../middleware/upload")
@@ -11,5 +11,8 @@ router.get("/", authorizeRoles("Student"), getAllCourses);
 router.get("/:id", authorizeRoles("Student"), getCourseById);
 router.put("/:id", authorizeRoles("Instructor"), verifyToken, updateCourse);
 router.delete("/:id", authorizeRoles("Instructor" , "Admin"), verifyToken, deleteCourse);
+router.get("/search", searchCourses);
+router.put("/:id/publish", publishCourse);
+router.get("/:id/rating", getCourseRating);
 
 module.exports = router;    

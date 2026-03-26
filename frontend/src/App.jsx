@@ -10,7 +10,7 @@ import MyCourses from "./StudentModule/myCourses/MyCourses";
 import MyReviews from "./StudentModule/myReviews/MyReviews";
 import CoursePlayer from "./StudentModule/CoursePlayer/CoursePlayer";
 
-import InstructorDashboard from "./pages/instructorDashboard/InstructorDashboard";
+import InstructorDashboard from "./pages/Instructor Module/InstructorDashboard";
 import AdminDashboard from "./pages/Admin Module/AdminDashboard";
 import ManageCourse from "./pages/Instructor Module/ManageCourse";
 import EditCourse from "./components/Course/EditCourse/EditCourse";

@@ -10,6 +10,7 @@ const dashboardRoutes = require("./routes/dashboardRoutes");
 const lessonRoutes = require("./routes/lessonRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 const uploadRoutes = require("./routes/uploadRoutes");
+const progressRoutes = require("./routes/progressRoutes");
 
 dotenv.config();
 
@@ -36,7 +37,7 @@ app.use("/api/reviews", reviewRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/dashboard", dashboardRoutes);
 app.use("/api/upload", uploadRoutes);
-
+app.use("/api/progress", progressRoutes)
 
 const PORT = 3000;
 

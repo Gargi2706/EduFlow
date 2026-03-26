@@ -21,12 +21,15 @@ const courseSchema = new mongoose.Schema(
         ref: "User",
       },
     ],
+    level: { type: String, enum: ["beginner", "intermediate", "advanced"], default: "beginner" },
 
     isPublished: {
       type: Boolean,
       default: false,
     },
+    
   },
+  
   { timestamps: true },
 );
 

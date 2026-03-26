@@ -1,5 +1,5 @@
 import React from "react";
-import "./instructorDashboard.css";
+import '../../styles/instructorDashboard.css'
 import DashboardLayout from "../../Layout/DashboardLayout";
 
 export default function InstructorDashboard() {

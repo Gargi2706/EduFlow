@@ -12,12 +12,12 @@ export default function StatsCard() {
   return (
     <div className="stats">
       <div className="card">
-        <h3>Average Rating</h3>
+        <h4>Average Rating</h4>
         <h1>{stats.avgRating}</h1>
       </div>
 
       <div className="card">
-        <h3>Total Reviews</h3>
+        <h4>Total Reviews</h4>
         <h1>{stats.totalReviews}</h1>
       </div>
     </div>
