@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import LandingPage from "./pages/LandingPage/LandingPage"; //
+import LandingPage from "./pages/LandingPage/LandingPage"; 
 import Auth from "./pages/AuthPage/Auth";
 import CreateCourse from "./pages/Instructor Module/CreateCourse";
 
@@ -39,13 +39,16 @@ function App() {
     {/* < InstructorDashboard />
     <CreateCourse /> */}
       <Routes>
-          <Route path="/" element ={<Auth />} />
-        
+          {/* <Route path="/" element ={<Auth />} /> */}
+          
+        <Route path="/" element={<LandingPage />} />
+         <Route path="/auth" element={<Auth />} />
+
        <Route path="/instructor-dashboard" element={<InstructorDashboard />} />
       <Route path="/instructor/create-course" element={<CreateCourse />} />
       <Route path="/instructor/add-lessons/:courseId" element={<AddLessons />} />
       <Route path="/instructor/manage-course" element={<ManageCourse />} />
-      <Route path="/instructor/profile" element={<Profile />} />
+    
         <Route path="/instructor/course-review" element={<CourseReview />} />
       <Route path="/instructor/students-enrolled" element={<StudentsEnrolled />} />
 
@@ -76,10 +79,10 @@ function App() {
         {/* <Route path="/create-course" element={<CreateCourse />} />
 
         <Route path="/course-builder" element={<CourseBuilder />} /> */}
-        <Route path="/enroll-course" element={<EnrollCourse />} />
-        <Route path="/my-courses" element={<MyCourses />} />
-        <Route path="/my-reviews" element={<MyReviews />} />
-        <Route path="/course-player" element={<CoursePlayer />} />
+        <Route path="/student/enroll-course" element={<EnrollCourse />} />
+        <Route path="/student/my-courses" element={<MyCourses />} />
+        <Route path="/student/my-reviews" element={<MyReviews />} />
+        <Route path="/student/course-player" element={<CoursePlayer />} />
 
 
       </Routes>

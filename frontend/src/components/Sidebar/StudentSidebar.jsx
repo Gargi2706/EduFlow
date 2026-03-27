@@ -24,7 +24,7 @@ export default function StudentSidebar() {
 
           <li>
             <NavLink
-              to="/enroll-course"
+              to="/student/enroll-course"
               className={({ isActive }) =>
                 isActive ? "nav-link active-link" : "nav-link"
               }
@@ -35,7 +35,7 @@ export default function StudentSidebar() {
 
           <li>
             <NavLink
-              to="/my-courses"
+              to="/student/my-courses"
               className={({ isActive }) =>
                 isActive ? "nav-link active-link" : "nav-link"
               }
@@ -46,7 +46,7 @@ export default function StudentSidebar() {
 
           <li>
             <NavLink
-              to="/my-reviews"
+              to="/student/my-reviews"
               className={({ isActive }) =>
                 isActive ? "nav-link active-link" : "nav-link"
               }
