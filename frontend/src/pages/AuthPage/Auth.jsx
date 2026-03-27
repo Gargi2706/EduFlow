@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./auth.css";
+import logo from "../../assets/logo.png";
 
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
@@ -37,9 +38,21 @@ export default function AuthPage() {
       if (data.token) {
         localStorage.setItem("token", data.token);
 
-        if (data.user) {
-          localStorage.setItem("user", JSON.stringify(data.user));
-        }
+        // if (data.user) {
+        //   localStorage.setItem("user", JSON.stringify(data.user));
+        // }
+
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            _id: data._id,
+            name: data.name,
+            email: data.email,
+            role: data.role,
+          }),
+        );
+
+  
 
         if (data.role === "Student") {
           navigate("/student-dashboard");
@@ -59,7 +72,7 @@ export default function AuthPage() {
 
   const handleRegister = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/auth/register", {
+      const res = await fetch("http://localhost:3000/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -93,11 +106,7 @@ export default function AuthPage() {
       <div className="auth-container">
         {/* LEFT */}
         <div className="auth-left">
-          <img
-            src="frontend/public/logo.png" 
-            alt="EduFlow Logo"
-            className="logo"
-          />
+          <img src={logo} alt="EduFlow Logo" className="logo-img" />
           <h1>EduFlow</h1>
           <p>Welcome to EduFlow, biggest platform for learning!</p>
         </div>

@@ -1,24 +1,27 @@
 import React from "react";
 import '../../styles/instructorDashboard.css'
 import DashboardLayout from "../../Layout/DashboardLayout";
+// import { useNavigate } from "react-router-dom";
 
 export default function InstructorDashboard() {
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+    // const navigate = useNavigate();
+  
   return (
     <div>
       <DashboardLayout>
       
 
-      {/* Main Content */}
+      
       <div className="dashboard container">
 
 
-      {/* Main Content */}
-      {/* <div className="main-content">
+      
+      
 
-        {/* Header */}
-        {/* <div className="header">
-          <h2>Welcome, Instructor 👋</h2>
-        </div> */} 
+        <div className="header">
+          <h2>Welcome, {user?.name} 👋</h2>
+        </div> 
 
         {/* Cards */}
         <div className="cards">

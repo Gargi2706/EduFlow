@@ -22,6 +22,7 @@ import ManageAllCourses from "./pages/Admin Module/ManageAllCourses";
 import ManageReview from "./pages/Admin Module/ManageReview";
 import AdminReports from "./pages/Admin Module/AdminReports";
 import CourseReview from "./pages/Instructor Module/CourseReview";
+import AddLessons from "./components/Course/CourseForm/AddLessons";
 
 
 // import ManageCourse from "./pages/ManageCourse";
@@ -32,16 +33,21 @@ import CourseReview from "./pages/Instructor Module/CourseReview";
 function App() {
   return (
     <BrowserRouter>
+    {/* < InstructorDashboard />
+    <CreateCourse /> */}
       <Routes>
           <Route path="/" element ={<Auth />} />
-        <Route path="/admin-dashboard" element ={<AdminDashboard />} />
-
+        
+       <Route path="/instructor-dashboard" element={<InstructorDashboard />} />
       <Route path="/instructor/create-course" element={<CreateCourse />} />
+      <Route path="/instructor/add-lessons/:courseId" element={<AddLessons />} />
       <Route path="/instructor/manage-course" element={<ManageCourse />} />
       <Route path="/instructor/profile" element={<Profile />} />
         <Route path="/instructor/course-review" element={<CourseReview />} />
       <Route path="/instructor/students-enrolled" element={<StudentsEnrolled />} />
 
+ <Route path="/admin-dashboard" element ={<AdminDashboard />} />
+      <Route path="/admin-dashboard" element ={<AdminDashboard />} />
       <Route path="/admin/manage-users" element ={<ManageUser />} />
       <Route path="/admin/manage-course" element ={<ManageAllCourses />} />
       <Route path="/admin/manage-reviews" element ={<ManageReview />} />

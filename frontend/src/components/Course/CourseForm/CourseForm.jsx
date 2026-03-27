@@ -1,14 +1,15 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState ,useRef } from 'react';
 import "./createcourse.css";
 import {createCourse} from '../../../services/courseService';
+import { useNavigate } from 'react-router-dom';
 
 export default function CourseForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [thumbnail, setThumbnail] = useState("");
+  const [thumbnail, setThumbnail] = useState(null);
 
-
+const fileRef = useRef(); 
   const handleSubmit = async (e) => {
   e.preventDefault();
 
@@ -23,40 +24,20 @@ export default function CourseForm() {
     alert("Course Created Successfully");
     console.log(data);
 
+ navigate(`/instructor/add-lessons/${data.data._id}`);
+ 
+    setTitle("");
+      setDescription("");
+      setThumbnail(null);
+      fileRef.current.value = ""; // reset file input
+
   } catch (error) {
     console.log(error);
     alert("Error creating course");
   }
 };
-  //   try {
-  //     const res = await axios.post(
-  //       "http://localhost:5000/api/courses",
-  //       {
-  //         title,
-  //         description,
-  //         thumbnail,
-  //       },
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //         },
-  //       }
-  //     );
 
-  //     alert("Course Created Successfully ✅");
-  //     console.log(res.data);
-
-  //     // Reset form
-  //     setTitle("");
-  //     setDescription("");
-  //     setThumbnail("");
-
-  //   } catch (error) {
-  //     console.log(error.response?.data || error.message);
-  //     alert("Error creating course ❌");
-  //   }
-  // };
+const navigate = useNavigate();
 
   return (
     <div>
@@ -81,10 +62,10 @@ export default function CourseForm() {
 
         <label>Thumbnail URL</label>
         <input
-          type="text"
+          type="file"
           placeholder="Enter image URL"
-          value={thumbnail}
-          onChange={(e) => setThumbnail(e.target.value)}
+           ref={fileRef}
+          onChange={(e) => setThumbnail(e.target.files[0])}
           required
         />
 

@@ -3,10 +3,10 @@ import '../../styles/adminDashboard.css'
 // import { useNavigate } from "react-router-dom";
 import DashboardLayout from "../../Layout/DashboardLayout";
 
-export default function AdminDashboard({ user }) {
+export default function AdminDashboard( ) {
   // const navigate = useNavigate();
 
-  // const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("user"));
 
   // // const handleLogout = () => {
   // //   localStorage.removeItem("token");
