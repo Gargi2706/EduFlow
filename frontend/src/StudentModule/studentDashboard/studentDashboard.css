@@ -42,12 +42,13 @@
   margin-top: 15px;
 }
 
-.course-card {
+/* .CourseCard {
   flex: 1;
   background: #f9f9f9;
   padding: 15px;
   border-radius: 10px;
-}
+  width : 50%;
+} */
 
 .course-card button {
   margin-top: 10px;
@@ -57,8 +58,11 @@
   padding: 8px 12px;
   border-radius: 6px;
   cursor: pointer;
+  margin:auto;
+  width:60%;
 }
 
 .student-dashboard-container {
-  width: 100%;
+  width: 80%;
+  margin: auto;
 }

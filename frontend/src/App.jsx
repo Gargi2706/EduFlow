@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import LandingPage from "./pages/LandingPage/LandingPage"; //
 import Auth from "./pages/AuthPage/Auth";
 import CreateCourse from "./pages/CreateCourse";
 import CourseBuilder from "./pages/CourseBuilder";
@@ -16,22 +17,26 @@ import AdminDashboard from "./pages/adminDashboard/AdminDashboard";
 // import ManageCourse from "./pages/ManageCourse";
 // import EditCourse from "./components/Course/EditCourse/EditCourse";
 
-import Profile from "./pages/Profile";
+import ProfileDropdown from "./pages/Profile/profileDropdown/ProfileDropdown";
+import ChangePassword from "./pages/Profile/ChangePassword/ChangePassword";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
 
-        <Route path="/" element={<Auth />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/auth" element={<Auth />} />
 
         <Route path="/student-dashboard" element={<StudentDashboard />} />
 
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
 
         <Route path="/instructor-dashboard" element={<InstructorDashboard />} />
+        <Route path="/profile/change-password" element={<ChangePassword />} />
+        <Route path="/profile/profile-dropdown" element={<ProfileDropdown />} />
+        
 
-        <Route path="/profile" element={<Profile />} />
 
         {/* <Route path="/create-course" element={<CreateCourse />} />
 
