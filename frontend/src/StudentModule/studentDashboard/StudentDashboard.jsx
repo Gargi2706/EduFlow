@@ -2,8 +2,13 @@ import DashboardLayout from "../../Layout/DashboardLayout";
 import "./studentDashboard.css";
 import { useNavigate } from "react-router-dom";
 
+import CourseCard from "../../components/Course/CourseCard/coursecard";
+
 export default function StudentDashboard() {
-  const user = JSON.parse(localStorage.getItem("user") || "{}");
+
+  const user =
+    JSON.parse(localStorage.getItem("user") || "{}");
+
   const navigate = useNavigate();
 
   return (
@@ -14,7 +19,10 @@ export default function StudentDashboard() {
           <h2>Welcome, {user?.name}</h2>
         </div>
 
+
+        {/* cards (same as before) */}
         <div className="cards">
+
           <div className="card">
             <h3>Enrolled Courses</h3>
             <p>5</p>
@@ -29,32 +37,37 @@ export default function StudentDashboard() {
             <h3>Progress</h3>
             <p>40%</p>
           </div>
+
         </div>
 
+
+        {/* courses section */}
         <div className="courses">
+
           <h3>My Courses</h3>
 
           <div className="course-list">
-            <div className="course-card">
-              <h4>React Basics</h4>
-              <p>Progress: 60%</p>
-              <button
-                onClick={() => navigate("/course-player")}
-              >
-                Continue
-              </button>
-            </div>
 
-            <div className="course-card">
-              <h4>Node.js</h4>
-              <p>Progress: 30%</p>
-              <button
-                onClick={() => navigate("/course-player")}
-              >
-                Continue
-              </button>
-            </div>
+            <CourseCard
+              title="React Basics"
+              progress={60}
+              thumbnail="/src/assets/thumbnail.png"
+              onContinue={() =>
+                navigate("/course-player")
+              }
+            />
+
+            <CourseCard
+              title="Node.js"
+              progress={30}
+              thumbnail="/src/assets/thumbnail.png"
+              onContinue={() =>
+                navigate("/course-player")
+              }
+            />
+
           </div>
+
         </div>
 
       </div>

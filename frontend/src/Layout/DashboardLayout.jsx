@@ -2,7 +2,7 @@
 import React from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Sidebar from "../components/Sidebar/Sidebar";
-import Studentsidebar from "../components/Sidebar/Studentsidebar";
+import Studentsidebar from "../components/Sidebar/StudentSidebar";
 import Adminsidebar from "../components/Sidebar/Adminsidebar";
 import Instructorsidebar from "../components/Sidebar/Instructorsidebar";
 import { useEffect } from "react";

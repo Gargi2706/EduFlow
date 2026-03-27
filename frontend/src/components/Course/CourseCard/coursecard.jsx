@@ -1,30 +1,29 @@
-import React from "react";
 import "./coursecard.css";
-import { FaStar } from "react-icons/fa";
 
-export default function coursecard({ course }) {
-  const rating = 1;
+export default function CourseCard({
+  title,
+  progress,
+  thumbnail,
+  onContinue,
+}) {
   return (
     <div className="course-card">
-      <img src={course.thumbnail} alt={course.title} className="course-img" />
 
-      <div className="course-content">
-        <h3>{course.title}</h3>
+      {/* thumbnail */}
+      <img
+        src={thumbnail}
+        alt={title}
+        className="course-thumb"
+      />
 
-        <div className="rating">
-          <div className="flex">
-            {[...Array(5)].map((_, i) => (
-              <FaStar
-                key={i}
-                className={i < rating ? "text-yellow-400" : "text-gray-300"}
-              />
-            ))}
-          </div>
-          <span className="instructor">{course.instructor}</span>
-        </div>
+      <h4>{title}</h4>
 
-        <button className="enroll-btn">Enroll</button>
-      </div>
+      <p>Progress: {progress}%</p>
+
+      <button onClick={onContinue}>
+        Continue
+      </button>
+
     </div>
   );
 }

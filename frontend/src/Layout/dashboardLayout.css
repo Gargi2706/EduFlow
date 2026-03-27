@@ -47,8 +47,8 @@
   transform: translateX(0);
 }
 .content {
-  margin-top: 75px;
-  padding: 30px;
+  /* margin-top: 75px; */
+  /* padding: 30px;
 
   width: 100%;
   transition: 0.3s;
@@ -56,4 +56,4 @@
 
 .layout.open .content {
   margin-left: 240px;
-} */
+} */ 
