@@ -3,7 +3,7 @@ import "./coursecard.css";
 export default function CourseCard({
   title,
   progress,
-  thumbnail,
+  thumbnailImg,   // ✅ changed here
   onContinue,
 }) {
   return (
@@ -11,7 +11,7 @@ export default function CourseCard({
 
       {/* thumbnail */}
       <img
-        src={thumbnail}
+        src={thumbnailImg}   // ✅ changed here
         alt={title}
         className="course-thumb"
       />

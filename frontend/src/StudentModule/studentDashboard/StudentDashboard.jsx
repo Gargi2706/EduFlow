@@ -2,6 +2,8 @@ import DashboardLayout from "../../Layout/DashboardLayout";
 import "./studentDashboard.css";
 import { useNavigate } from "react-router-dom";
 
+import thumbnailImg from "../../assets/thumbnail.jpg";   // ✅ correct
+
 import CourseCard from "../../components/Course/CourseCard/coursecard";
 
 export default function StudentDashboard() {
@@ -14,13 +16,12 @@ export default function StudentDashboard() {
   return (
     <DashboardLayout>
       <div className="student-dashboard-container">
-        
+
         <div className="header">
           <h2>Welcome, {user?.name}</h2>
         </div>
 
 
-        {/* cards (same as before) */}
         <div className="cards">
 
           <div className="card">
@@ -41,7 +42,6 @@ export default function StudentDashboard() {
         </div>
 
 
-        {/* courses section */}
         <div className="courses">
 
           <h3>My Courses</h3>
@@ -51,7 +51,7 @@ export default function StudentDashboard() {
             <CourseCard
               title="React Basics"
               progress={60}
-              thumbnail="/src/assets/thumbnail.png"
+              thumbnailImg={thumbnailImg}
               onContinue={() =>
                 navigate("/course-player")
               }
@@ -60,7 +60,7 @@ export default function StudentDashboard() {
             <CourseCard
               title="Node.js"
               progress={30}
-              thumbnail="/src/assets/thumbnail.png"
+              thumbnailImg={thumbnailImg}   
               onContinue={() =>
                 navigate("/course-player")
               }
