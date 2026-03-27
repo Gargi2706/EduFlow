@@ -11,12 +11,15 @@ exports.createLesson = async (req, res) => {
     if (!course) {
       return res.status(404).json({ message: "Course not found" });
     }
+const video = req.files.video?.[0]?.path || "";
+    const pdf = req.files.pdf?.[0]?.path || "";
 
     const lesson = await Lesson.create({
       course: courseId,
       title,
       description,
       videoUrl,
+      pdf,
       content,
     });
 
@@ -103,6 +106,7 @@ exports.updateLesson = async (req, res) => {
     lesson.title = title || lesson.title;
     lesson.description = description || lesson.description;
     lesson.videoUrl = videoUrl || lesson.videoUrl;
+    lesson.pdf = pdf || lesson.pdf;
     lesson.content = content || lesson.content;
 
     await lesson.save();

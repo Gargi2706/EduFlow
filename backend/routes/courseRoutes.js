@@ -21,7 +21,7 @@ const upload = require("../middleware/upload");
 router.post(
   "/",
   verifyToken,
-  authorizeRoles("Instructor"),
+  // authorizeRoles("Instructor"),
   upload.single("thumbnail"),
   createCourse,
 );

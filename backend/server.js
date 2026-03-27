@@ -36,7 +36,7 @@ app.use("/api/lessons", lessonRoutes);
 app.use("/api/enrollment", enrollmentRoutes);
 app.use("/api/reviews", reviewRoutes);
 app.use("/api/admin", adminRoutes);
-app.use("/dashboard", dashboardRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/progress", progressRoutes);
 app.use("/api/file" , fileRoutes)
