@@ -45,7 +45,10 @@ exports.instructorDashboard = async (req, res) => {
     const enrollments = await Enrollment.find({ course: { $in: courseIds } });
 
     const totalStudents = enrollments.length;
-    const recentEnrollments = enrollments.slice(-3).populate("student", "name email");
+   const recentEnrollments = await Enrollment.find({ course: { $in: courseIds } })
+  .populate("student", "name email")
+  .sort({ createdAt: -1 })
+  .limit(3);
 
     res.status(200).json({
       success: true,
@@ -59,42 +62,36 @@ exports.instructorDashboard = async (req, res) => {
 }
 };    
 
-exports.getEnrolledStudents = async (req,res ) =>{
-  try{
+
+exports.getEnrolledStudents = async (req, res) => {
+  try {
     const courses = await Course.find({
-instructorId: req.params.instructorId
-});
+      instructor: req.user.id
+    });
 
-let result = [];
+    let result = [];
 
-for(let course of courses){
+    for (let course of courses) {
 
-const enrollments = await Enrollment.find({
-courseId: course._id
-}).populate("studentId");
+      const enrollments = await Enrollment.find({
+        course: course._id
+      }).populate("student", "name email");
 
-const students = enrollments.map(e => ({
+      const students = enrollments.map(e => ({
+        name: e.student.name,
+        email: e.student.email,
+        date: new Date(e.createdAt).toDateString()
+      }));
 
-name: e.studentId.name,
-email: e.studentId.email,
-date: new Date(e.enrolledAt).toDateString()
+      result.push({
+        courseName: course.title,
+        students
+      });
+    }
 
-}));
+    res.json(result);
 
-result.push({
-courseName: course.title,
-students
-});
-
-}
-
-res.json(result);
-
-}catch(err){
-
-res.status(500).json(err);
-
-}
-
+  } catch (err) {
+    res.status(500).json(err);
+  }
 };
-  

@@ -36,6 +36,7 @@
 .auth-left h1 {
   font-size: 42px;
   font-weight: bold;
+  margin-top: 0px;
   margin-bottom: 10px;
 }
 
@@ -103,5 +104,6 @@
 .logo-img {
   width: 300px;
   height: auto;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
+

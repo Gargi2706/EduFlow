@@ -2,9 +2,20 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./auth.css";
 import logo from "../../assets/logo.png";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function AuthPage() {
+  const location = useLocation();
   const [isLogin, setIsLogin] = useState(true);
+
+  useEffect(() => {
+  if (location.state?.tab === "register") {
+    setIsLogin(false);
+  } else {
+    setIsLogin(true);
+  }
+}, [location.state]);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -12,6 +23,7 @@ export default function AuthPage() {
   const [role, setRole] = useState("");
 
   const navigate = useNavigate();
+  
 
   // ✅ Redirect if already logged in
   {

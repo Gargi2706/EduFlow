@@ -40,7 +40,7 @@ const fileRef = useRef();
 const navigate = useNavigate();
 
   return (
-    <div>
+    <div className='course-container'>
       <form className="course-form" onSubmit={handleSubmit}>
 
         <label>Course Title</label>

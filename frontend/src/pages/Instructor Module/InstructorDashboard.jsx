@@ -2,11 +2,35 @@ import React from "react";
 import '../../styles/instructorDashboard.css'
 import DashboardLayout from "../../Layout/DashboardLayout";
 // import { useNavigate } from "react-router-dom";
+import { getDashboardData } from "../../services/dashboardService";
+import { useEffect ,useState } from "react";
+
 
 export default function InstructorDashboard() {
   const user = JSON.parse(localStorage.getItem("user") || "{}");
     // const navigate = useNavigate();
-  
+
+    
+  const [data, setData] = useState({
+  totalCourses: 0,
+  totalStudents: 0,
+  recentEnrollments: []
+});
+
+ 
+
+useEffect(() => {
+  fetchDashboard();
+}, []);
+
+const fetchDashboard = async () => {
+  try {
+    const res = await getDashboardData();
+    setData(res);
+  } catch (err) {
+    console.error(err);
+  }
+};
   return (
     <div>
       <DashboardLayout>
@@ -23,22 +47,23 @@ export default function InstructorDashboard() {
           <h2>Welcome, {user?.name} 👋</h2>
         </div> 
 
+
         {/* Cards */}
         <div className="cards">
           <div className="card">
             <h3>Total Courses</h3>
-            <p>5</p>
+            <p>{data.totalCourses}</p>
           </div>
 
           <div className="card">
             <h3>Total Students</h3>
-            <p>120</p>
+            <p>{data.totalStudents}</p>
           </div>
 
-          <div className="card">
+          {/* <div className="card">
             <h3>Revenue</h3>
             <p>₹15,000</p>
-          </div>
+          </div> */}
         </div>
 
         {/* Section */}
@@ -62,3 +87,16 @@ export default function InstructorDashboard() {
     </div>
   );
 }
+
+{/* <div className="section">
+          <h3>Recent Enrollments</h3>
+
+          <div className="course-list">
+            {data.recentEnrollments?.map((enroll, index) => (
+              <div key={index} className="course-card">
+                <h4>{enroll.student.name}</h4>
+                <p>{enroll.student.email}</p>
+              </div>
+            ))}
+          </div>
+        </div> */}

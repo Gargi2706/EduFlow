@@ -25,7 +25,7 @@ router.post(
   upload.single("thumbnail"),
   createCourse,
 );
-router.get("/", authorizeRoles("Student"), getAllCourses);
+router.get("/",  getAllCourses);
 router.get("/:id", authorizeRoles("Student"), getCourseById);
 router.put("/:id", authorizeRoles("Instructor"), verifyToken, updateCourse);
 router.delete(
