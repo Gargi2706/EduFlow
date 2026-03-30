@@ -84,12 +84,12 @@ export default function AuthPage() {
 
   const handleRegister = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/auth/register", {
+      const res = await fetch("http://localhost:5000/api/auth/register", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify({ name, email, password, role }),
+        body: JSON.stringify({ name, email, password, role })
       });
 
       const data = await res.json();
@@ -107,6 +107,7 @@ export default function AuthPage() {
       setRole("");
 
       setIsLogin(true);
+
     } catch (err) {
       console.error(err);
       alert("Server not reachable");
@@ -144,6 +145,15 @@ export default function AuthPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 autoComplete="new-password"
               />
+
+              {/* ✅ FORGOT PASSWORD ADDED */}
+              <p
+                className="forgot-password"
+                onClick={() => navigate("/forgot-password")}
+              >
+                Forgot Password?
+              </p>
+
               <button className="auth-btn" onClick={handleLogin}>
                 Login
               </button>

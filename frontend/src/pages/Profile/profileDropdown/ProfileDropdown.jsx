@@ -7,6 +7,13 @@ function ProfileDropdown() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();   // ✅ added
 
+  // ✅ LOGOUT FUNCTION ADDED
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/"); // redirect to login page
+  };
+
   return (
     <div className="profile-section">
 
@@ -35,7 +42,6 @@ function ProfileDropdown() {
 
           <div className="menu-item">My Profile</div>
 
-          {/* ✅ FIXED LINE */}
           <div
             className="menu-item"
             onClick={() => navigate("/profile/change-password")}
@@ -47,7 +53,8 @@ function ProfileDropdown() {
 
           <div className="divider"></div>
 
-          <div className="menu-item logout">
+          {/* ✅ LOGOUT CLICK ADDED */}
+          <div className="menu-item logout" onClick={handleLogout}>
             Logout
           </div>
 

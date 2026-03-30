@@ -101,9 +101,24 @@
   text-decoration: underline;
 }
 
+<<<<<<< HEAD
 .logo-img {
   width: 300px;
   height: auto;
   margin-bottom: 5px;
 }
 
+=======
+/* FORGOT PASSWORD */
+.forgot-password {
+  font-size: 13px;
+  color: #4f46e5;
+  cursor: pointer;
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+>>>>>>> b373c04279d8c3329e012c0e3a34856db3cfa019
