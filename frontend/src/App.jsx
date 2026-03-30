@@ -19,6 +19,7 @@ import AdminDashboard from "./pages/adminDashboard/AdminDashboard";
 
 import ProfileDropdown from "./pages/Profile/profileDropdown/ProfileDropdown";
 import ChangePassword from "./pages/Profile/ChangePassword/ChangePassword";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/instructor-dashboard" element={<InstructorDashboard />} />
         <Route path="/profile/change-password" element={<ChangePassword />} />
         <Route path="/profile/profile-dropdown" element={<ProfileDropdown />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         
 
 

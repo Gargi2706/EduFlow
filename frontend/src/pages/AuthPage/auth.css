@@ -99,3 +99,16 @@
 .auth-link:hover {
   text-decoration: underline;
 }
+
+/* FORGOT PASSWORD */
+.forgot-password {
+  font-size: 13px;
+  color: #4f46e5;
+  cursor: pointer;
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
