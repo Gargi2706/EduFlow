@@ -233,6 +233,33 @@ exports.getCourseRating = async (req, res) => {
 };
 
 
+
+// exports.getInstructorCourses = async (req, res) => {
+//   try {
+//     const instructorId = req.user.id;
+
+//     const courses = await Course.find({
+//       instructor: instructorId
+//     })
+//     .populate("instructor", "name email")
+//     .sort({ createdAt: -1 });
+
+//     res.status(200).json({
+//       success: true,
+//       count: courses.length,
+//       courses
+//     });
+
+//   } catch (error) {
+//     res.status(500).json({
+//       success: false,
+//       message: "Server Error",
+//       error: error.message
+//     });
+//   }
+// };
+
+
 exports.createDraftCourse = async (req, res) => {
   try {
 

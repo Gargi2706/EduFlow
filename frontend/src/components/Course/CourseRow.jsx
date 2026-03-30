@@ -20,13 +20,17 @@ export default function CourseRow({course , refresh}) {
   };
 
   return (
-    <div className="main-content">
+    
       <tr>
         <td>{course.title}</td>
 
-        <td>{course.status}</td>
+        <td>
+        <span className={`status ${course.status}`}>
+          {course.status === "published" ? "Published" : "Draft"}
+        </span>
+      </td>
 
-        <td>{course.students.length}</td>
+        <td>{course.studentsEnrolled?.length || 0}</td>
 
         <td>
           <button className="edit-btn" onClick={handleEdit}>
@@ -37,10 +41,8 @@ export default function CourseRow({course , refresh}) {
           </button>
         </td>
 
-        <td>
-          <span className={`status ${course.status}`}>{course.status}</span>
-        </td>
+        
       </tr>
-    </div>
+
   );
 }

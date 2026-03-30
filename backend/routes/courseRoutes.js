@@ -20,7 +20,7 @@ const upload = require("../middleware/upload");
 
 router.post(
   "/",
-  verifyToken,
+  //verifyToken,
   // authorizeRoles("Instructor"),
   upload.single("thumbnail"),
   createCourse,
@@ -30,7 +30,7 @@ router.get("/:id", authorizeRoles("Student"), getCourseById);
 router.put("/:id", authorizeRoles("Instructor"), verifyToken, updateCourse);
 router.delete(
   "/:id",
-  authorizeRoles("Instructor", "Admin"),
+  // authorizeRoles("Instructor", "Admin"),
   verifyToken,
   deleteCourse,
 );
@@ -40,5 +40,8 @@ router.get("/:id/rating", getCourseRating);
 router.get("/my-course", verifyToken, getInstructorCourses);
 router.post("/draft", verifyToken, createDraftCourse);
 router.get("/draft-course" , verifyToken , getDraftCourses);
+
+
+
 
 module.exports = router;

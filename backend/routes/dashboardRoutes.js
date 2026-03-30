@@ -14,4 +14,5 @@ router.get("/student", verifyToken, authorizeRoles("Student"), studentDashboard)
 router.get("/instructor" , verifyToken,  instructorDashboard);
 router.get("/instructor/students/:instructorId" , verifyToken, authorizeRoles("Instructor") , getEnrolledStudents)
 
-module.exports = router;    
+
+module.exports = router;

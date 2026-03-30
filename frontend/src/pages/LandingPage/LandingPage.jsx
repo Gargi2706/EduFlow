@@ -1,23 +1,25 @@
 import "./landingPage.css";
-import { useNavigate , useState , useEffect  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useState , useEffect } from "react";
 import logo from "../../assets/logo.png";
 import axios from "axios";
-import thumbnailImg from "../../assets/thumbnail.jpg";
 
 export default function LandingPage() {
   const navigate = useNavigate();
 
   const [courses, setCourses] = useState([]);
 
-
   useEffect(() => {
-  fetchCourses();
-}, []);
+    fetchCourses();
+  }, []);
 
-const fetchCourses = async () => {
+ const fetchCourses = async () => {
   try {
-    const res = await axios.get("http://localhost:5000/api/courses/");
-    setCourses(res.data);
+    const res = await axios.get("http://localhost:3000/api/courses/");
+    
+    console.log(res.data);
+
+    setCourses(res.data?.data || []);
   } catch (error) {
     console.log(error);
   }
@@ -95,20 +97,15 @@ const fetchCourses = async () => {
           </div>
 
           <div className="course-list">
-            <div className="course-card">
-              <img src={thumbnailImg} />
-              <h4>React Basics</h4>
-            </div>
-
-            <div className="course-card">
-              <img src={thumbnailImg} />
-              <h4>Node.js Fundamentals</h4>
-            </div>
-
-            <div className="course-card">
-              <img src={thumbnailImg} />
-              <h4>MongoDB Essentials</h4>
-            </div>
+            {courses.map((course) => (
+              <div className="course-card" key={course._id}>
+                <img
+                  src={course.thumbnail || "/default.jpg"}
+                  alt={course.title}
+                />
+                <h3>{course.title}</h3>
+              </div>
+            ))}
           </div>
         </div>
       </div>
