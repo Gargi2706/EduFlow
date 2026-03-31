@@ -17,24 +17,41 @@ export default function ManageReview() {
   }, []);
 
   const fetchReviews = async () => {
-    const data = await getReview();
-    setReviews(data);
+    try {
+      const data = await getReview();
+      setReviews(data);
+    } catch (error) {
+      console.error("Error fetching reviews:", error);
+    }
   };
 
   const handleApprove = async (id) => {
-    await approveReview(id);
-    fetchReviews();
+    try {
+      await approveReview(id);
+      fetchReviews();
+    } catch (error) {
+      console.error("Approve error:", error);
+    }
   };
 
   const handleReject = async (id) => {
-    await rejectReview(id);
-    fetchReviews();
+    try {
+      await rejectReview(id);
+      fetchReviews();
+    } catch (error) {
+      console.error("Reject error:", error);
+    }
   };
 
   const handleDelete = async (id) => {
-    await deleteReview(id);
-    fetchReviews();
+    try {
+      await deleteReview(id);
+      fetchReviews();
+    } catch (error) {
+      console.error("Delete error:", error);
+    }
   };
+
   return (
     <DashboardLayout>
       <div className="manage-reviews-page">
@@ -97,7 +114,7 @@ export default function ManageReview() {
                 </td>
               </tr>
             ))}
-            <tr>
+            {/* <tr>
               <td>Gargi</td>
                 <td>React Course</td>
                  <td >3</td>
@@ -113,10 +130,10 @@ export default function ManageReview() {
                  <td >3</td>
                  <td>veryuseful</td>
                  <td>Complete</td>
-                 {/* <button className="action-btn approve-btn">approve</button>
-                 <button className="action-btn reject-btn">reject</button> */}
+                 <button className="action-btn approve-btn">approve</button>
+                 <button className="action-btn reject-btn">reject</button>
                  <button className="action-btn delete-btn">delete</button>
-                 </tr>
+                 </tr> */}
           </tbody>
         </table>
       </div>

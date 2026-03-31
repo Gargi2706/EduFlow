@@ -38,7 +38,7 @@ export default function ManageAllCourses() {
           <table className="course-table">
             <thead>
               <tr>
-                <th>Thumbnail</th>
+              
                 <th>Title</th>
                 <th>Instructor</th>
                 <th>Students</th>
@@ -50,13 +50,7 @@ export default function ManageAllCourses() {
             <tbody>
               {courses.map((course) => (
                 <tr key={course._id}>
-                  <td>
-                    <img
-                      src={course.thumbnail}
-                      alt="course"
-                      className="course-img"
-                    />
-                  </td>
+                  
 
                   <td>{course.title}</td>
 

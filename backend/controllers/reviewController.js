@@ -72,12 +72,19 @@ const getCourseReviews = async (req, res) => {
       .populate("student", "name email")
       .populate("course", "title");
 
-    res.json(reviews);
+   res.status(200).json({
+      success: true,
+      data: reviews,
+    });
 
   } catch (error) {
+     console.log(error);
     res.status(500).json({ message: error.message });
   }
 };
+
+
+
 const approveReview = async (req, res) => {
 
   try {
@@ -88,13 +95,18 @@ const approveReview = async (req, res) => {
       { new: true }
     );
 
-    res.json(review);
+    res.status(200).json({
+      success: true,
+      data: review,
+    });
 
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 
 };
+
+
 
  const rejectReview = async (req, res) => {
 
@@ -106,7 +118,10 @@ const approveReview = async (req, res) => {
       { new: true }
     );
 
-    res.json(review);
+    res.status(200).json({
+      success: true,
+      data: review,
+    });
 
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -120,7 +135,10 @@ const deleteReview = async (req, res) => {
 
     await Review.findByIdAndDelete(req.params.id);
 
-    res.json({ message: "Review deleted" });
+   res.status(200).json({
+      success: true,
+      message: "Review deleted",
+    });
 
   } catch (error) {
     res.status(500).json({ message: error.message });
