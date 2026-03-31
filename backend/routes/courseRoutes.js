@@ -27,7 +27,7 @@ router.post(
 );
 router.get("/",  getAllCourses);
 router.get("/:id", authorizeRoles("Student"), getCourseById);
-router.put("/:id", authorizeRoles("Instructor"), verifyToken, updateCourse);
+router.put("/:id", verifyToken, updateCourse);
 router.delete(
   "/:id",
   // authorizeRoles("Instructor", "Admin"),

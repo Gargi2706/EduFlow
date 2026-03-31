@@ -12,9 +12,20 @@ export default function ManageUser() {
   }, []);
 
   const fetchUsers = async () => {
-    const data = await getUsers();
-    setUsers(data);
-  };
+  try {
+
+    const response = await getUsers();   // API call
+
+    console.log(response);               // see response
+
+    setUsers(response.data);             // access users array
+
+  } catch (error) {
+
+    console.log(error);
+
+  }
+};
 
   const handleBlock = async (id) => {
     await blockUser(id);
@@ -52,13 +63,13 @@ export default function ManageUser() {
 
                   <td>{user.role}</td>
 
-                  <td>
+                 
                     <td>
                       <span className={user.isBlocked ? "blocked" : "active"}>
                         {user.isBlocked ? "Blocked" : "Active"}
                       </span>
                     </td>
-                  </td>
+             
 
                   <td>
                     <button
@@ -74,11 +85,11 @@ export default function ManageUser() {
                   </td>
                 </tr>
               ))}
-              <td>Gargi</td>
+              {/* <td>Gargi</td>
               <td>gnpatel@gmail.com</td>
               <td>Student</td>
               <td>Blocked</td>
-              <button>Unblock</button>
+              <button>Unblock</button> */}
             </tbody>
           </table>
         </div>

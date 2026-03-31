@@ -1,20 +1,46 @@
 import React, { useState } from "react";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import "./enrollCourse.css";
+import { enrollCourse } from "../../services/enrollService";
+import { useParams } from "react-router-dom";
+
 
 export default function EnrollCourse() {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+const { courseId } = useParams();
+  const handleEnroll = async () => {
 
-  const handleEnroll = () => {
-    if (!name || !email) {
-      alert("Please fill all fields");
-      return;
-    }
+  if (!name || !email) {
+    alert("Please fill all fields");
+    return;
+  }
 
-    alert("Enrolled Successfully");
-  };
+  try {
+
+    const token = localStorage.getItem("token");
+
+    const data = {
+      courseId: courseId,   // ✅ dynamic
+      name,
+      email
+    };
+
+    const res = await enrollCourse(data, token);
+
+    alert(res.message);
+
+  } catch (error) {
+
+    alert(
+      error.response?.data?.message ||
+      "Enrollment failed"
+    );
+
+  }
+
+};
 
   return (
     <DashboardLayout>

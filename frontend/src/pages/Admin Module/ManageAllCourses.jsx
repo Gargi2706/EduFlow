@@ -62,7 +62,7 @@ export default function ManageAllCourses() {
 
                   <td>{course.instructor?.name}</td>
 
-                  <td>{course.studentsEnrolled.length}</td>
+                 <td>{course.studentsEnrolled?.length || 0}</td>
 
                   <td>
                     {course.isPublished ? (
@@ -82,7 +82,7 @@ export default function ManageAllCourses() {
                   </td>
                 </tr>
               ))}
-              <tr>
+              {/* <tr>
               <td>img</td>
               <td>React course</td>
               <td>Gnpatel</td>
@@ -97,7 +97,7 @@ export default function ManageAllCourses() {
               <td>46</td>
               <td>  <span className="status draft">Draft</span></td>
               <button className="delete-btn">Delete</button>
-</tr>
+</tr> */}
             </tbody>
           </table>
         </div>

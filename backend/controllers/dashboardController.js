@@ -95,3 +95,74 @@ exports.getEnrolledStudents = async (req, res) => {
     res.status(500).json(err);
   }
 };
+
+
+
+exports.getStudentDashboard = async (req, res) => {
+  try {
+    const studentId = req.user.id;
+
+    const enrollments = await Enrollment.find({
+      student: studentId,
+    });
+
+    const totalCourses = enrollments.length;
+
+    const completedCourses = enrollments.filter(
+      (e) => e.completed === true
+    ).length;
+
+    let totalProgress = 0;
+
+    enrollments.forEach((e) => {
+      totalProgress += e.progress;
+    });
+
+    const avgProgress =
+      totalCourses > 0
+        ? Math.round(totalProgress / totalCourses)
+        : 0;
+
+    res.json({
+      success: true,
+      data: {
+        enrolledCourses: totalCourses,
+        completedCourses: completedCourses,
+        progress: avgProgress,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+    });
+  }
+};
+
+
+exports.getStudentCourses = async (req, res) => {
+  try {
+    const studentId = req.user.id;
+
+    const enrollments = await Enrollment.find({
+      student: studentId,
+    }).populate("course");
+
+    const courses = enrollments.map((e) => ({
+      id: e.course._id,
+      title: e.course.title,
+      thumbnail: e.course.thumbnail,
+      progress: e.progress,
+    }));
+
+    res.json({
+      success: true,
+      data: courses,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+    });
+  }
+};

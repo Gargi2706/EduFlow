@@ -19,6 +19,7 @@ exports.createCourse = async (req, res) => {
       message: "Course created successfully",
     });
   } catch (error) {
+    console.log(error); 
     res.status(500).json({
       success: false,
       message: error.message,

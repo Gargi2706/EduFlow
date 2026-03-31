@@ -12,10 +12,27 @@ const enrollmentSchema = new mongoose.Schema(
       ref: "Course",
       required: true,
     },
+    name: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
     enrolledAt: {
       type: Date,
       default: Date.now,
     },
+    progress: {
+    type: Number,
+    default: 0,
+  },
+
+  completed: {
+    type: Boolean,
+    default: false,
+  },
 
     //progress: {
     //type : Number,

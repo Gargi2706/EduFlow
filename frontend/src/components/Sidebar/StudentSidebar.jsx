@@ -11,7 +11,7 @@ export default function StudentSidebar() {
 
         <ul className="links">
 
-          <li>
+         
             <NavLink
               to="/student-dashboard"
               className={({ isActive }) =>
@@ -20,9 +20,9 @@ export default function StudentSidebar() {
             >
               Dashboard
             </NavLink>
-          </li>
+     
 
-          <li>
+          
             <NavLink
               to="/student/enroll-course"
               className={({ isActive }) =>
@@ -31,9 +31,9 @@ export default function StudentSidebar() {
             >
               Browse Course
             </NavLink>
-          </li>
+         
 
-          <li>
+         
             <NavLink
               to="/student/my-courses"
               className={({ isActive }) =>
@@ -42,9 +42,8 @@ export default function StudentSidebar() {
             >
               My Courses
             </NavLink>
-          </li>
-
-          <li>
+        
+         
             <NavLink
               to="/student/my-reviews"
               className={({ isActive }) =>
@@ -53,7 +52,7 @@ export default function StudentSidebar() {
             >
               My Reviews
             </NavLink>
-          </li>
+         
 
         </ul>
         </div>

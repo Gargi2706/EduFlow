@@ -62,26 +62,24 @@ function App() {
       
  
  
-        {/* <Route path="/" element={<Auth />} />
+        
 
-        <Route path="/" element={<LandingPage />} />
+        {/* <Route path="/" element={<LandingPage />} />
         <Route path="/auth" element={<Auth />} />
 
         <Route path="/student-dashboard" element={<StudentDashboard />} />
 
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
 
-        <Route path="/instructor-dashboard" element={<InstructorDashboard />} />
+        <Route path="/instructor-dashboard" element={<InstructorDashboard />} /> */}
         <Route path="/profile/change-password" element={<ChangePassword />} />
         <Route path="/profile/profile-dropdown" element={<ProfileDropdown />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         
 
 
-        {/* <Route path="/create-course" element={<CreateCourse />} />
-
-        <Route path="/course-builder" element={<CourseBuilder />} /> */}
-        <Route path="/student/enroll-course" element={<EnrollCourse />} />
+       <Route path="/student-dashboard" element={<StudentDashboard />} />
+       <Route path="/student/enroll-course/" element={<EnrollCourse />} />
         <Route path="/student/my-courses" element={<MyCourses />} />
         <Route path="/student/my-reviews" element={<MyReviews />} />
         <Route path="/student/course-player" element={<CoursePlayer />} />

@@ -3,52 +3,93 @@ const Course = require("../models/Course");
 const User = require("../models/User");
 
 
-exports.enrollCourse = async (req,res)=>{
- try{
+// exports.enrollCourse = async (req,res)=>{
+//  try{
 
- if(req.user.role !== "Student"){
-  return res.status(403).json({
-   success:false,
-   message:"Only students can enroll in courses"
-  });
- }
+//  if(req.user.role !== "Student"){
+//   return res.status(403).json({
+//    success:false,
+//    message:"Only students can enroll in courses"
+//   });
+//  }
 
- const course = await Course.findById(req.params.courseId);
+//  const course = await Course.findById(req.params.courseId);
 
- if(!course){
-  return res.status(404).json({
-   message:"Course not found"
-  });
- }
+//  if(!course){
+//   return res.status(404).json({
+//    message:"Course not found"
+//   });
+//  }
 
- const alreadyEnrolled = await Enrollment.findOne({
-   student: req.user.id,
-   course: req.params.courseId
- });
+//  const alreadyEnrolled = await Enrollment.findOne({
+//    student: req.user.id,
+//    course: req.params.courseId
+//  });
 
- if(alreadyEnrolled){
-  return res.status(400).json({
-   message:"You are already enrolled in this course"
-  });
- }
+//  if(alreadyEnrolled){
+//   return res.status(400).json({
+//    message:"You are already enrolled in this course"
+//   });
+//  }
 
- const enrollment = await Enrollment.create({
-   student: req.user.id,
-   course: req.params.courseId
- });
+//  const enrollment = await Enrollment.create({
+//    student: req.user.id,
+//    course: req.params.courseId
+//  });
 
- res.json({
-  success:true,
-  data:enrollment,
-  message:"Enrolled successfully"
- });
+//  res.json({
+//   success:true,
+//   data:enrollment,
+//   message:"Enrolled successfully"
+//  });
 
- }catch(err){
-  res.status(500).json({message:err.message});
- }
-}
+//  }catch(err){
+//   res.status(500).json({message:err.message});
+//  }
+// }
 
 
+
+exports.enrollCourse = async (req, res) => {
+  try {
+
+    const { courseId, name, email } = req.body;
+
+    const studentId = req.user.id;
+
+    // check already enrolled
+    const alreadyEnrolled = await Enrollment.findOne({
+      student: studentId,
+      course: courseId
+    });
+
+    if (alreadyEnrolled) {
+      return res.status(400).json({
+        success: false,
+        message: "Already enrolled in this course"
+      });
+    }
+
+    const enrollment = await Enrollment.create({
+      student: studentId,
+      course: courseId,
+      name,
+      email
+    });
+
+    res.status(201).json({
+      success: true,
+      message: "Course enrolled successfully",
+      data: enrollment
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Server error"
+    });
+  }
+};
 
 
     exports.getEnrolledCourses = async (req, res) => {

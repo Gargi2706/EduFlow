@@ -12,7 +12,7 @@ const {
 // ✅ ADD THIS LINE
 const verifyToken = require("../middleware/verifyToken");
 
-router.post("/enroll/:courseId", verifyToken, authorizeRoles("Student"), (req, res, next) => {
+router.post("/enroll/", verifyToken, (req, res, next) => {
     console.log("Enroll route hit");
     next();
   },

@@ -13,12 +13,12 @@ const {
 
 const verifyToken = require("../middleware/verifyToken");
 
-router.get("/dashboard", verifyToken, authorizeRoles("Admin"), getAdminDashboard);
-router.get("/users", verifyToken, authorizeRoles("Admin"), getAllUsers);
-router.get("/courses", verifyToken, authorizeRoles("Admin"), getAllCourses);
-router.get("/enrollments", verifyToken, authorizeRoles("Admin"), getAllEnrollments);
-router.put("/users/:id/block", verifyToken, authorizeRoles("Admin"), blockUser);
-router.put("/users/:id/unblock", verifyToken, authorizeRoles("Admin"), unblockUser);
-router.get("/reports" , verifyToken , authorizeRoles("Admin") , getAdminReports)
+router.get("/dashboard", verifyToken,  getAdminDashboard);
+router.get("/users", verifyToken,  getAllUsers);
+router.get("/courses", verifyToken,  getAllCourses);
+router.get("/enrollments", verifyToken,  getAllEnrollments);
+router.put("/users/:id/block", verifyToken,  blockUser);
+router.put("/users/:id/unblock", verifyToken,  unblockUser);
+router.get("/reports" , verifyToken ,  getAdminReports)
 
 module.exports = router;    

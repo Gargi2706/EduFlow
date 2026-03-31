@@ -1,18 +1,18 @@
+import axios from "axios";
 
-const api = "http://localhost:3000/api/enrollment"
+const API = "http://localhost:3000/api/enrollment";
 
-export const enrollCourse = async (courseId) => {
+export const enrollCourse = async (data, token) => {
 
-  const response = await fetch(`${api}/enroll/:courseId`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      courseId: courseId
-    }),
-  });
+  const res = await axios.post(
+    `${API}/enroll/`,
+    data,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
+  );
 
-  const data = await response.json();
-  return data;
+  return res.data;
 };
