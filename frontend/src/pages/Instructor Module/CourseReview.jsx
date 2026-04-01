@@ -7,25 +7,42 @@ import '../../styles/courseReview.css'
 import DashboardLayout from '../../Layout/DashboardLayout'
 
 export default function CourseReview() {
-      const [reviews, setReviews] = useState([]);
+
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    API.get("/reviews").then((res) => setReviews(res.data));
+    const fetchReviews = async () => {
+      try {
+        const res = await API.get("/reviews/review"); // ✅ FIXED
+
+        console.log("Reviews:", res.data);
+
+        setReviews(res.data);
+      } catch (error) {
+        console.log("ERROR:", error.response?.data);
+      }
+    };
+
+    fetchReviews();
   }, []);
 
   return (
-    <DashboardLayout >
-    <div className="container">
-      <h2>Course Reviews</h2>
+    <DashboardLayout>
+      <div className="container">
+        <h2>Course Reviews</h2>
 
-      <StatsCard />
+        <StatsCard />
 
-      <div className="review-list">
-        {reviews.map((r) => (
-          <ReviewCard key={r._id} review={r} />
-        ))}
+        <div className="review-list">
+          {reviews.length === 0 ? (
+            <p>No reviews yet</p>
+          ) : (
+            reviews.map((r) => (
+              <ReviewCard key={r._id} review={r} />
+            ))
+          )}
+        </div>
       </div>
-    </div>
     </DashboardLayout>
   )
 }

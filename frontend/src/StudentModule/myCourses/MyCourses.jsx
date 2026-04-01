@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import DashboardLayout from "../../Layout/DashboardLayout";
-import "./myCourses.css";
+import "./myCourses.css"; // ✅ correct CSS only
 import { useNavigate } from "react-router-dom";
-import { getMyCourses } from "../../services/enrollService"; // ✅ ADDED
+import { getMyCourses } from "../../services/enrollService";
 
 export default function MyCourses() {
   const [courses, setCourses] = useState([]);
@@ -14,8 +14,6 @@ export default function MyCourses() {
         const token = localStorage.getItem("token");
 
         const res = await getMyCourses(token);
-
-        console.log("Courses API Response:", res); // ✅ debug
 
         const formattedCourses = res.data.map((item) => ({
           _id: item.course._id,
@@ -70,13 +68,13 @@ export default function MyCourses() {
 
                 {!course.completed ? (
                   <button
-                    onClick={() => navigate("/course-player")}
+                    onClick={() => navigate(`/course-player/${course._id}`)}
                   >
                     Continue
                   </button>
                 ) : (
                   <button
-                    onClick={() => navigate("/course-player")}
+                    onClick={() => navigate(`/course-player/${course._id}`)}
                   >
                     View
                   </button>
