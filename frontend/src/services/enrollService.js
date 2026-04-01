@@ -1,16 +1,47 @@
 import axios from "axios";
 
-const API = "http://localhost:3000/api/enrollment";
+const API = "http://localhost:5000/api/enrollment";
 
-export const enrollCourse = async (data, token) => {
-
+// ✅ ENROLL COURSE
+export const enrollCourse = async (courseId, name, email, token) => {
   const res = await axios.post(
-    `${API}/enroll/`,
-    data,
+    `${API}/enroll/${courseId}`,
+    { name, email },
     {
       headers: {
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  return res.data;
+};
+
+
+// ✅ GET MY ENROLLED COURSES
+export const getMyCourses = async (token) => {
+  const res = await axios.get(
+    `${API}/my-courses`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  return res.data;
+};
+
+
+// ✅ UPDATE PROGRESS (optional but useful)
+export const updateProgress = async (id, progress, token) => {
+  const res = await axios.put(
+    `${API}/progress/${id}`,
+    { progress },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     }
   );
 

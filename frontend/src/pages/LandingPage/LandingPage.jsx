@@ -15,7 +15,7 @@ export default function LandingPage() {
 
  const fetchCourses = async () => {
   try {
-    const res = await axios.get("http://localhost:3000/api/courses/");
+    const res = await axios.get("http://localhost:5000/api/courses/");
     
     console.log(res.data);
 
@@ -99,12 +99,19 @@ export default function LandingPage() {
           <div className="course-list">
             {courses.map((course) => (
               <div className="course-card" key={course._id}>
-                <img
-                  src={course.thumbnail || "/default.jpg"}
-                  alt={course.title}
-                />
-                <h3>{course.title}</h3>
-              </div>
+              <img
+                src={course.thumbnail || "/default.jpg"}
+                alt={course.title}
+              />
+              <h3>{course.title}</h3>
+
+              {/* ✅ ADD THIS BUTTON */}
+              <button
+                onClick={() => navigate(`/enroll/${course._id}`)}
+              >
+                Enroll
+              </button>
+            </div>
             ))}
           </div>
         </div>

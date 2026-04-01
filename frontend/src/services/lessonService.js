@@ -4,7 +4,7 @@ export const addLesson = async (courseId, formData) => {
   const token = localStorage.getItem("token");
 
   const res = await axios.post(
-    `http://localhost:3000/api/courses/${courseId}/lessons/`,
+    `http://localhost:5000/api/courses/${courseId}/lessons/`,
     formData,
     {
       headers: {

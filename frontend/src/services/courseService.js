@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const api = "http://localhost:3000/api/courses"
+const api = "http://localhost:5000/api/courses"
 
 
 export const createCourse = async (formData) => {

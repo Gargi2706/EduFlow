@@ -11,55 +11,46 @@ export default function StudentSidebar() {
 
         <ul className="links">
 
-         
-            <NavLink
-              to="/student-dashboard"
-              className={({ isActive }) =>
-                isActive ? "nav-link active-link" : "nav-link"
-              }
-            >
-              Dashboard
-            </NavLink>
-     
+          <NavLink
+            to="/student-dashboard"
+            className={({ isActive }) =>
+              isActive ? "nav-link active-link" : "nav-link"
+            }
+          >
+            Dashboard
+          </NavLink>
 
-          
-            <NavLink
-              to="/student/enroll-course"
-              className={({ isActive }) =>
-                isActive ? "nav-link active-link" : "nav-link"
-              }
-            >
-              Browse Course
-            </NavLink>
-         
+          {/* ✅ FIXED: Course Catalog page */}
+          <NavLink
+            to="/student/course-catalog"
+            className={({ isActive }) =>
+              isActive ? "nav-link active-link" : "nav-link"
+            }
+          >
+            Course Catalog
+          </NavLink>
 
-         
-            <NavLink
-              to="/student/my-courses"
-              className={({ isActive }) =>
-                isActive ? "nav-link active-link" : "nav-link"
-              }
-            >
-              My Courses
-            </NavLink>
-        
-         
-            <NavLink
-              to="/student/my-reviews"
-              className={({ isActive }) =>
-                isActive ? "nav-link active-link" : "nav-link"
-              }
-            >
-              My Reviews
-            </NavLink>
-         
+          <NavLink
+            to="/student/my-courses"
+            className={({ isActive }) =>
+              isActive ? "nav-link active-link" : "nav-link"
+            }
+          >
+            My Courses
+          </NavLink>
+
+          <NavLink
+            to="/student/my-reviews"
+            className={({ isActive }) =>
+              isActive ? "nav-link active-link" : "nav-link"
+            }
+          >
+            My Reviews
+          </NavLink>
 
         </ul>
-        </div>
-      
       </div>
 
-     
-  
+    </div>
   );
 }

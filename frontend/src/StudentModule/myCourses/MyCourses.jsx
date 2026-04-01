@@ -2,36 +2,37 @@ import React, { useEffect, useState } from "react";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import "./myCourses.css";
 import { useNavigate } from "react-router-dom";
+import { getMyCourses } from "../../services/enrollService"; // ✅ ADDED
 
 export default function MyCourses() {
   const [courses, setCourses] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // 🔥 TEMP STATIC DATA (replace with API later)
-    setCourses([
-      {
-        _id: "1",
-        title: "React Basics",
-        progress: 60,
-        image: "https://via.placeholder.com/300x150",
-        completed: false,
-      },
-      {
-        _id: "2",
-        title: "Node.js",
-        progress: 30,
-        image: "https://via.placeholder.com/300x150",
-        completed: false,
-      },
-      {
-        _id: "3",
-        title: "Python for Beginners",
-        progress: 100,
-        image: "https://via.placeholder.com/300x150",
-        completed: true,
-      },
-    ]);
+    const fetchCourses = async () => {
+      try {
+        const token = localStorage.getItem("token");
+
+        const res = await getMyCourses(token);
+
+        console.log("Courses API Response:", res); // ✅ debug
+
+        const formattedCourses = res.data.map((item) => ({
+          _id: item.course._id,
+          title: item.course.title,
+          progress: item.progress || 0,
+          image: item.course.image || "https://via.placeholder.com/300x150",
+          completed: item.progress === 100,
+        }));
+
+        setCourses(formattedCourses);
+
+      } catch (error) {
+        console.log("ERROR:", error.response?.data);
+      }
+    };
+
+    fetchCourses();
   }, []);
 
   return (
@@ -69,16 +70,16 @@ export default function MyCourses() {
 
                 {!course.completed ? (
                   <button
-                      onClick={() => navigate("/course-player")}
-                    >
-                      Continue
-                    </button>
+                    onClick={() => navigate("/course-player")}
+                  >
+                    Continue
+                  </button>
                 ) : (
                   <button
-                      onClick={() => navigate("/course-player")}
-                    >
-                      View
-                    </button>
+                    onClick={() => navigate("/course-player")}
+                  >
+                    View
+                  </button>
                 )}
               </div>
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api = "http://localhost:3000/api/reviews";
+const api = "http://localhost:5000/api/reviews";
 
 export const getReview = async () => {
   const res = await axios.get(api);

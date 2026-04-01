@@ -41,7 +41,7 @@ export default function AddLessons() {
   const publishCourse = async () => {
     try {
       await axios.put(
-        `http://localhost:3000/api/courses/${courseId}/publish`,
+        `http://localhost:5000/api/courses/${courseId}/publish`,
         {},
         {
           headers: {

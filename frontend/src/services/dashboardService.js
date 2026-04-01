@@ -3,7 +3,7 @@ import axios from "axios";
 export const getDashboardData = async () => {
   const res = await axios.get(
 
-    "http://localhost:3000/api/dashboard/instructor",
+    "http://localhost:5000/api/dashboard/instructor",
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -15,7 +15,7 @@ export const getDashboardData = async () => {
 
 
 
-const API = "http://localhost:000/api/dashboard";
+const API = "http://localhost:5000/api/dashboard";
 
 export const getDashboardStats = async (token) => {
   const res = await axios.get(

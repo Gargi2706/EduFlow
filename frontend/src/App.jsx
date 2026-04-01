@@ -10,6 +10,7 @@ import StudentDashboard from "./StudentModule/studentDashboard/StudentDashboard"
 import MyCourses from "./StudentModule/myCourses/MyCourses";
 import MyReviews from "./StudentModule/myReviews/MyReviews";
 import CoursePlayer from "./StudentModule/CoursePlayer/CoursePlayer";
+import CourseCatalog from "./StudentModule/courseCatalog/CourseCatalog";
 
 import InstructorDashboard from "./pages/Instructor Module/InstructorDashboard";
 import AdminDashboard from "./pages/Admin Module/AdminDashboard";
@@ -33,6 +34,7 @@ import AddLessons from "./components/Course/CourseForm/AddLessons";
 import ProfileDropdown from "./pages/Profile/profileDropdown/ProfileDropdown";
 import ChangePassword from "./pages/Profile/ChangePassword/ChangePassword";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+
 
 function App() {
   return (
@@ -79,10 +81,11 @@ function App() {
 
 
        <Route path="/student-dashboard" element={<StudentDashboard />} />
-       <Route path="/student/enroll-course/" element={<EnrollCourse />} />
+       <Route path="/enroll/:courseId" element={<EnrollCourse />} />
         <Route path="/student/my-courses" element={<MyCourses />} />
         <Route path="/student/my-reviews" element={<MyReviews />} />
         <Route path="/student/course-player" element={<CoursePlayer />} />
+        <Route path="/student/course-catalog" element={<CourseCatalog />} />
 
 
       </Routes>
