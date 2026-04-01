@@ -41,7 +41,7 @@ app.use("/api/upload", uploadRoutes);
 app.use("/api/progress", progressRoutes);
 app.use("/api/file" , fileRoutes)
 
-const PORT = 3000;
+const PORT = 5000;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

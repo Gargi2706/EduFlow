@@ -1,5 +1,3 @@
-
-
 const jwt = require("jsonwebtoken");
 
 const verifyToken = (req, res, next) => {
@@ -11,14 +9,14 @@ const verifyToken = (req, res, next) => {
     });
   }
 
-  // Extract token from "Bearer <token>"
   const token = authHeader.split(" ")[1];
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-   console.log("Decoded token:", decoded); // DEBUG
 
-    req.user = decoded; // contains id, role, etc.
+    console.log("Decoded token:", decoded);
+
+    req.user = decoded;
 
     next();
   } catch (error) {

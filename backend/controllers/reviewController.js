@@ -1,12 +1,11 @@
 const Review = require("../models/Review");
 const Enrollment = require("../models/Enrollment");
-
+const Course = require("../models/Course"); // ✅ ADDED
 
 const addReview = async (req, res) => {
   try {
     const { rating, comment, courseId } = req.body;
 
-   
     const isEnrolled = await Enrollment.findOne({
       student: req.user.id,
       course: courseId,
@@ -18,7 +17,6 @@ const addReview = async (req, res) => {
       });
     }
 
-   
     const alreadyReviewed = await Review.findOne({
       student: req.user.id,
       course: courseId,
@@ -30,7 +28,6 @@ const addReview = async (req, res) => {
       });
     }
 
-   
     const review = await Review.create({
       course: courseId,
       rating,
@@ -48,9 +45,32 @@ const addReview = async (req, res) => {
   }
 };
 
+
+// ✅ FIXED: Instructor can only see THEIR course reviews
 const getCourseReviews = async (req, res) => {
   try {
-    const reviews = await Review.find({ course: req.params.courseId })
+    const courseId = req.params.courseId;
+
+    // ✅ check course exists
+    const course = await Course.findById(courseId);
+
+    if (!course) {
+      return res.status(404).json({
+        message: "Course not found",
+      });
+    }
+
+    // ✅ IMPORTANT: only instructor of this course can view
+    if (
+      req.user.role === "Instructor" &&
+      course.instructor.toString() !== req.user.id
+    ) {
+      return res.status(403).json({
+        message: "Not authorized to view these reviews",
+      });
+    }
+
+    const reviews = await Review.find({ course: courseId })
       .populate("student", "name email");
 
     res.json({
@@ -65,9 +85,8 @@ const getCourseReviews = async (req, res) => {
 };
 
 
- const getAllReviews = async (req, res) => {
+const getAllReviews = async (req, res) => {
   try {
-
     const reviews = await Review.find()
       .populate("student", "name email")
       .populate("course", "title");
@@ -78,10 +97,10 @@ const getCourseReviews = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+
 const approveReview = async (req, res) => {
-
   try {
-
     const review = await Review.findByIdAndUpdate(
       req.params.id,
       { status: "Approved" },
@@ -93,13 +112,11 @@ const approveReview = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-
 };
 
- const rejectReview = async (req, res) => {
 
+const rejectReview = async (req, res) => {
   try {
-
     const review = await Review.findByIdAndUpdate(
       req.params.id,
       { status: "Rejected" },
@@ -111,13 +128,11 @@ const approveReview = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-
 };
 
+
 const deleteReview = async (req, res) => {
-
   try {
-
     await Review.findByIdAndDelete(req.params.id);
 
     res.json({ message: "Review deleted" });
@@ -125,9 +140,7 @@ const deleteReview = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-
 };
-
 
 
 const getStats = async (req, res) => {
@@ -137,7 +150,9 @@ const getStats = async (req, res) => {
     const totalReviews = reviews.length;
 
     const avgRating =
-      reviews.reduce((acc, r) => acc + r.rating, 0) / totalReviews;
+      totalReviews === 0
+        ? 0
+        : reviews.reduce((acc, r) => acc + r.rating, 0) / totalReviews;
 
     const ratingCount = {
       5: 0,
@@ -156,6 +171,7 @@ const getStats = async (req, res) => {
       avgRating: avgRating.toFixed(1),
       ratingCount,
     });
+
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
