@@ -32,9 +32,7 @@ export default function StudentsEnrolled() {
         <div className="searchFilter">
           <input placeholder="Search Student" />
 
-          <select>
-            <option>Filter by Course</option>
-          </select>
+          
         </div>
 
         <div className="coursesContainer">

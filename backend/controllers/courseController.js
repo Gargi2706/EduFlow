@@ -213,22 +213,26 @@ exports.getCourseRating = async (req, res) => {
  exports.getInstructorCourses = async (req, res) => {
   try {
 
-    const courses = await Course.find({ instructor: req.user.id });
+    console.log("USER:", req.user); // debug
+
+    const courses = await Course.find({
+      instructor: req.user._id
+    });
 
     res.status(200).json({
       success: true,
-      data: courses,
+      data: courses
     });
 
   } catch (error) {
+    console.log("ERROR:", error);
+
     res.status(500).json({
       success: false,
-      message: error.message,
+      message: error.message
     });
   }
 };
-
-
 
 // exports.getInstructorCourses = async (req, res) => {
 //   try {

@@ -72,15 +72,15 @@ export const fetchInstructorCourses = async () => {
 
   const token = localStorage.getItem("token");
 
-  const res = await fetch(`${api}/my-course`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const res = await axios.get(
+    "http://localhost:3000/api/courses/my-course",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 
-  const data = await res.json();
-
-  return data.data;
+  return res.data.data;
 };
-
 
