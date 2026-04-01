@@ -3,13 +3,19 @@ import axios from "axios"
 const api = "http://localhost:3000/api/courses"
 
 
-export const createCourse = async (formData) => {
-  const res = await axios.post(`${api}/`, formData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-  });
+export const createCourse = async (courseData) => {
+
+  const token = localStorage.getItem("token");
+
+  const res = await axios.post(
+    "http://localhost:3000/api/courses",
+    courseData,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 
   return res.data;
 };
@@ -61,3 +67,20 @@ export const fetchById = async (id) => {
     const res = await axios.get(`${api}/${id}`)
     return res.data
 }
+
+export const fetchInstructorCourses = async () => {
+
+  const token = localStorage.getItem("token");
+
+  const res = await fetch(`${api}/my-course`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const data = await res.json();
+
+  return data.data;
+};
+
+

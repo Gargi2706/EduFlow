@@ -84,7 +84,7 @@ export default function LandingPage() {
           <div className="course-header">
             <h2>Courses</h2>
 
-            <span
+            {/* <span
               className="view"
               onClick={() =>
                 navigate("/auth", {
@@ -93,7 +93,7 @@ export default function LandingPage() {
               }
             >
               View All →
-            </span>
+            </span> */}
           </div>
 
           <div className="course-list">

@@ -21,7 +21,7 @@ import StudentsEnrolled from "./pages/Instructor Module/StudentsEnrolled";
 import ManageUser from "./pages/Admin Module/ManageUser";
 import ManageAllCourses from "./pages/Admin Module/ManageAllCourses";
 import ManageReview from "./pages/Admin Module/ManageReview";
-import AdminReports from "./pages/Admin Module/AdminReports";
+// import AdminReports from "./pages/Admin Module/AdminReports";
 import CourseReview from "./pages/Instructor Module/CourseReview";
 import AddLessons from "./components/Course/CourseForm/AddLessons";
 
@@ -53,12 +53,12 @@ function App() {
         <Route path="/instructor/course-review" element={<CourseReview />} />
       <Route path="/instructor/students-enrolled" element={<StudentsEnrolled />} />
 
- <Route path="/admin-dashboard" element ={<AdminDashboard />} />
+      <Route path="/admin-dashboard" element ={<AdminDashboard />} />
       <Route path="/admin-dashboard" element ={<AdminDashboard />} />
       <Route path="/admin/manage-users" element ={<ManageUser />} />
       <Route path="/admin/manage-course" element ={<ManageAllCourses />} />
       <Route path="/admin/manage-reviews" element ={<ManageReview />} />
-       <Route path="/admin/reports" element ={<AdminReports/>} />
+      {/* <Route path="/admin/reports" element ={<AdminReports/>} /> */}
       
  
  

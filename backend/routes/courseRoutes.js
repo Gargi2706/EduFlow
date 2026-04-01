@@ -20,14 +20,14 @@ const upload = require("../middleware/upload");
 
 router.post(
   "/",
-  //verifyToken,
+  verifyToken,
   // authorizeRoles("Instructor"),
   upload.single("thumbnail"),
   createCourse,
 );
 router.get("/",  getAllCourses);
 router.get("/:id", authorizeRoles("Student"), getCourseById);
-router.put("/:id", verifyToken, updateCourse);
+router.put("/:id", verifyToken, upload.single("thumbnail"), updateCourse);
 router.delete(
   "/:id",
   // authorizeRoles("Instructor", "Admin"),

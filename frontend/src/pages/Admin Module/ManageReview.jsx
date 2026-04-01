@@ -114,7 +114,7 @@ export default function ManageReview() {
                 </td>
               </tr>
             ))}
-            {/* <tr>
+            <tr>
               <td>Gargi</td>
                 <td>React Course</td>
                  <td >3</td>
@@ -130,10 +130,10 @@ export default function ManageReview() {
                  <td >3</td>
                  <td>veryuseful</td>
                  <td>Complete</td>
-                 <button className="action-btn approve-btn">approve</button>
-                 <button className="action-btn reject-btn">reject</button>
+                 {/* <button className="action-btn approve-btn">approve</button>
+                 <button className="action-btn reject-btn">reject</button> */}
                  <button className="action-btn delete-btn">delete</button>
-                 </tr> */}
+                 </tr>
           </tbody>
         </table>
       </div>

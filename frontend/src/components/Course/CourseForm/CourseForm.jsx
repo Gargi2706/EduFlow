@@ -1,43 +1,45 @@
 import React from 'react'
-import { useState ,useRef } from 'react';
+import { useState, useRef } from 'react';
 import "./createcourse.css";
-import {createCourse} from '../../../services/courseService';
+import { createCourse } from '../../../services/courseService';
 import { useNavigate } from 'react-router-dom';
 
 export default function CourseForm() {
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
 
-const fileRef = useRef(); 
+  const fileRef = useRef();
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const formData = new FormData();
-  formData.append("title", title);
-  formData.append("description", description);
-  formData.append("thumbnail", thumbnail);
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("thumbnail", thumbnail);
 
-  try {
-    const data = await createCourse(formData);
+    try {
 
-    alert("Course Created Successfully");
-    console.log(data);
+      const data = await createCourse(formData);
 
- navigate(`/instructor/add-lessons/${data.data._id}`);
- 
-    setTitle("");
+      alert("Course Created Successfully");
+      console.log(data);
+
+      navigate(`/instructor/add-lessons/${data.data._id}`);
+
+      setTitle("");
       setDescription("");
       setThumbnail(null);
-      fileRef.current.value = ""; // reset file input
+      fileRef.current.value = "";
 
-  } catch (error) {
-    console.log(error);
-    alert("Error creating course");
-  }
-};
-
-const navigate = useNavigate();
+    } catch (error) {
+      console.log(error);
+      alert("Error creating course");
+    }
+  };
 
   return (
     <div className='course-container'>
@@ -60,16 +62,20 @@ const navigate = useNavigate();
           required
         />
 
-        <label>Thumbnail URL</label>
+        <label>Thumbnail</label>
         <input
           type="file"
-          placeholder="Enter image URL"
-           ref={fileRef}
-          onChange={(e) => setThumbnail(e.target.files[0])}
-          required
+          ref={fileRef}
+          
+          onChange={(e) => {
+    console.log(e.target.files[0]); 
+    setThumbnail(e.target.files[0]);
+  }}
         />
 
-  <button  onClick={handleSubmit} className="course-form-button" type="submit">Create Course</button>
+        <button className="course-form-button" type="submit">
+          Create Course
+        </button>
 
       </form>
     </div>

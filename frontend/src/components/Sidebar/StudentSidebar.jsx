@@ -15,7 +15,7 @@ export default function StudentSidebar() {
             <NavLink
               to="/student-dashboard"
               className={({ isActive }) =>
-                isActive ? "nav-link active-link" : "nav-link"
+                isActive ? "link active-link" : "nav-link"
               }
             >
               Dashboard
@@ -26,7 +26,7 @@ export default function StudentSidebar() {
             <NavLink
               to="/student/enroll-course"
               className={({ isActive }) =>
-                isActive ? "nav-link active-link" : "nav-link"
+                isActive ? "link active-link" : "nav-link"
               }
             >
               Browse Course
@@ -37,7 +37,7 @@ export default function StudentSidebar() {
             <NavLink
               to="/student/my-courses"
               className={({ isActive }) =>
-                isActive ? "nav-link active-link" : "nav-link"
+                isActive ? "link active-link" : "nav-link"
               }
             >
               My Courses
@@ -47,7 +47,7 @@ export default function StudentSidebar() {
             <NavLink
               to="/student/my-reviews"
               className={({ isActive }) =>
-                isActive ? "nav-link active-link" : "nav-link"
+                isActive ? "link active-link" : "nav-link"
               }
             >
               My Reviews

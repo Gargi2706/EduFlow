@@ -46,7 +46,7 @@ export default function StudentDashboard() {
       <div className="student-dashboard-container">
 
         <div className="header">
-          <h2>Welcome, {user?.name}</h2>
+          <h2>Welcome, {user?.name} 👋</h2>
         </div>
 
         <div className="cards">

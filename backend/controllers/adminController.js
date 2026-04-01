@@ -9,12 +9,14 @@ exports.getAdminDashboard = async (req, res) => {
         const totalUsers = await User.countDocuments();
         const totalCourses = await Course.countDocuments();
         const totalEnrollments = await Enrollment.countDocuments();
+         const totalInstructors = await User.countDocuments({ role: "instructor" });
 
         res.status(200).json({
             success: true,
             data: {
                 totalUsers,
                 totalCourses,
+                totalInstructors,
                 totalEnrollments
             },
             message: "Admin dashboard data retrieved successfully"

@@ -3,9 +3,12 @@ const Course = require("../models/Course");
 const Rating = require("../models/Rating")
 
 exports.createCourse = async (req, res) => {
-  try {
-    const { title, description, thumbnail } = req.body;
 
+    console.log("FILE:", req.file);
+    console.log("BODY:", req.body);
+  try {
+    const { title, description } = req.body;
+const thumbnail = req.file ? req.file.path : "";
     const course = await Course.create({
       title,
       description,
@@ -90,12 +93,12 @@ exports.updateCourse = async (req, res) => {
     }
 
     // Check if the user is the instructor of the course
-    if (course.instructor.toString() !== req.user.id) {
-      return res.status(403).json({
-        success: false,
-        message: "Unauthorized",
-      });
-    }
+    // if (course.instructor.toString() !== req.user.id) {
+    //   return res.status(403).json({
+    //     success: false,
+    //     message: "Unauthorized",
+    //   });
+    // }
 
     const { title, description, thumbnail } = req.body;
 
@@ -210,25 +213,17 @@ exports.getCourseRating = async (req, res) => {
  exports.getInstructorCourses = async (req, res) => {
   try {
 
-    const instructorId = req.user.id;
-
-    const courses = await Course.find({
-      instructor: instructorId
-    })
-    .populate("instructor", "name email")
-    .sort({ createdAt: -1 });
+    const courses = await Course.find({ instructor: req.user.id });
 
     res.status(200).json({
       success: true,
-      count: courses.length,
-      courses
+      data: courses,
     });
 
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: "Server Error",
-      error: error.message
+      message: error.message,
     });
   }
 };

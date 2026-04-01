@@ -4,12 +4,13 @@
   z-index: 1000;
   overflow-y: auto;
   width: 240px;
-  height: calc(100vh - 60px);
+  /* height: calc(100vh - 60px); */
   background: linear-gradient(135deg, #4f46e5, #6d28d9);
   color: white;
   left: 0;
   top: 60px;
   box-sizing: border-box;
+  
 }
 .sidepanel.open {
   transform: translateX(0);
@@ -58,4 +59,16 @@
 
 .sidebar-bottom {
   padding: 20px;
+}
+
+
+@media (max-width: 768px) {
+  .sidepanel {
+    width: 220px;
+    transform: translateX(-100%);
+  }
+
+  .sidepanel.open {
+    transform: translateX(0);
+  }
 }

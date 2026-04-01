@@ -1,23 +1,22 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { fetchAllCourse } from "../../services/courseService"
+import { fetchInstructorCourses } from "../../services/courseService"
 import '../../styles/managecourse.css'
 import CourseTable from "../../components/Course/CourseTable";
 import DashboardLayout from "../../Layout/DashboardLayout"
+
 
 export default function ManageCourse() {
   const [courses, setCourses] = useState([]);
 
   const loadCourses = async () => {
-    try {
-      const data = await fetchAllCourse();
-      console.log("DATA:", data);
-      setCourses(data);
-    } catch (error) {
-      console.error("Error fetching courses:", error);
-    }
-  };
-
+  try {
+    const data = await fetchInstructorCourses();
+    setCourses(data);
+  } catch (error) {
+    console.error("Error fetching courses:", error);
+  }
+};
   useEffect(() => {
     loadCourses();
   }, []);

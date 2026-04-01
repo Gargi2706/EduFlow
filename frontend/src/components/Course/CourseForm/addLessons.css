@@ -3,18 +3,18 @@
   min-height: 100vh;
   background: #f5f6fa; /* light background like create course */
   display: block;
-  padding: 30px;
+padding: 40px 20px;
 }
 
 /* Card */
 .lesson-card {
   width: 100%;
-  max-width: 100%;
+  max-width: 700px;
   background: #ffffff;
   border-radius: 10px;
   padding: 30px;
   color: #333;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.05);
 }
 
 /* Title */
@@ -102,7 +102,7 @@
   padding: 10px;
   border-radius: 6px;
   border: none;
-  background: #e83e8c;
+  background: green;
   color: white;
   font-weight: 500;
   cursor: pointer;

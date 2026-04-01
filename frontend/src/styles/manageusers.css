@@ -14,7 +14,7 @@
 /* TABLE */
 
 .manage-users table {
- 
+ padding: 70px;
   width: 100%;
   border-collapse: collapse;
   background: white;

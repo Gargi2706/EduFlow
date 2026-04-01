@@ -34,7 +34,7 @@ export const blockUser = async (id) => {
   const token = localStorage.getItem("token");
 
   const res = await axios.put(
-    `${api}/${id}/block`,
+    `${api}/users/${id}/block`,
     {},
     {
       headers: {
@@ -51,7 +51,7 @@ export const unblockUser = async (id) => {
   const token = localStorage.getItem("token");
 
   const res = await axios.put(
-    `${api}/${id}/unblock`,
+    `${api}/users/${id}/unblock`,
     {},
     {
       headers: {

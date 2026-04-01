@@ -22,7 +22,8 @@
 
 /* LEFT SIDE */
 .auth-left {
-  flex: 1;
+  /* flex: 0.8; */
+   width: 50%;
   background: linear-gradient(135deg, #4f46e5, #6d28d9);
   display: flex;
   justify-content: center;
@@ -46,7 +47,8 @@
 
 /* RIGHT SIDE */
 .auth-right {
-  flex: 1;
+  /* flex: 1.2; */
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -101,14 +103,12 @@
   text-decoration: underline;
 }
 
-<<<<<<< HEAD
 .logo-img {
   width: 300px;
   height: auto;
   margin-bottom: 5px;
 }
 
-=======
 /* FORGOT PASSWORD */
 .forgot-password {
   font-size: 13px;
@@ -121,4 +121,3 @@
 .forgot-password:hover {
   text-decoration: underline;
 }
->>>>>>> b373c04279d8c3329e012c0e3a34856db3cfa019
